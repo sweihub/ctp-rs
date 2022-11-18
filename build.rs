@@ -66,7 +66,11 @@ fn main() {
 
     // Write the bindings to the $OUT_DIR/bindings.rs file.
     // let outfile = PathBuf::from(env::var("OUT_DIR").unwrap()).join("bindings.rs");
-    let outfile = root.join("src/sys/bindings.rs");
+
+    // NOTE:
+    // binding_gen.rs was slightly modified to bindings.rs in order to silence warnings,
+    // if you change the wrapper.cpp, please manually move bindings_gen.rs to bingdings.rs
+    let outfile = root.join("src/sys/bindings_gen.rs");
 
     bindings
         .write_to_file(&outfile)

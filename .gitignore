@@ -1,4 +1,5 @@
 /target
+src/sys/bindings_gen.rs
 .mypy_cache
 tags*
 
