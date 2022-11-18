@@ -252,7 +252,7 @@ pub fn main() {
     });
 
     mdapi.start().unwrap();
-    mdapi.subscribe_market_data(&["rb2101"], false).unwrap();
+    mdapi.subscribe_market_data(&["rb2305"], false).unwrap();
     let mut count = 0;
 
     eprintln!("mk api success");
