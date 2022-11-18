@@ -1,5 +1,5 @@
 use std::env;
-use std::path::{PathBuf, Path};
+use std::path::{Path};
 use regex::Regex;
 use lazy_static::lazy_static;
 
@@ -65,7 +65,9 @@ fn main() {
         .expect("Unable to generate bindings");
 
     // Write the bindings to the $OUT_DIR/bindings.rs file.
-    let outfile = PathBuf::from(env::var("OUT_DIR").unwrap()).join("bindings.rs");
+    // let outfile = PathBuf::from(env::var("OUT_DIR").unwrap()).join("bindings.rs");
+    let outfile = root.join("src/bindings.rs");
+
     bindings
         .write_to_file(&outfile)
         .expect("Couldn't write bindings!");
