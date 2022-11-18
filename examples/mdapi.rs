@@ -1,12 +1,13 @@
+#![allow(unused_variables)]
+#![allow(non_upper_case_globals)]
+#![allow(non_camel_case_types)]
+#![allow(non_snake_case)]
+
 use ctp_rs::sys::*;
 
-use std::time::{Duration, Instant};
-use std::io::{Write, Read};
+use std::time::{Duration,};
 use std::os::raw::*;
 use std::ffi::{CStr, CString};
-use std::collections::{HashMap, HashSet};
-use std::path::Path;
-use std::sync::{Arc, Mutex, Condvar};
 
 use log::*;
 use crossbeam::{channel::{self, Sender, Receiver}, select};
@@ -87,9 +88,9 @@ impl MDApi {
 
     pub fn new(config: &Config) -> Self {
         let cs = std::ffi::CString::new(config.flowpath.as_bytes()).unwrap();
-        let api = unsafe {
+        let api = 
             Rust_CThostFtdcMdApi::new(CThostFtdcMdApi::CreateFtdcMdApi(cs.as_ptr(), config.is_udp, config.is_multicast))
-        };
+        ;
         Self { api, spi: None, config: config.clone(), rx: None }
     }
 
@@ -102,16 +103,16 @@ impl MDApi {
         if self.config.front_addr.len() > 0 {
             debug!("front_addr is: {}", self.config.front_addr);
             let cs = CString::new(self.config.front_addr.as_bytes()).unwrap();
-            unsafe { self.api.RegisterFront(cs.as_ptr() as *mut _); }
+             self.api.RegisterFront(cs.as_ptr() as *mut _); 
         }
 
         if self.config.nm_addr.len() > 0 {
             debug!("nm_addr is: {}", self.config.front_addr);
             let cs = CString::new(self.config.nm_addr.as_bytes()).unwrap();
-            unsafe { self.api.RegisterNameServer(cs.as_ptr() as *mut _); }
+             self.api.RegisterNameServer(cs.as_ptr() as *mut _);
         }
 
-        unsafe { self.api.Init(); }
+         self.api.Init(); 
 
         Ok(())
     }
@@ -134,7 +135,7 @@ impl MDApi {
             reserve1:             [0i8; 16]
         };
 
-        unsafe { self.api.ReqUserLogin(&mut loginfield, 1); }
+        self.api.ReqUserLogin(&mut loginfield, 1); 
         Ok(())
     }
 
@@ -192,9 +193,9 @@ impl MDApi {
         let arr_cstr: Vec<*mut c_char> = arr_cstring.iter().map(|s| s.as_ptr() as *mut c_char).collect();
         let ptr = arr_cstr.as_ptr() as *mut *mut c_char;
         let rtn = if is_unsub {
-            unsafe { self.api.UnSubscribeMarketData(ptr, len) }
+             self.api.UnSubscribeMarketData(ptr, len) 
         } else {
-            unsafe { self.api.SubscribeMarketData(ptr, len) }
+             self.api.SubscribeMarketData(ptr, len) 
         };
         if rtn != 0 {
             return Err(format!("Fail to req `md_api_subscribe_market_data`: {}", rtn))
@@ -212,23 +213,23 @@ impl MDApi {
         let spi: Box<Box<dyn Rust_CThostFtdcMdSpi_Trait>> = Box::new(Box::new(spi));
         let ptr = Box::into_raw(spi) as *mut _ as *mut c_void;
 
-        let spi_stub = unsafe { Rust_CThostFtdcMdSpi::new(ptr) } ;
+        let spi_stub =  Rust_CThostFtdcMdSpi::new(ptr)  ;
         let spi: *mut Rust_CThostFtdcMdSpi = Box::into_raw(Box::new(spi_stub));
-        unsafe { self.api.RegisterSpi(spi as _); }
+         self.api.RegisterSpi(spi as _); 
 
         self.spi = Some(spi);
     }
 
     fn drop_spi(spi: *mut Rust_CThostFtdcMdSpi) {
         let mut spi = unsafe { Box::from_raw(spi) };
-        unsafe { spi.destruct(); }
+         spi.destruct(); 
     }
 }
 
 impl Drop for MDApi {
     fn drop(&mut self) {
         debug!("drop api");
-        unsafe { self.api.destruct(); }
+         self.api.destruct(); 
         if let Some(spi) = self.spi {
             debug!("drop spi");
             Self::drop_spi(spi);

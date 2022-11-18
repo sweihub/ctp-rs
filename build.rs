@@ -66,7 +66,7 @@ fn main() {
 
     // Write the bindings to the $OUT_DIR/bindings.rs file.
     // let outfile = PathBuf::from(env::var("OUT_DIR").unwrap()).join("bindings.rs");
-    let outfile = root.join("src/bindings.rs");
+    let outfile = root.join("src/sys/bindings.rs");
 
     bindings
         .write_to_file(&outfile)
