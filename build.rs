@@ -1,7 +1,6 @@
 use std::env;
 use std::path::{PathBuf, Path};
 use regex::Regex;
-use std::io::Read;
 use lazy_static::lazy_static;
 
 fn main() {
@@ -25,6 +24,9 @@ fn main() {
     println!("cargo:rustc-link-search={}", root.join("shared/md").join(format!("{}.{}", platform, arch)).display());
     println!("cargo:rustc-link-search={}", root.join("shared/td").join(format!("{}.{}", platform, arch)).display());
     println!("cargo:rustc-link-search={}", root.join("shared/data_collect").join(format!("{}.{}", platform, arch)).display());
+
+    //println!("{}", root.display().to_string());
+    //panic!("DEBUG");
 
     if platform == "unix" {
         println!("cargo:rustc-link-lib=dylib=LinuxDataCollect");
@@ -91,7 +93,9 @@ fn replace_trait(fname: &Path, traits: &[&str]) -> Result<String, Box<dyn std::e
 
         let mut exports = vec![];
         let mut traitfuns = vec![];
-        assert!(pattern.captures(&buf).is_some(), format!("`{}` not found in source code", trait_extern));
+
+        assert!(pattern.captures(&buf).is_some(), "`{}` not found in source code", trait_extern);
+
         for cap in pattern.captures_iter(&buf) {
             let fname = cap.get(1).unwrap().as_str().trim();
             let args: Vec<_> = cap.get(2).unwrap().as_str().split(",").filter(

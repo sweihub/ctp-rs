@@ -1,3 +1,8 @@
+# Fork of CTP-RS
+1. CTP SDK updated to `v6.6.9_tradeapi_20220920`, and the SDK was shipped with the code
+2. Success to compile examples on Linux
+3. Fail to link examples on Windows, linkage issue, yet to solve!
+
 # ctp-rs
 CTP sdk version: `6.3.15_20190220 15:47:00`
 

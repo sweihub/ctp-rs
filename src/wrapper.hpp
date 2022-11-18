@@ -1,11 +1,69 @@
 #pragma once
-// why `..`: because we don't want add include path in build.rs
+#include "../shared/include/DataCollect.h"
 #include "../shared/include/ThostFtdcUserApiDataType.h"
 #include "../shared/include/ThostFtdcUserApiStruct.h"
 #include "../shared/include/ThostFtdcTraderApi.h"
 #include "../shared/include/ThostFtdcMdApi.h"
 
-// autobind.py generated.
+class Rust_CThostFtdcMdApi {
+    public:
+        CThostFtdcMdApi *m_member;
+        Rust_CThostFtdcMdApi(CThostFtdcMdApi *member);
+        ~Rust_CThostFtdcMdApi();
+
+        void Release();
+        void Init();
+        int Join();
+        const char* GetTradingDay();
+        void RegisterFront(char* pszFrontAddress);
+        void RegisterNameServer(char* pszNsAddress);
+        void RegisterFensUserInfo(CThostFtdcFensUserInfoField * pFensUserInfo);
+        void RegisterSpi(CThostFtdcMdSpi* pSpi);
+        int SubscribeMarketData(char* ppInstrumentID[], int nCount);
+        int UnSubscribeMarketData(char* ppInstrumentID[], int nCount);
+        int SubscribeForQuoteRsp(char* ppInstrumentID[], int nCount);
+        int UnSubscribeForQuoteRsp(char* ppInstrumentID[], int nCount);
+        int ReqUserLogin(CThostFtdcReqUserLoginField* pReqUserLoginField, int nRequestID);
+        int ReqUserLogout(CThostFtdcUserLogoutField* pUserLogout, int nRequestID);
+        int ReqQryMulticastInstrument(CThostFtdcQryMulticastInstrumentField* pQryMulticastInstrument, int nRequestID);
+};
+
+class Rust_CThostFtdcMdSpi : CThostFtdcMdSpi {
+    public:
+        void *m_rust;
+        Rust_CThostFtdcMdSpi(void *rust);
+        ~Rust_CThostFtdcMdSpi();
+
+        void OnFrontConnected() override;
+        void OnFrontDisconnected(int nReason) override;
+        void OnHeartBeatWarning(int nTimeLapse) override;
+        void OnRspUserLogin(CThostFtdcRspUserLoginField* pRspUserLogin, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspUserLogout(CThostFtdcUserLogoutField* pUserLogout, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQryMulticastInstrument(CThostFtdcMulticastInstrumentField* pMulticastInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspError(CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspSubMarketData(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField* pDepthMarketData) override;
+        void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField* pForQuoteRsp) override;
+};
+
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnFrontConnected(void* m_rust);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnFrontDisconnected(void* m_rust, int nReason);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnHeartBeatWarning(void* m_rust, int nTimeLapse);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspUserLogin(void* m_rust, CThostFtdcRspUserLoginField* pRspUserLogin, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspUserLogout(void* m_rust, CThostFtdcUserLogoutField* pUserLogout, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspQryMulticastInstrument(void* m_rust, CThostFtdcMulticastInstrumentField* pMulticastInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspError(void* m_rust, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspSubMarketData(void* m_rust, CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspUnSubMarketData(void* m_rust, CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspSubForQuoteRsp(void* m_rust, CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspUnSubForQuoteRsp(void* m_rust, CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRtnDepthMarketData(void* m_rust, CThostFtdcDepthMarketDataField* pDepthMarketData);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRtnForQuoteRsp(void* m_rust, CThostFtdcForQuoteRspField* pForQuoteRsp);
+extern "C" void Rust_CThostFtdcMdSpi_Trait_Drop(void* m_rust);
+
 class Rust_CThostFtdcTraderApi {
     public:
         CThostFtdcTraderApi *m_member;
@@ -39,7 +97,7 @@ class Rust_CThostFtdcTraderApi {
         int ReqParkedOrderInsert(CThostFtdcParkedOrderField* pParkedOrder, int nRequestID);
         int ReqParkedOrderAction(CThostFtdcParkedOrderActionField* pParkedOrderAction, int nRequestID);
         int ReqOrderAction(CThostFtdcInputOrderActionField* pInputOrderAction, int nRequestID);
-        int ReqQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeField* pQueryMaxOrderVolume, int nRequestID);
+        int ReqQryMaxOrderVolume(CThostFtdcQryMaxOrderVolumeField* pQryMaxOrderVolume, int nRequestID);
         int ReqSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField* pSettlementInfoConfirm, int nRequestID);
         int ReqRemoveParkedOrder(CThostFtdcRemoveParkedOrderField* pRemoveParkedOrder, int nRequestID);
         int ReqRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField* pRemoveParkedOrderAction, int nRequestID);
@@ -64,6 +122,7 @@ class Rust_CThostFtdcTraderApi {
         int ReqQryProduct(CThostFtdcQryProductField* pQryProduct, int nRequestID);
         int ReqQryInstrument(CThostFtdcQryInstrumentField* pQryInstrument, int nRequestID);
         int ReqQryDepthMarketData(CThostFtdcQryDepthMarketDataField* pQryDepthMarketData, int nRequestID);
+        int ReqQryTraderOffer(CThostFtdcQryTraderOfferField* pQryTraderOffer, int nRequestID);
         int ReqQrySettlementInfo(CThostFtdcQrySettlementInfoField* pQrySettlementInfo, int nRequestID);
         int ReqQryTransferBank(CThostFtdcQryTransferBankField* pQryTransferBank, int nRequestID);
         int ReqQryInvestorPositionDetail(CThostFtdcQryInvestorPositionDetailField* pQryInvestorPositionDetail, int nRequestID);
@@ -106,106 +165,19 @@ class Rust_CThostFtdcTraderApi {
         int ReqFromBankToFutureByFuture(CThostFtdcReqTransferField* pReqTransfer, int nRequestID);
         int ReqFromFutureToBankByFuture(CThostFtdcReqTransferField* pReqTransfer, int nRequestID);
         int ReqQueryBankAccountMoneyByFuture(CThostFtdcReqQueryAccountField* pReqQueryAccount, int nRequestID);
+        int ReqQryClassifiedInstrument(CThostFtdcQryClassifiedInstrumentField* pQryClassifiedInstrument, int nRequestID);
+        int ReqQryCombPromotionParam(CThostFtdcQryCombPromotionParamField* pQryCombPromotionParam, int nRequestID);
+        int ReqQryRiskSettleInvstPosition(CThostFtdcQryRiskSettleInvstPositionField* pQryRiskSettleInvstPosition, int nRequestID);
+        int ReqQryRiskSettleProductStatus(CThostFtdcQryRiskSettleProductStatusField* pQryRiskSettleProductStatus, int nRequestID);
+        int ReqQrySPBMFutureParameter(CThostFtdcQrySPBMFutureParameterField* pQrySPBMFutureParameter, int nRequestID);
+        int ReqQrySPBMOptionParameter(CThostFtdcQrySPBMOptionParameterField* pQrySPBMOptionParameter, int nRequestID);
+        int ReqQrySPBMIntraParameter(CThostFtdcQrySPBMIntraParameterField* pQrySPBMIntraParameter, int nRequestID);
+        int ReqQrySPBMInterParameter(CThostFtdcQrySPBMInterParameterField* pQrySPBMInterParameter, int nRequestID);
+        int ReqQrySPBMPortfDefinition(CThostFtdcQrySPBMPortfDefinitionField* pQrySPBMPortfDefinition, int nRequestID);
+        int ReqQrySPBMInvestorPortfDef(CThostFtdcQrySPBMInvestorPortfDefField* pQrySPBMInvestorPortfDef, int nRequestID);
+        int ReqQryInvestorPortfMarginRatio(CThostFtdcQryInvestorPortfMarginRatioField* pQryInvestorPortfMarginRatio, int nRequestID);
+        int ReqQryInvestorProdSPBMDetail(CThostFtdcQryInvestorProdSPBMDetailField* pQryInvestorProdSPBMDetail, int nRequestID);
 };
-
-
-Rust_CThostFtdcTraderApi::Rust_CThostFtdcTraderApi(CThostFtdcTraderApi *member) : m_member(member) {  };
-Rust_CThostFtdcTraderApi::~Rust_CThostFtdcTraderApi() {  };
-void Rust_CThostFtdcTraderApi::Release() { return m_member->Release(); }
-void Rust_CThostFtdcTraderApi::Init() { return m_member->Init(); }
-int Rust_CThostFtdcTraderApi::Join() { return m_member->Join(); }
-const char* Rust_CThostFtdcTraderApi::GetTradingDay() { return m_member->GetTradingDay(); }
-void Rust_CThostFtdcTraderApi::RegisterFront(char* pszFrontAddress) { return m_member->RegisterFront(pszFrontAddress); }
-void Rust_CThostFtdcTraderApi::RegisterNameServer(char* pszNsAddress) { return m_member->RegisterNameServer(pszNsAddress); }
-void Rust_CThostFtdcTraderApi::RegisterFensUserInfo(CThostFtdcFensUserInfoField * pFensUserInfo) { return m_member->RegisterFensUserInfo(pFensUserInfo); }
-void Rust_CThostFtdcTraderApi::RegisterSpi(CThostFtdcTraderSpi* pSpi) { return m_member->RegisterSpi(pSpi); }
-void Rust_CThostFtdcTraderApi::SubscribePrivateTopic(THOST_TE_RESUME_TYPE nResumeType) { return m_member->SubscribePrivateTopic(nResumeType); }
-void Rust_CThostFtdcTraderApi::SubscribePublicTopic(THOST_TE_RESUME_TYPE nResumeType) { return m_member->SubscribePublicTopic(nResumeType); }
-int Rust_CThostFtdcTraderApi::ReqAuthenticate(CThostFtdcReqAuthenticateField* pReqAuthenticateField, int nRequestID) { return m_member->ReqAuthenticate(pReqAuthenticateField, nRequestID); }
-int Rust_CThostFtdcTraderApi::RegisterUserSystemInfo(CThostFtdcUserSystemInfoField* pUserSystemInfo) { return m_member->RegisterUserSystemInfo(pUserSystemInfo); }
-int Rust_CThostFtdcTraderApi::SubmitUserSystemInfo(CThostFtdcUserSystemInfoField* pUserSystemInfo) { return m_member->SubmitUserSystemInfo(pUserSystemInfo); }
-int Rust_CThostFtdcTraderApi::ReqUserLogin(CThostFtdcReqUserLoginField* pReqUserLoginField, int nRequestID) { return m_member->ReqUserLogin(pReqUserLoginField, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqUserLogout(CThostFtdcUserLogoutField* pUserLogout, int nRequestID) { return m_member->ReqUserLogout(pUserLogout, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqUserPasswordUpdate(CThostFtdcUserPasswordUpdateField* pUserPasswordUpdate, int nRequestID) { return m_member->ReqUserPasswordUpdate(pUserPasswordUpdate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqTradingAccountPasswordUpdate(CThostFtdcTradingAccountPasswordUpdateField* pTradingAccountPasswordUpdate, int nRequestID) { return m_member->ReqTradingAccountPasswordUpdate(pTradingAccountPasswordUpdate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqUserAuthMethod(CThostFtdcReqUserAuthMethodField* pReqUserAuthMethod, int nRequestID) { return m_member->ReqUserAuthMethod(pReqUserAuthMethod, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqGenUserCaptcha(CThostFtdcReqGenUserCaptchaField* pReqGenUserCaptcha, int nRequestID) { return m_member->ReqGenUserCaptcha(pReqGenUserCaptcha, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqGenUserText(CThostFtdcReqGenUserTextField* pReqGenUserText, int nRequestID) { return m_member->ReqGenUserText(pReqGenUserText, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqUserLoginWithCaptcha(CThostFtdcReqUserLoginWithCaptchaField* pReqUserLoginWithCaptcha, int nRequestID) { return m_member->ReqUserLoginWithCaptcha(pReqUserLoginWithCaptcha, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqUserLoginWithText(CThostFtdcReqUserLoginWithTextField* pReqUserLoginWithText, int nRequestID) { return m_member->ReqUserLoginWithText(pReqUserLoginWithText, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqUserLoginWithOTP(CThostFtdcReqUserLoginWithOTPField* pReqUserLoginWithOTP, int nRequestID) { return m_member->ReqUserLoginWithOTP(pReqUserLoginWithOTP, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqOrderInsert(CThostFtdcInputOrderField* pInputOrder, int nRequestID) { return m_member->ReqOrderInsert(pInputOrder, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqParkedOrderInsert(CThostFtdcParkedOrderField* pParkedOrder, int nRequestID) { return m_member->ReqParkedOrderInsert(pParkedOrder, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqParkedOrderAction(CThostFtdcParkedOrderActionField* pParkedOrderAction, int nRequestID) { return m_member->ReqParkedOrderAction(pParkedOrderAction, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqOrderAction(CThostFtdcInputOrderActionField* pInputOrderAction, int nRequestID) { return m_member->ReqOrderAction(pInputOrderAction, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeField* pQueryMaxOrderVolume, int nRequestID) { return m_member->ReqQueryMaxOrderVolume(pQueryMaxOrderVolume, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField* pSettlementInfoConfirm, int nRequestID) { return m_member->ReqSettlementInfoConfirm(pSettlementInfoConfirm, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqRemoveParkedOrder(CThostFtdcRemoveParkedOrderField* pRemoveParkedOrder, int nRequestID) { return m_member->ReqRemoveParkedOrder(pRemoveParkedOrder, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField* pRemoveParkedOrderAction, int nRequestID) { return m_member->ReqRemoveParkedOrderAction(pRemoveParkedOrderAction, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqExecOrderInsert(CThostFtdcInputExecOrderField* pInputExecOrder, int nRequestID) { return m_member->ReqExecOrderInsert(pInputExecOrder, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqExecOrderAction(CThostFtdcInputExecOrderActionField* pInputExecOrderAction, int nRequestID) { return m_member->ReqExecOrderAction(pInputExecOrderAction, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqForQuoteInsert(CThostFtdcInputForQuoteField* pInputForQuote, int nRequestID) { return m_member->ReqForQuoteInsert(pInputForQuote, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQuoteInsert(CThostFtdcInputQuoteField* pInputQuote, int nRequestID) { return m_member->ReqQuoteInsert(pInputQuote, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQuoteAction(CThostFtdcInputQuoteActionField* pInputQuoteAction, int nRequestID) { return m_member->ReqQuoteAction(pInputQuoteAction, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqBatchOrderAction(CThostFtdcInputBatchOrderActionField* pInputBatchOrderAction, int nRequestID) { return m_member->ReqBatchOrderAction(pInputBatchOrderAction, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqOptionSelfCloseInsert(CThostFtdcInputOptionSelfCloseField* pInputOptionSelfClose, int nRequestID) { return m_member->ReqOptionSelfCloseInsert(pInputOptionSelfClose, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqOptionSelfCloseAction(CThostFtdcInputOptionSelfCloseActionField* pInputOptionSelfCloseAction, int nRequestID) { return m_member->ReqOptionSelfCloseAction(pInputOptionSelfCloseAction, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqCombActionInsert(CThostFtdcInputCombActionField* pInputCombAction, int nRequestID) { return m_member->ReqCombActionInsert(pInputCombAction, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryOrder(CThostFtdcQryOrderField* pQryOrder, int nRequestID) { return m_member->ReqQryOrder(pQryOrder, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryTrade(CThostFtdcQryTradeField* pQryTrade, int nRequestID) { return m_member->ReqQryTrade(pQryTrade, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryInvestorPosition(CThostFtdcQryInvestorPositionField* pQryInvestorPosition, int nRequestID) { return m_member->ReqQryInvestorPosition(pQryInvestorPosition, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryTradingAccount(CThostFtdcQryTradingAccountField* pQryTradingAccount, int nRequestID) { return m_member->ReqQryTradingAccount(pQryTradingAccount, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryInvestor(CThostFtdcQryInvestorField* pQryInvestor, int nRequestID) { return m_member->ReqQryInvestor(pQryInvestor, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryTradingCode(CThostFtdcQryTradingCodeField* pQryTradingCode, int nRequestID) { return m_member->ReqQryTradingCode(pQryTradingCode, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryInstrumentMarginRate(CThostFtdcQryInstrumentMarginRateField* pQryInstrumentMarginRate, int nRequestID) { return m_member->ReqQryInstrumentMarginRate(pQryInstrumentMarginRate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryInstrumentCommissionRate(CThostFtdcQryInstrumentCommissionRateField* pQryInstrumentCommissionRate, int nRequestID) { return m_member->ReqQryInstrumentCommissionRate(pQryInstrumentCommissionRate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryExchange(CThostFtdcQryExchangeField* pQryExchange, int nRequestID) { return m_member->ReqQryExchange(pQryExchange, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryProduct(CThostFtdcQryProductField* pQryProduct, int nRequestID) { return m_member->ReqQryProduct(pQryProduct, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryInstrument(CThostFtdcQryInstrumentField* pQryInstrument, int nRequestID) { return m_member->ReqQryInstrument(pQryInstrument, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryDepthMarketData(CThostFtdcQryDepthMarketDataField* pQryDepthMarketData, int nRequestID) { return m_member->ReqQryDepthMarketData(pQryDepthMarketData, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQrySettlementInfo(CThostFtdcQrySettlementInfoField* pQrySettlementInfo, int nRequestID) { return m_member->ReqQrySettlementInfo(pQrySettlementInfo, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryTransferBank(CThostFtdcQryTransferBankField* pQryTransferBank, int nRequestID) { return m_member->ReqQryTransferBank(pQryTransferBank, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryInvestorPositionDetail(CThostFtdcQryInvestorPositionDetailField* pQryInvestorPositionDetail, int nRequestID) { return m_member->ReqQryInvestorPositionDetail(pQryInvestorPositionDetail, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryNotice(CThostFtdcQryNoticeField* pQryNotice, int nRequestID) { return m_member->ReqQryNotice(pQryNotice, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQrySettlementInfoConfirm(CThostFtdcQrySettlementInfoConfirmField* pQrySettlementInfoConfirm, int nRequestID) { return m_member->ReqQrySettlementInfoConfirm(pQrySettlementInfoConfirm, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryInvestorPositionCombineDetail(CThostFtdcQryInvestorPositionCombineDetailField* pQryInvestorPositionCombineDetail, int nRequestID) { return m_member->ReqQryInvestorPositionCombineDetail(pQryInvestorPositionCombineDetail, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryCFMMCTradingAccountKey(CThostFtdcQryCFMMCTradingAccountKeyField* pQryCFMMCTradingAccountKey, int nRequestID) { return m_member->ReqQryCFMMCTradingAccountKey(pQryCFMMCTradingAccountKey, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryEWarrantOffset(CThostFtdcQryEWarrantOffsetField* pQryEWarrantOffset, int nRequestID) { return m_member->ReqQryEWarrantOffset(pQryEWarrantOffset, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryInvestorProductGroupMargin(CThostFtdcQryInvestorProductGroupMarginField* pQryInvestorProductGroupMargin, int nRequestID) { return m_member->ReqQryInvestorProductGroupMargin(pQryInvestorProductGroupMargin, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryExchangeMarginRate(CThostFtdcQryExchangeMarginRateField* pQryExchangeMarginRate, int nRequestID) { return m_member->ReqQryExchangeMarginRate(pQryExchangeMarginRate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryExchangeMarginRateAdjust(CThostFtdcQryExchangeMarginRateAdjustField* pQryExchangeMarginRateAdjust, int nRequestID) { return m_member->ReqQryExchangeMarginRateAdjust(pQryExchangeMarginRateAdjust, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryExchangeRate(CThostFtdcQryExchangeRateField* pQryExchangeRate, int nRequestID) { return m_member->ReqQryExchangeRate(pQryExchangeRate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQrySecAgentACIDMap(CThostFtdcQrySecAgentACIDMapField* pQrySecAgentACIDMap, int nRequestID) { return m_member->ReqQrySecAgentACIDMap(pQrySecAgentACIDMap, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryProductExchRate(CThostFtdcQryProductExchRateField* pQryProductExchRate, int nRequestID) { return m_member->ReqQryProductExchRate(pQryProductExchRate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryProductGroup(CThostFtdcQryProductGroupField* pQryProductGroup, int nRequestID) { return m_member->ReqQryProductGroup(pQryProductGroup, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryMMInstrumentCommissionRate(CThostFtdcQryMMInstrumentCommissionRateField* pQryMMInstrumentCommissionRate, int nRequestID) { return m_member->ReqQryMMInstrumentCommissionRate(pQryMMInstrumentCommissionRate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryMMOptionInstrCommRate(CThostFtdcQryMMOptionInstrCommRateField* pQryMMOptionInstrCommRate, int nRequestID) { return m_member->ReqQryMMOptionInstrCommRate(pQryMMOptionInstrCommRate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryInstrumentOrderCommRate(CThostFtdcQryInstrumentOrderCommRateField* pQryInstrumentOrderCommRate, int nRequestID) { return m_member->ReqQryInstrumentOrderCommRate(pQryInstrumentOrderCommRate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQrySecAgentTradingAccount(CThostFtdcQryTradingAccountField* pQryTradingAccount, int nRequestID) { return m_member->ReqQrySecAgentTradingAccount(pQryTradingAccount, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQrySecAgentCheckMode(CThostFtdcQrySecAgentCheckModeField* pQrySecAgentCheckMode, int nRequestID) { return m_member->ReqQrySecAgentCheckMode(pQrySecAgentCheckMode, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQrySecAgentTradeInfo(CThostFtdcQrySecAgentTradeInfoField* pQrySecAgentTradeInfo, int nRequestID) { return m_member->ReqQrySecAgentTradeInfo(pQrySecAgentTradeInfo, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryOptionInstrTradeCost(CThostFtdcQryOptionInstrTradeCostField* pQryOptionInstrTradeCost, int nRequestID) { return m_member->ReqQryOptionInstrTradeCost(pQryOptionInstrTradeCost, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryOptionInstrCommRate(CThostFtdcQryOptionInstrCommRateField* pQryOptionInstrCommRate, int nRequestID) { return m_member->ReqQryOptionInstrCommRate(pQryOptionInstrCommRate, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryExecOrder(CThostFtdcQryExecOrderField* pQryExecOrder, int nRequestID) { return m_member->ReqQryExecOrder(pQryExecOrder, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryForQuote(CThostFtdcQryForQuoteField* pQryForQuote, int nRequestID) { return m_member->ReqQryForQuote(pQryForQuote, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryQuote(CThostFtdcQryQuoteField* pQryQuote, int nRequestID) { return m_member->ReqQryQuote(pQryQuote, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryOptionSelfClose(CThostFtdcQryOptionSelfCloseField* pQryOptionSelfClose, int nRequestID) { return m_member->ReqQryOptionSelfClose(pQryOptionSelfClose, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryInvestUnit(CThostFtdcQryInvestUnitField* pQryInvestUnit, int nRequestID) { return m_member->ReqQryInvestUnit(pQryInvestUnit, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryCombInstrumentGuard(CThostFtdcQryCombInstrumentGuardField* pQryCombInstrumentGuard, int nRequestID) { return m_member->ReqQryCombInstrumentGuard(pQryCombInstrumentGuard, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryCombAction(CThostFtdcQryCombActionField* pQryCombAction, int nRequestID) { return m_member->ReqQryCombAction(pQryCombAction, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryTransferSerial(CThostFtdcQryTransferSerialField* pQryTransferSerial, int nRequestID) { return m_member->ReqQryTransferSerial(pQryTransferSerial, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryAccountregister(CThostFtdcQryAccountregisterField* pQryAccountregister, int nRequestID) { return m_member->ReqQryAccountregister(pQryAccountregister, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryContractBank(CThostFtdcQryContractBankField* pQryContractBank, int nRequestID) { return m_member->ReqQryContractBank(pQryContractBank, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryParkedOrder(CThostFtdcQryParkedOrderField* pQryParkedOrder, int nRequestID) { return m_member->ReqQryParkedOrder(pQryParkedOrder, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryParkedOrderAction(CThostFtdcQryParkedOrderActionField* pQryParkedOrderAction, int nRequestID) { return m_member->ReqQryParkedOrderAction(pQryParkedOrderAction, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryTradingNotice(CThostFtdcQryTradingNoticeField* pQryTradingNotice, int nRequestID) { return m_member->ReqQryTradingNotice(pQryTradingNotice, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryBrokerTradingParams(CThostFtdcQryBrokerTradingParamsField* pQryBrokerTradingParams, int nRequestID) { return m_member->ReqQryBrokerTradingParams(pQryBrokerTradingParams, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQryBrokerTradingAlgos(CThostFtdcQryBrokerTradingAlgosField* pQryBrokerTradingAlgos, int nRequestID) { return m_member->ReqQryBrokerTradingAlgos(pQryBrokerTradingAlgos, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQueryCFMMCTradingAccountToken(CThostFtdcQueryCFMMCTradingAccountTokenField* pQueryCFMMCTradingAccountToken, int nRequestID) { return m_member->ReqQueryCFMMCTradingAccountToken(pQueryCFMMCTradingAccountToken, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqFromBankToFutureByFuture(CThostFtdcReqTransferField* pReqTransfer, int nRequestID) { return m_member->ReqFromBankToFutureByFuture(pReqTransfer, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqFromFutureToBankByFuture(CThostFtdcReqTransferField* pReqTransfer, int nRequestID) { return m_member->ReqFromFutureToBankByFuture(pReqTransfer, nRequestID); }
-int Rust_CThostFtdcTraderApi::ReqQueryBankAccountMoneyByFuture(CThostFtdcReqQueryAccountField* pReqQueryAccount, int nRequestID) { return m_member->ReqQueryBankAccountMoneyByFuture(pReqQueryAccount, nRequestID); }
-
 
 class Rust_CThostFtdcTraderSpi : CThostFtdcTraderSpi {
     public:
@@ -228,7 +200,7 @@ class Rust_CThostFtdcTraderSpi : CThostFtdcTraderSpi {
         void OnRspParkedOrderInsert(CThostFtdcParkedOrderField* pParkedOrder, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
         void OnRspParkedOrderAction(CThostFtdcParkedOrderActionField* pParkedOrderAction, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
         void OnRspOrderAction(CThostFtdcInputOrderActionField* pInputOrderAction, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
-        void OnRspQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeField* pQueryMaxOrderVolume, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQryMaxOrderVolume(CThostFtdcQryMaxOrderVolumeField* pQryMaxOrderVolume, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
         void OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField* pSettlementInfoConfirm, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
         void OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField* pRemoveParkedOrder, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
         void OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField* pRemoveParkedOrderAction, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
@@ -253,6 +225,7 @@ class Rust_CThostFtdcTraderSpi : CThostFtdcTraderSpi {
         void OnRspQryProduct(CThostFtdcProductField* pProduct, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
         void OnRspQryInstrument(CThostFtdcInstrumentField* pInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
         void OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField* pDepthMarketData, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQryTraderOffer(CThostFtdcTraderOfferField* pTraderOffer, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
         void OnRspQrySettlementInfo(CThostFtdcSettlementInfoField* pSettlementInfo, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
         void OnRspQryTransferBank(CThostFtdcTransferBankField* pTransferBank, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
         void OnRspQryInvestorPositionDetail(CThostFtdcInvestorPositionDetailField* pInvestorPositionDetail, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
@@ -338,6 +311,18 @@ class Rust_CThostFtdcTraderSpi : CThostFtdcTraderSpi {
         void OnRtnOpenAccountByBank(CThostFtdcOpenAccountField* pOpenAccount) override;
         void OnRtnCancelAccountByBank(CThostFtdcCancelAccountField* pCancelAccount) override;
         void OnRtnChangeAccountByBank(CThostFtdcChangeAccountField* pChangeAccount) override;
+        void OnRspQryClassifiedInstrument(CThostFtdcInstrumentField* pInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQryCombPromotionParam(CThostFtdcCombPromotionParamField* pCombPromotionParam, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQryRiskSettleInvstPosition(CThostFtdcRiskSettleInvstPositionField* pRiskSettleInvstPosition, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQryRiskSettleProductStatus(CThostFtdcRiskSettleProductStatusField* pRiskSettleProductStatus, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQrySPBMFutureParameter(CThostFtdcSPBMFutureParameterField* pSPBMFutureParameter, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQrySPBMOptionParameter(CThostFtdcSPBMOptionParameterField* pSPBMOptionParameter, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQrySPBMIntraParameter(CThostFtdcSPBMIntraParameterField* pSPBMIntraParameter, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQrySPBMInterParameter(CThostFtdcSPBMInterParameterField* pSPBMInterParameter, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQrySPBMPortfDefinition(CThostFtdcSPBMPortfDefinitionField* pSPBMPortfDefinition, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQrySPBMInvestorPortfDef(CThostFtdcSPBMInvestorPortfDefField* pSPBMInvestorPortfDef, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQryInvestorPortfMarginRatio(CThostFtdcInvestorPortfMarginRatioField* pInvestorPortfMarginRatio, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
+        void OnRspQryInvestorProdSPBMDetail(CThostFtdcInvestorProdSPBMDetailField* pInvestorProdSPBMDetail, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
 };
 
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnFrontConnected(void* m_rust);
@@ -355,7 +340,7 @@ extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspOrderInsert(void* m_rust, CT
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspParkedOrderInsert(void* m_rust, CThostFtdcParkedOrderField* pParkedOrder, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspParkedOrderAction(void* m_rust, CThostFtdcParkedOrderActionField* pParkedOrderAction, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspOrderAction(void* m_rust, CThostFtdcInputOrderActionField* pInputOrderAction, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
-extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQueryMaxOrderVolume(void* m_rust, CThostFtdcQueryMaxOrderVolumeField* pQueryMaxOrderVolume, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryMaxOrderVolume(void* m_rust, CThostFtdcQryMaxOrderVolumeField* pQryMaxOrderVolume, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspSettlementInfoConfirm(void* m_rust, CThostFtdcSettlementInfoConfirmField* pSettlementInfoConfirm, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspRemoveParkedOrder(void* m_rust, CThostFtdcRemoveParkedOrderField* pRemoveParkedOrder, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspRemoveParkedOrderAction(void* m_rust, CThostFtdcRemoveParkedOrderActionField* pRemoveParkedOrderAction, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
@@ -380,6 +365,7 @@ extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryExchange(void* m_rust, CT
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryProduct(void* m_rust, CThostFtdcProductField* pProduct, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryInstrument(void* m_rust, CThostFtdcInstrumentField* pInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryDepthMarketData(void* m_rust, CThostFtdcDepthMarketDataField* pDepthMarketData, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryTraderOffer(void* m_rust, CThostFtdcTraderOfferField* pTraderOffer, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQrySettlementInfo(void* m_rust, CThostFtdcSettlementInfoField* pSettlementInfo, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryTransferBank(void* m_rust, CThostFtdcTransferBankField* pTransferBank, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPositionDetail(void* m_rust, CThostFtdcInvestorPositionDetailField* pInvestorPositionDetail, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
@@ -465,60 +451,17 @@ extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQueryBankAccountMoneyByFutur
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRtnOpenAccountByBank(void* m_rust, CThostFtdcOpenAccountField* pOpenAccount);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRtnCancelAccountByBank(void* m_rust, CThostFtdcCancelAccountField* pCancelAccount);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRtnChangeAccountByBank(void* m_rust, CThostFtdcChangeAccountField* pChangeAccount);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryClassifiedInstrument(void* m_rust, CThostFtdcInstrumentField* pInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryCombPromotionParam(void* m_rust, CThostFtdcCombPromotionParamField* pCombPromotionParam, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryRiskSettleInvstPosition(void* m_rust, CThostFtdcRiskSettleInvstPositionField* pRiskSettleInvstPosition, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryRiskSettleProductStatus(void* m_rust, CThostFtdcRiskSettleProductStatusField* pRiskSettleProductStatus, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMFutureParameter(void* m_rust, CThostFtdcSPBMFutureParameterField* pSPBMFutureParameter, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMOptionParameter(void* m_rust, CThostFtdcSPBMOptionParameterField* pSPBMOptionParameter, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMIntraParameter(void* m_rust, CThostFtdcSPBMIntraParameterField* pSPBMIntraParameter, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMInterParameter(void* m_rust, CThostFtdcSPBMInterParameterField* pSPBMInterParameter, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMPortfDefinition(void* m_rust, CThostFtdcSPBMPortfDefinitionField* pSPBMPortfDefinition, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMInvestorPortfDef(void* m_rust, CThostFtdcSPBMInvestorPortfDefField* pSPBMInvestorPortfDef, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPortfMarginRatio(void* m_rust, CThostFtdcInvestorPortfMarginRatioField* pInvestorPortfMarginRatio, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
+extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorProdSPBMDetail(void* m_rust, CThostFtdcInvestorProdSPBMDetailField* pInvestorProdSPBMDetail, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_Drop(void* m_rust);
 
-class Rust_CThostFtdcMdApi {
-    public:
-        CThostFtdcMdApi *m_member;
-        Rust_CThostFtdcMdApi(CThostFtdcMdApi *member);
-        ~Rust_CThostFtdcMdApi();
-
-        void Release();
-        void Init();
-        int Join();
-        const char* GetTradingDay();
-        void RegisterFront(char* pszFrontAddress);
-        void RegisterNameServer(char* pszNsAddress);
-        void RegisterFensUserInfo(CThostFtdcFensUserInfoField * pFensUserInfo);
-        void RegisterSpi(CThostFtdcMdSpi* pSpi);
-        int SubscribeMarketData(char* ppInstrumentID[], int nCount);
-        int UnSubscribeMarketData(char* ppInstrumentID[], int nCount);
-        int SubscribeForQuoteRsp(char* ppInstrumentID[], int nCount);
-        int UnSubscribeForQuoteRsp(char* ppInstrumentID[], int nCount);
-        int ReqUserLogin(CThostFtdcReqUserLoginField* pReqUserLoginField, int nRequestID);
-        int ReqUserLogout(CThostFtdcUserLogoutField* pUserLogout, int nRequestID);
-};
-
-class Rust_CThostFtdcMdSpi : CThostFtdcMdSpi {
-    public:
-        void *m_rust;
-        Rust_CThostFtdcMdSpi(void *rust);
-        ~Rust_CThostFtdcMdSpi();
-
-        void OnFrontConnected() override;
-        void OnFrontDisconnected(int nReason) override;
-        void OnHeartBeatWarning(int nTimeLapse) override;
-        void OnRspUserLogin(CThostFtdcRspUserLoginField* pRspUserLogin, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
-        void OnRspUserLogout(CThostFtdcUserLogoutField* pUserLogout, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
-        void OnRspError(CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
-        void OnRspSubMarketData(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
-        void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
-        void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
-        void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) override;
-        void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField* pDepthMarketData) override;
-        void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField* pForQuoteRsp) override;
-};
-
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnFrontConnected(void* m_rust);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnFrontDisconnected(void* m_rust, int nReason);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnHeartBeatWarning(void* m_rust, int nTimeLapse);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspUserLogin(void* m_rust, CThostFtdcRspUserLoginField* pRspUserLogin, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspUserLogout(void* m_rust, CThostFtdcUserLogoutField* pUserLogout, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspError(void* m_rust, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspSubMarketData(void* m_rust, CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspUnSubMarketData(void* m_rust, CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspSubForQuoteRsp(void* m_rust, CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspUnSubForQuoteRsp(void* m_rust, CThostFtdcSpecificInstrumentField* pSpecificInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRtnDepthMarketData(void* m_rust, CThostFtdcDepthMarketDataField* pDepthMarketData);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRtnForQuoteRsp(void* m_rust, CThostFtdcForQuoteRspField* pForQuoteRsp);
-extern "C" void Rust_CThostFtdcMdSpi_Trait_Drop(void* m_rust);

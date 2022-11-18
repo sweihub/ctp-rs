@@ -236,4 +236,4 @@ def port_ctp_md():
 
 if __name__ == "__main__":
     port_ctp_md()
-    # port_ctp_td()
+    port_ctp_td()
