@@ -265,8 +265,8 @@ pub fn main() {
         ..Default::default()
     });
 
-   if mdapi.start().is_err() {
-       error!("failed to start mdapi!");
+   if let Err(e) = mdapi.start() {
+       error!("failed to start mdapi, error: {}", e.to_string());
        return;
    }
 
