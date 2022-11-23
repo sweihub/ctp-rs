@@ -1,7 +1,9 @@
 # Fork of CTP-RS
-1. CTP SDK updated to `v6.6.9_tradeapi_20220920`, and the SDK was shipped with the code
-2. Success to compile examples on Linux
-3. Fail to link examples on Windows, linkage issue, yet to solve!
+1. CTP SDK updated to `v6.6.9_tradeapi_20220920`, and the SDK was shipped.
+2. Rewrite the wrapper code generator, see build.rs for autogen(). Safe way of calling SPI instance.
+3. Success to compile examples on Linux
+4. Fail to link examples on Windows, linkage issue, yet to solve!
+   Rust cannot link with Windows DLL, might be ABI issue, for you to solve if you need Windows version.
 
 # ctp-rs
 CTP sdk version: `6.3.15_20190220 15:47:00`
