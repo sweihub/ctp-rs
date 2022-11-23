@@ -8311,13 +8311,13 @@ extern "C" {
 }
 impl CThostFtdcTraderApi {
     #[inline]
-    pub fn CreateFtdcTraderApi(
+    pub unsafe fn CreateFtdcTraderApi(
         pszFlowPath: *const ::std::os::raw::c_char,
     ) -> *mut CThostFtdcTraderApi {
         unsafe { CThostFtdcTraderApi_CreateFtdcTraderApi(pszFlowPath) }
     }
     #[inline]
-    pub fn GetApiVersion() -> *const ::std::os::raw::c_char {
+    pub unsafe fn GetApiVersion() -> *const ::std::os::raw::c_char {
         unsafe { CThostFtdcTraderApi_GetApiVersion() }
     }
 }
@@ -8347,7 +8347,7 @@ extern "C" {
 }
 impl CThostFtdcMdApi {
     #[inline]
-    pub fn CreateFtdcMdApi(
+    pub unsafe fn CreateFtdcMdApi(
         pszFlowPath: *const ::std::os::raw::c_char,
         bIsUsingUdp: bool,
         bIsMulticast: bool,
@@ -8355,265 +8355,33 @@ impl CThostFtdcMdApi {
         unsafe { CThostFtdcMdApi_CreateFtdcMdApi(pszFlowPath, bIsUsingUdp, bIsMulticast) }
     }
     #[inline]
-    pub fn GetApiVersion() -> *const ::std::os::raw::c_char {
+    pub unsafe fn GetApiVersion() -> *const ::std::os::raw::c_char {
         unsafe { CThostFtdcMdApi_GetApiVersion() }
     }
 }
 #[repr(C)]
-#[derive(Debug)]
-pub struct Rust_CThostFtdcMdApi {
-    pub m_member: *mut CThostFtdcMdApi,
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi7ReleaseEv"]
-    pub fn Rust_CThostFtdcMdApi_Release(this: *mut Rust_CThostFtdcMdApi);
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi4InitEv"]
-    pub fn Rust_CThostFtdcMdApi_Init(this: *mut Rust_CThostFtdcMdApi);
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi4JoinEv"]
-    pub fn Rust_CThostFtdcMdApi_Join(this: *mut Rust_CThostFtdcMdApi) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi13GetTradingDayEv"]
-    pub fn Rust_CThostFtdcMdApi_GetTradingDay(
-        this: *mut Rust_CThostFtdcMdApi,
-    ) -> *const ::std::os::raw::c_char;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi13RegisterFrontEPc"]
-    pub fn Rust_CThostFtdcMdApi_RegisterFront(
-        this: *mut Rust_CThostFtdcMdApi,
-        pszFrontAddress: *mut ::std::os::raw::c_char,
-    );
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi18RegisterNameServerEPc"]
-    pub fn Rust_CThostFtdcMdApi_RegisterNameServer(
-        this: *mut Rust_CThostFtdcMdApi,
-        pszNsAddress: *mut ::std::os::raw::c_char,
-    );
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi20RegisterFensUserInfoEP27CThostFtdcFensUserInfoField"]
-    pub fn Rust_CThostFtdcMdApi_RegisterFensUserInfo(
-        this: *mut Rust_CThostFtdcMdApi,
-        pFensUserInfo: *mut CThostFtdcFensUserInfoField,
-    );
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi11RegisterSpiEP15CThostFtdcMdSpi"]
-    pub fn Rust_CThostFtdcMdApi_RegisterSpi(
-        this: *mut Rust_CThostFtdcMdApi,
-        pSpi: *mut CThostFtdcMdSpi,
-    );
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi19SubscribeMarketDataEPPci"]
-    pub fn Rust_CThostFtdcMdApi_SubscribeMarketData(
-        this: *mut Rust_CThostFtdcMdApi,
-        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
-        nCount: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi21UnSubscribeMarketDataEPPci"]
-    pub fn Rust_CThostFtdcMdApi_UnSubscribeMarketData(
-        this: *mut Rust_CThostFtdcMdApi,
-        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
-        nCount: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi20SubscribeForQuoteRspEPPci"]
-    pub fn Rust_CThostFtdcMdApi_SubscribeForQuoteRsp(
-        this: *mut Rust_CThostFtdcMdApi,
-        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
-        nCount: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi22UnSubscribeForQuoteRspEPPci"]
-    pub fn Rust_CThostFtdcMdApi_UnSubscribeForQuoteRsp(
-        this: *mut Rust_CThostFtdcMdApi,
-        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
-        nCount: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi12ReqUserLoginEP27CThostFtdcReqUserLoginFieldi"]
-    pub fn Rust_CThostFtdcMdApi_ReqUserLogin(
-        this: *mut Rust_CThostFtdcMdApi,
-        pReqUserLoginField: *mut CThostFtdcReqUserLoginField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi13ReqUserLogoutEP25CThostFtdcUserLogoutFieldi"]
-    pub fn Rust_CThostFtdcMdApi_ReqUserLogout(
-        this: *mut Rust_CThostFtdcMdApi,
-        pUserLogout: *mut CThostFtdcUserLogoutField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi25ReqQryMulticastInstrumentEP37CThostFtdcQryMulticastInstrumentFieldi"]
-    pub fn Rust_CThostFtdcMdApi_ReqQryMulticastInstrument(
-        this: *mut Rust_CThostFtdcMdApi,
-        pQryMulticastInstrument: *mut CThostFtdcQryMulticastInstrumentField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApiC1EP15CThostFtdcMdApi"]
-    pub fn Rust_CThostFtdcMdApi_Rust_CThostFtdcMdApi(
-        this: *mut Rust_CThostFtdcMdApi,
-        member: *mut CThostFtdcMdApi,
-    );
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApiD1Ev"]
-    pub fn Rust_CThostFtdcMdApi_Rust_CThostFtdcMdApi_destructor(this: *mut Rust_CThostFtdcMdApi);
-}
-impl Rust_CThostFtdcMdApi {
-    #[inline]
-    pub fn Release(&mut self) {
-        unsafe { Rust_CThostFtdcMdApi_Release(self) }
-    }
-    #[inline]
-    pub fn Init(&mut self) {
-        unsafe { Rust_CThostFtdcMdApi_Init(self) }
-    }
-    #[inline]
-    pub fn Join(&mut self) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcMdApi_Join(self) }
-    }
-    #[inline]
-    pub fn GetTradingDay(&mut self) -> *const ::std::os::raw::c_char {
-        unsafe { Rust_CThostFtdcMdApi_GetTradingDay(self) }
-    }
-    #[inline]
-    pub fn RegisterFront(&mut self, pszFrontAddress: *mut ::std::os::raw::c_char) {
-        unsafe { Rust_CThostFtdcMdApi_RegisterFront(self, pszFrontAddress) }
-    }
-    #[inline]
-    pub fn RegisterNameServer(&mut self, pszNsAddress: *mut ::std::os::raw::c_char) {
-        unsafe { Rust_CThostFtdcMdApi_RegisterNameServer(self, pszNsAddress) }
-    }
-    #[inline]
-    pub fn RegisterFensUserInfo(&mut self, pFensUserInfo: *mut CThostFtdcFensUserInfoField) {
-        unsafe { Rust_CThostFtdcMdApi_RegisterFensUserInfo(self, pFensUserInfo) }
-    }
-    #[inline]
-    pub fn RegisterSpi(&mut self, pSpi: *mut CThostFtdcMdSpi) {
-        unsafe { Rust_CThostFtdcMdApi_RegisterSpi(self, pSpi) }
-    }
-    #[inline]
-    pub fn SubscribeMarketData(
-        &mut self,
-        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
-        nCount: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcMdApi_SubscribeMarketData(self, ppInstrumentID, nCount) }
-    }
-    #[inline]
-    pub fn UnSubscribeMarketData(
-        &mut self,
-        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
-        nCount: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcMdApi_UnSubscribeMarketData(self, ppInstrumentID, nCount) }
-    }
-    #[inline]
-    pub fn SubscribeForQuoteRsp(
-        &mut self,
-        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
-        nCount: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcMdApi_SubscribeForQuoteRsp(self, ppInstrumentID, nCount) }
-    }
-    #[inline]
-    pub fn UnSubscribeForQuoteRsp(
-        &mut self,
-        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
-        nCount: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcMdApi_UnSubscribeForQuoteRsp(self, ppInstrumentID, nCount) }
-    }
-    #[inline]
-    pub fn ReqUserLogin(
-        &mut self,
-        pReqUserLoginField: *mut CThostFtdcReqUserLoginField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcMdApi_ReqUserLogin(self, pReqUserLoginField, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqUserLogout(
-        &mut self,
-        pUserLogout: *mut CThostFtdcUserLogoutField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcMdApi_ReqUserLogout(self, pUserLogout, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryMulticastInstrument(
-        &mut self,
-        pQryMulticastInstrument: *mut CThostFtdcQryMulticastInstrumentField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcMdApi_ReqQryMulticastInstrument(
-                self,
-                pQryMulticastInstrument,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn new(member: *mut CThostFtdcMdApi) -> Self {
-        unsafe {
-            let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-            Rust_CThostFtdcMdApi_Rust_CThostFtdcMdApi(__bindgen_tmp.as_mut_ptr(), member);
-            __bindgen_tmp.assume_init()
-        }
-    }
-    #[inline]
-    pub fn destruct(&mut self) {
-        unsafe { Rust_CThostFtdcMdApi_Rust_CThostFtdcMdApi_destructor(self) }
-    }
-}
-#[repr(C)]
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub struct Rust_CThostFtdcMdSpi {
     pub _base: CThostFtdcMdSpi,
-    pub m_rust: *mut ::std::os::raw::c_void,
+    pub rust: *mut ::std::os::raw::c_void,
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdSpiC1EPv"]
-    pub fn Rust_CThostFtdcMdSpi_Rust_CThostFtdcMdSpi(
-        this: *mut Rust_CThostFtdcMdSpi,
-        rust: *mut ::std::os::raw::c_void,
-    );
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdSpi6CreateEPv"]
+    pub fn Rust_CThostFtdcMdSpi_Create(trait_: *mut ::std::os::raw::c_void)
+        -> *mut CThostFtdcMdSpi;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdSpiD1Ev"]
-    pub fn Rust_CThostFtdcMdSpi_Rust_CThostFtdcMdSpi_destructor(this: *mut Rust_CThostFtdcMdSpi);
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdSpi7DestroyEP15CThostFtdcMdSpi"]
+    pub fn Rust_CThostFtdcMdSpi_Destroy(ptr: *mut CThostFtdcMdSpi);
 }
 impl Rust_CThostFtdcMdSpi {
     #[inline]
-    pub fn new(rust: *mut ::std::os::raw::c_void) -> Self {
-        unsafe {
-            let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-            Rust_CThostFtdcMdSpi_Rust_CThostFtdcMdSpi(__bindgen_tmp.as_mut_ptr(), rust);
-            __bindgen_tmp.assume_init()
-        }
+    pub unsafe fn Create(trait_: *mut ::std::os::raw::c_void) -> *mut CThostFtdcMdSpi {
+        unsafe { Rust_CThostFtdcMdSpi_Create(trait_) }
     }
     #[inline]
-    pub fn destruct(&mut self) {
-        unsafe { Rust_CThostFtdcMdSpi_Rust_CThostFtdcMdSpi_destructor(self) }
+    pub unsafe fn Destroy(ptr: *mut CThostFtdcMdSpi) {
+        unsafe { Rust_CThostFtdcMdSpi_Destroy(ptr) }
     }
 }
 extern "C" {
@@ -8728,2004 +8496,256 @@ extern "C" {
     );
 }
 #[repr(C)]
-#[derive(Debug)]
-pub struct Rust_CThostFtdcTraderApi {
-    pub m_member: *mut CThostFtdcTraderApi,
+#[derive(Debug, Copy, Clone)]
+pub struct Rust_CThostFtdcMdApi {
+    pub inner: *mut CThostFtdcMdApi,
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi7ReleaseEv"]
-    pub fn Rust_CThostFtdcTraderApi_Release(this: *mut Rust_CThostFtdcTraderApi);
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi15CreateFtdcMdApiEPKcbb"]
+    pub fn Rust_CThostFtdcMdApi_CreateFtdcMdApi(
+        pszFlowPath: *const ::std::os::raw::c_char,
+        bIsUsingUdp: bool,
+        bIsMulticast: bool,
+    ) -> *mut Rust_CThostFtdcMdApi;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi4InitEv"]
-    pub fn Rust_CThostFtdcTraderApi_Init(this: *mut Rust_CThostFtdcTraderApi);
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi13GetApiVersionEv"]
+    pub fn Rust_CThostFtdcMdApi_GetApiVersion() -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi4JoinEv"]
-    pub fn Rust_CThostFtdcTraderApi_Join(
-        this: *mut Rust_CThostFtdcTraderApi,
-    ) -> ::std::os::raw::c_int;
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi7ReleaseEv"]
+    pub fn Rust_CThostFtdcMdApi_Release(this: *mut Rust_CThostFtdcMdApi);
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi13GetTradingDayEv"]
-    pub fn Rust_CThostFtdcTraderApi_GetTradingDay(
-        this: *mut Rust_CThostFtdcTraderApi,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi4InitEv"]
+    pub fn Rust_CThostFtdcMdApi_Init(this: *mut Rust_CThostFtdcMdApi);
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi4JoinEv"]
+    pub fn Rust_CThostFtdcMdApi_Join(this: *mut Rust_CThostFtdcMdApi) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi13GetTradingDayEv"]
+    pub fn Rust_CThostFtdcMdApi_GetTradingDay(
+        this: *mut Rust_CThostFtdcMdApi,
     ) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi13RegisterFrontEPc"]
-    pub fn Rust_CThostFtdcTraderApi_RegisterFront(
-        this: *mut Rust_CThostFtdcTraderApi,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi13RegisterFrontEPc"]
+    pub fn Rust_CThostFtdcMdApi_RegisterFront(
+        this: *mut Rust_CThostFtdcMdApi,
         pszFrontAddress: *mut ::std::os::raw::c_char,
     );
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18RegisterNameServerEPc"]
-    pub fn Rust_CThostFtdcTraderApi_RegisterNameServer(
-        this: *mut Rust_CThostFtdcTraderApi,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi18RegisterNameServerEPc"]
+    pub fn Rust_CThostFtdcMdApi_RegisterNameServer(
+        this: *mut Rust_CThostFtdcMdApi,
         pszNsAddress: *mut ::std::os::raw::c_char,
     );
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20RegisterFensUserInfoEP27CThostFtdcFensUserInfoField"]
-    pub fn Rust_CThostFtdcTraderApi_RegisterFensUserInfo(
-        this: *mut Rust_CThostFtdcTraderApi,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi20RegisterFensUserInfoEP27CThostFtdcFensUserInfoField"]
+    pub fn Rust_CThostFtdcMdApi_RegisterFensUserInfo(
+        this: *mut Rust_CThostFtdcMdApi,
         pFensUserInfo: *mut CThostFtdcFensUserInfoField,
     );
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi11RegisterSpiEP19CThostFtdcTraderSpi"]
-    pub fn Rust_CThostFtdcTraderApi_RegisterSpi(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pSpi: *mut CThostFtdcTraderSpi,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi11RegisterSpiEP15CThostFtdcMdSpi"]
+    pub fn Rust_CThostFtdcMdApi_RegisterSpi(
+        this: *mut Rust_CThostFtdcMdApi,
+        pSpi: *mut CThostFtdcMdSpi,
     );
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21SubscribePrivateTopicE20THOST_TE_RESUME_TYPE"]
-    pub fn Rust_CThostFtdcTraderApi_SubscribePrivateTopic(
-        this: *mut Rust_CThostFtdcTraderApi,
-        nResumeType: THOST_TE_RESUME_TYPE,
-    );
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20SubscribePublicTopicE20THOST_TE_RESUME_TYPE"]
-    pub fn Rust_CThostFtdcTraderApi_SubscribePublicTopic(
-        this: *mut Rust_CThostFtdcTraderApi,
-        nResumeType: THOST_TE_RESUME_TYPE,
-    );
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi15ReqAuthenticateEP30CThostFtdcReqAuthenticateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqAuthenticate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pReqAuthenticateField: *mut CThostFtdcReqAuthenticateField,
-        nRequestID: ::std::os::raw::c_int,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi19SubscribeMarketDataEPPci"]
+    pub fn Rust_CThostFtdcMdApi_SubscribeMarketData(
+        this: *mut Rust_CThostFtdcMdApi,
+        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
+        nCount: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi22RegisterUserSystemInfoEP29CThostFtdcUserSystemInfoField"]
-    pub fn Rust_CThostFtdcTraderApi_RegisterUserSystemInfo(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pUserSystemInfo: *mut CThostFtdcUserSystemInfoField,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi21UnSubscribeMarketDataEPPci"]
+    pub fn Rust_CThostFtdcMdApi_UnSubscribeMarketData(
+        this: *mut Rust_CThostFtdcMdApi,
+        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
+        nCount: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20SubmitUserSystemInfoEP29CThostFtdcUserSystemInfoField"]
-    pub fn Rust_CThostFtdcTraderApi_SubmitUserSystemInfo(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pUserSystemInfo: *mut CThostFtdcUserSystemInfoField,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi20SubscribeForQuoteRspEPPci"]
+    pub fn Rust_CThostFtdcMdApi_SubscribeForQuoteRsp(
+        this: *mut Rust_CThostFtdcMdApi,
+        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
+        nCount: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi12ReqUserLoginEP27CThostFtdcReqUserLoginFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqUserLogin(
-        this: *mut Rust_CThostFtdcTraderApi,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi22UnSubscribeForQuoteRspEPPci"]
+    pub fn Rust_CThostFtdcMdApi_UnSubscribeForQuoteRsp(
+        this: *mut Rust_CThostFtdcMdApi,
+        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
+        nCount: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi12ReqUserLoginEP27CThostFtdcReqUserLoginFieldi"]
+    pub fn Rust_CThostFtdcMdApi_ReqUserLogin(
+        this: *mut Rust_CThostFtdcMdApi,
         pReqUserLoginField: *mut CThostFtdcReqUserLoginField,
         nRequestID: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi13ReqUserLogoutEP25CThostFtdcUserLogoutFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqUserLogout(
-        this: *mut Rust_CThostFtdcTraderApi,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi13ReqUserLogoutEP25CThostFtdcUserLogoutFieldi"]
+    pub fn Rust_CThostFtdcMdApi_ReqUserLogout(
+        this: *mut Rust_CThostFtdcMdApi,
         pUserLogout: *mut CThostFtdcUserLogoutField,
         nRequestID: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqUserPasswordUpdateEP33CThostFtdcUserPasswordUpdateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqUserPasswordUpdate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pUserPasswordUpdate: *mut CThostFtdcUserPasswordUpdateField,
+    #[link_name = "\u{1}_ZN20Rust_CThostFtdcMdApi25ReqQryMulticastInstrumentEP37CThostFtdcQryMulticastInstrumentFieldi"]
+    pub fn Rust_CThostFtdcMdApi_ReqQryMulticastInstrument(
+        this: *mut Rust_CThostFtdcMdApi,
+        pQryMulticastInstrument: *mut CThostFtdcQryMulticastInstrumentField,
         nRequestID: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
 }
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi31ReqTradingAccountPasswordUpdateEP43CThostFtdcTradingAccountPasswordUpdateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqTradingAccountPasswordUpdate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pTradingAccountPasswordUpdate: *mut CThostFtdcTradingAccountPasswordUpdateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqUserAuthMethodEP32CThostFtdcReqUserAuthMethodFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqUserAuthMethod(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pReqUserAuthMethod: *mut CThostFtdcReqUserAuthMethodField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqGenUserCaptchaEP32CThostFtdcReqGenUserCaptchaFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqGenUserCaptcha(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pReqGenUserCaptcha: *mut CThostFtdcReqGenUserCaptchaField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqGenUserTextEP29CThostFtdcReqGenUserTextFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqGenUserText(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pReqGenUserText: *mut CThostFtdcReqGenUserTextField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi23ReqUserLoginWithCaptchaEP38CThostFtdcReqUserLoginWithCaptchaFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqUserLoginWithCaptcha(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pReqUserLoginWithCaptcha: *mut CThostFtdcReqUserLoginWithCaptchaField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqUserLoginWithTextEP35CThostFtdcReqUserLoginWithTextFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqUserLoginWithText(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pReqUserLoginWithText: *mut CThostFtdcReqUserLoginWithTextField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi19ReqUserLoginWithOTPEP34CThostFtdcReqUserLoginWithOTPFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqUserLoginWithOTP(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pReqUserLoginWithOTP: *mut CThostFtdcReqUserLoginWithOTPField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqOrderInsertEP25CThostFtdcInputOrderFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqOrderInsert(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputOrder: *mut CThostFtdcInputOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqParkedOrderInsertEP26CThostFtdcParkedOrderFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqParkedOrderInsert(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pParkedOrder: *mut CThostFtdcParkedOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqParkedOrderActionEP32CThostFtdcParkedOrderActionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqParkedOrderAction(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pParkedOrderAction: *mut CThostFtdcParkedOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqOrderActionEP31CThostFtdcInputOrderActionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqOrderAction(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputOrderAction: *mut CThostFtdcInputOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqQryMaxOrderVolumeEP32CThostFtdcQryMaxOrderVolumeFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryMaxOrderVolume(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryMaxOrderVolume: *mut CThostFtdcQryMaxOrderVolumeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqSettlementInfoConfirmEP36CThostFtdcSettlementInfoConfirmFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqSettlementInfoConfirm(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pSettlementInfoConfirm: *mut CThostFtdcSettlementInfoConfirmField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqRemoveParkedOrderEP32CThostFtdcRemoveParkedOrderFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqRemoveParkedOrder(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pRemoveParkedOrder: *mut CThostFtdcRemoveParkedOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi26ReqRemoveParkedOrderActionEP38CThostFtdcRemoveParkedOrderActionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqRemoveParkedOrderAction(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pRemoveParkedOrderAction: *mut CThostFtdcRemoveParkedOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqExecOrderInsertEP29CThostFtdcInputExecOrderFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqExecOrderInsert(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputExecOrder: *mut CThostFtdcInputExecOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqExecOrderActionEP35CThostFtdcInputExecOrderActionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqExecOrderAction(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputExecOrderAction: *mut CThostFtdcInputExecOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqForQuoteInsertEP28CThostFtdcInputForQuoteFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqForQuoteInsert(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputForQuote: *mut CThostFtdcInputForQuoteField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqQuoteInsertEP25CThostFtdcInputQuoteFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQuoteInsert(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputQuote: *mut CThostFtdcInputQuoteField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqQuoteActionEP31CThostFtdcInputQuoteActionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQuoteAction(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputQuoteAction: *mut CThostFtdcInputQuoteActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi19ReqBatchOrderActionEP36CThostFtdcInputBatchOrderActionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqBatchOrderAction(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputBatchOrderAction: *mut CThostFtdcInputBatchOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqOptionSelfCloseInsertEP35CThostFtdcInputOptionSelfCloseFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqOptionSelfCloseInsert(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputOptionSelfClose: *mut CThostFtdcInputOptionSelfCloseField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqOptionSelfCloseActionEP41CThostFtdcInputOptionSelfCloseActionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqOptionSelfCloseAction(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputOptionSelfCloseAction: *mut CThostFtdcInputOptionSelfCloseActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi19ReqCombActionInsertEP30CThostFtdcInputCombActionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqCombActionInsert(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pInputCombAction: *mut CThostFtdcInputCombActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi11ReqQryOrderEP23CThostFtdcQryOrderFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryOrder(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryOrder: *mut CThostFtdcQryOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi11ReqQryTradeEP23CThostFtdcQryTradeFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryTrade(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryTrade: *mut CThostFtdcQryTradeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi22ReqQryInvestorPositionEP34CThostFtdcQryInvestorPositionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorPosition(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInvestorPosition: *mut CThostFtdcQryInvestorPositionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqQryTradingAccountEP32CThostFtdcQryTradingAccountFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryTradingAccount(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryTradingAccount: *mut CThostFtdcQryTradingAccountField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqQryInvestorEP26CThostFtdcQryInvestorFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestor(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInvestor: *mut CThostFtdcQryInvestorField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqQryTradingCodeEP29CThostFtdcQryTradingCodeFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryTradingCode(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryTradingCode: *mut CThostFtdcQryTradingCodeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi26ReqQryInstrumentMarginRateEP38CThostFtdcQryInstrumentMarginRateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInstrumentMarginRate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInstrumentMarginRate: *mut CThostFtdcQryInstrumentMarginRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi30ReqQryInstrumentCommissionRateEP42CThostFtdcQryInstrumentCommissionRateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInstrumentCommissionRate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInstrumentCommissionRate: *mut CThostFtdcQryInstrumentCommissionRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqQryExchangeEP26CThostFtdcQryExchangeFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryExchange(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryExchange: *mut CThostFtdcQryExchangeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi13ReqQryProductEP25CThostFtdcQryProductFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryProduct(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryProduct: *mut CThostFtdcQryProductField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi16ReqQryInstrumentEP28CThostFtdcQryInstrumentFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInstrument(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInstrument: *mut CThostFtdcQryInstrumentField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqQryDepthMarketDataEP33CThostFtdcQryDepthMarketDataFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryDepthMarketData(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryDepthMarketData: *mut CThostFtdcQryDepthMarketDataField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqQryTraderOfferEP29CThostFtdcQryTraderOfferFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryTraderOffer(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryTraderOffer: *mut CThostFtdcQryTraderOfferField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqQrySettlementInfoEP32CThostFtdcQrySettlementInfoFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySettlementInfo(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySettlementInfo: *mut CThostFtdcQrySettlementInfoField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqQryTransferBankEP30CThostFtdcQryTransferBankFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryTransferBank(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryTransferBank: *mut CThostFtdcQryTransferBankField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi28ReqQryInvestorPositionDetailEP40CThostFtdcQryInvestorPositionDetailFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorPositionDetail(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInvestorPositionDetail: *mut CThostFtdcQryInvestorPositionDetailField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi12ReqQryNoticeEP24CThostFtdcQryNoticeFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryNotice(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryNotice: *mut CThostFtdcQryNoticeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi27ReqQrySettlementInfoConfirmEP39CThostFtdcQrySettlementInfoConfirmFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySettlementInfoConfirm(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySettlementInfoConfirm: *mut CThostFtdcQrySettlementInfoConfirmField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi35ReqQryInvestorPositionCombineDetailEP47CThostFtdcQryInvestorPositionCombineDetailFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorPositionCombineDetail(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInvestorPositionCombineDetail: *mut CThostFtdcQryInvestorPositionCombineDetailField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi28ReqQryCFMMCTradingAccountKeyEP40CThostFtdcQryCFMMCTradingAccountKeyFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryCFMMCTradingAccountKey(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryCFMMCTradingAccountKey: *mut CThostFtdcQryCFMMCTradingAccountKeyField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqQryEWarrantOffsetEP32CThostFtdcQryEWarrantOffsetFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryEWarrantOffset(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryEWarrantOffset: *mut CThostFtdcQryEWarrantOffsetField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi32ReqQryInvestorProductGroupMarginEP44CThostFtdcQryInvestorProductGroupMarginFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorProductGroupMargin(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInvestorProductGroupMargin: *mut CThostFtdcQryInvestorProductGroupMarginField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqQryExchangeMarginRateEP36CThostFtdcQryExchangeMarginRateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryExchangeMarginRate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryExchangeMarginRate: *mut CThostFtdcQryExchangeMarginRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi30ReqQryExchangeMarginRateAdjustEP42CThostFtdcQryExchangeMarginRateAdjustFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryExchangeMarginRateAdjust(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryExchangeMarginRateAdjust: *mut CThostFtdcQryExchangeMarginRateAdjustField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqQryExchangeRateEP30CThostFtdcQryExchangeRateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryExchangeRate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryExchangeRate: *mut CThostFtdcQryExchangeRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqQrySecAgentACIDMapEP33CThostFtdcQrySecAgentACIDMapFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySecAgentACIDMap(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySecAgentACIDMap: *mut CThostFtdcQrySecAgentACIDMapField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqQryProductExchRateEP33CThostFtdcQryProductExchRateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryProductExchRate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryProductExchRate: *mut CThostFtdcQryProductExchRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqQryProductGroupEP30CThostFtdcQryProductGroupFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryProductGroup(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryProductGroup: *mut CThostFtdcQryProductGroupField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi32ReqQryMMInstrumentCommissionRateEP44CThostFtdcQryMMInstrumentCommissionRateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryMMInstrumentCommissionRate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryMMInstrumentCommissionRate: *mut CThostFtdcQryMMInstrumentCommissionRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi27ReqQryMMOptionInstrCommRateEP39CThostFtdcQryMMOptionInstrCommRateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryMMOptionInstrCommRate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryMMOptionInstrCommRate: *mut CThostFtdcQryMMOptionInstrCommRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi29ReqQryInstrumentOrderCommRateEP41CThostFtdcQryInstrumentOrderCommRateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInstrumentOrderCommRate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInstrumentOrderCommRate: *mut CThostFtdcQryInstrumentOrderCommRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi28ReqQrySecAgentTradingAccountEP32CThostFtdcQryTradingAccountFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySecAgentTradingAccount(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryTradingAccount: *mut CThostFtdcQryTradingAccountField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi23ReqQrySecAgentCheckModeEP35CThostFtdcQrySecAgentCheckModeFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySecAgentCheckMode(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySecAgentCheckMode: *mut CThostFtdcQrySecAgentCheckModeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi23ReqQrySecAgentTradeInfoEP35CThostFtdcQrySecAgentTradeInfoFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySecAgentTradeInfo(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySecAgentTradeInfo: *mut CThostFtdcQrySecAgentTradeInfoField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi26ReqQryOptionInstrTradeCostEP38CThostFtdcQryOptionInstrTradeCostFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryOptionInstrTradeCost(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryOptionInstrTradeCost: *mut CThostFtdcQryOptionInstrTradeCostField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQryOptionInstrCommRateEP37CThostFtdcQryOptionInstrCommRateFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryOptionInstrCommRate(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryOptionInstrCommRate: *mut CThostFtdcQryOptionInstrCommRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi15ReqQryExecOrderEP27CThostFtdcQryExecOrderFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryExecOrder(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryExecOrder: *mut CThostFtdcQryExecOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqQryForQuoteEP26CThostFtdcQryForQuoteFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryForQuote(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryForQuote: *mut CThostFtdcQryForQuoteField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi11ReqQryQuoteEP23CThostFtdcQryQuoteFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryQuote(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryQuote: *mut CThostFtdcQryQuoteField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqQryOptionSelfCloseEP33CThostFtdcQryOptionSelfCloseFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryOptionSelfClose(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryOptionSelfClose: *mut CThostFtdcQryOptionSelfCloseField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi16ReqQryInvestUnitEP28CThostFtdcQryInvestUnitFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestUnit(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInvestUnit: *mut CThostFtdcQryInvestUnitField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQryCombInstrumentGuardEP37CThostFtdcQryCombInstrumentGuardFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryCombInstrumentGuard(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryCombInstrumentGuard: *mut CThostFtdcQryCombInstrumentGuardField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi16ReqQryCombActionEP28CThostFtdcQryCombActionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryCombAction(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryCombAction: *mut CThostFtdcQryCombActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqQryTransferSerialEP32CThostFtdcQryTransferSerialFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryTransferSerial(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryTransferSerial: *mut CThostFtdcQryTransferSerialField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqQryAccountregisterEP33CThostFtdcQryAccountregisterFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryAccountregister(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryAccountregister: *mut CThostFtdcQryAccountregisterField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqQryContractBankEP30CThostFtdcQryContractBankFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryContractBank(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryContractBank: *mut CThostFtdcQryContractBankField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqQryParkedOrderEP29CThostFtdcQryParkedOrderFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryParkedOrder(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryParkedOrder: *mut CThostFtdcQryParkedOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi23ReqQryParkedOrderActionEP35CThostFtdcQryParkedOrderActionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryParkedOrderAction(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryParkedOrderAction: *mut CThostFtdcQryParkedOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi19ReqQryTradingNoticeEP31CThostFtdcQryTradingNoticeFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryTradingNotice(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryTradingNotice: *mut CThostFtdcQryTradingNoticeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQryBrokerTradingParamsEP37CThostFtdcQryBrokerTradingParamsFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryBrokerTradingParams(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryBrokerTradingParams: *mut CThostFtdcQryBrokerTradingParamsField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqQryBrokerTradingAlgosEP36CThostFtdcQryBrokerTradingAlgosFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryBrokerTradingAlgos(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryBrokerTradingAlgos: *mut CThostFtdcQryBrokerTradingAlgosField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi32ReqQueryCFMMCTradingAccountTokenEP44CThostFtdcQueryCFMMCTradingAccountTokenFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQueryCFMMCTradingAccountToken(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQueryCFMMCTradingAccountToken: *mut CThostFtdcQueryCFMMCTradingAccountTokenField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi27ReqFromBankToFutureByFutureEP26CThostFtdcReqTransferFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqFromBankToFutureByFuture(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pReqTransfer: *mut CThostFtdcReqTransferField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi27ReqFromFutureToBankByFutureEP26CThostFtdcReqTransferFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqFromFutureToBankByFuture(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pReqTransfer: *mut CThostFtdcReqTransferField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi32ReqQueryBankAccountMoneyByFutureEP30CThostFtdcReqQueryAccountFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQueryBankAccountMoneyByFuture(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pReqQueryAccount: *mut CThostFtdcReqQueryAccountField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi26ReqQryClassifiedInstrumentEP38CThostFtdcQryClassifiedInstrumentFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryClassifiedInstrument(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryClassifiedInstrument: *mut CThostFtdcQryClassifiedInstrumentField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqQryCombPromotionParamEP36CThostFtdcQryCombPromotionParamFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryCombPromotionParam(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryCombPromotionParam: *mut CThostFtdcQryCombPromotionParamField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi29ReqQryRiskSettleInvstPositionEP41CThostFtdcQryRiskSettleInvstPositionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryRiskSettleInvstPosition(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryRiskSettleInvstPosition: *mut CThostFtdcQryRiskSettleInvstPositionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi29ReqQryRiskSettleProductStatusEP41CThostFtdcQryRiskSettleProductStatusFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryRiskSettleProductStatus(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryRiskSettleProductStatus: *mut CThostFtdcQryRiskSettleProductStatusField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQrySPBMFutureParameterEP37CThostFtdcQrySPBMFutureParameterFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMFutureParameter(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySPBMFutureParameter: *mut CThostFtdcQrySPBMFutureParameterField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQrySPBMOptionParameterEP37CThostFtdcQrySPBMOptionParameterFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMOptionParameter(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySPBMOptionParameter: *mut CThostFtdcQrySPBMOptionParameterField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqQrySPBMIntraParameterEP36CThostFtdcQrySPBMIntraParameterFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMIntraParameter(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySPBMIntraParameter: *mut CThostFtdcQrySPBMIntraParameterField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqQrySPBMInterParameterEP36CThostFtdcQrySPBMInterParameterFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMInterParameter(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySPBMInterParameter: *mut CThostFtdcQrySPBMInterParameterField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQrySPBMPortfDefinitionEP37CThostFtdcQrySPBMPortfDefinitionFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMPortfDefinition(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySPBMPortfDefinition: *mut CThostFtdcQrySPBMPortfDefinitionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi26ReqQrySPBMInvestorPortfDefEP38CThostFtdcQrySPBMInvestorPortfDefFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMInvestorPortfDef(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQrySPBMInvestorPortfDef: *mut CThostFtdcQrySPBMInvestorPortfDefField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi30ReqQryInvestorPortfMarginRatioEP42CThostFtdcQryInvestorPortfMarginRatioFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorPortfMarginRatio(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInvestorPortfMarginRatio: *mut CThostFtdcQryInvestorPortfMarginRatioField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi28ReqQryInvestorProdSPBMDetailEP40CThostFtdcQryInvestorProdSPBMDetailFieldi"]
-    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorProdSPBMDetail(
-        this: *mut Rust_CThostFtdcTraderApi,
-        pQryInvestorProdSPBMDetail: *mut CThostFtdcQryInvestorProdSPBMDetailField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApiC1EP19CThostFtdcTraderApi"]
-    pub fn Rust_CThostFtdcTraderApi_Rust_CThostFtdcTraderApi(
-        this: *mut Rust_CThostFtdcTraderApi,
-        member: *mut CThostFtdcTraderApi,
-    );
-}
-extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApiD1Ev"]
-    pub fn Rust_CThostFtdcTraderApi_Rust_CThostFtdcTraderApi_destructor(
-        this: *mut Rust_CThostFtdcTraderApi,
-    );
-}
-impl Rust_CThostFtdcTraderApi {
+impl Rust_CThostFtdcMdApi {
     #[inline]
-    pub fn Release(&mut self) {
-        unsafe { Rust_CThostFtdcTraderApi_Release(self) }
+    pub unsafe fn CreateFtdcMdApi(
+        pszFlowPath: *const ::std::os::raw::c_char,
+        bIsUsingUdp: bool,
+        bIsMulticast: bool,
+    ) -> *mut Rust_CThostFtdcMdApi {
+        unsafe { Rust_CThostFtdcMdApi_CreateFtdcMdApi(pszFlowPath, bIsUsingUdp, bIsMulticast) }
     }
     #[inline]
-    pub fn Init(&mut self) {
-        unsafe { Rust_CThostFtdcTraderApi_Init(self) }
+    pub unsafe fn GetApiVersion() -> *const ::std::os::raw::c_char {
+        unsafe { Rust_CThostFtdcMdApi_GetApiVersion() }
     }
     #[inline]
-    pub fn Join(&mut self) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_Join(self) }
+    pub unsafe fn Release(&mut self) {
+        unsafe { Rust_CThostFtdcMdApi_Release(self) }
     }
     #[inline]
-    pub fn GetTradingDay(&mut self) -> *const ::std::os::raw::c_char {
-        unsafe { Rust_CThostFtdcTraderApi_GetTradingDay(self) }
+    pub unsafe fn Init(&mut self) {
+        unsafe { Rust_CThostFtdcMdApi_Init(self) }
     }
     #[inline]
-    pub fn RegisterFront(&mut self, pszFrontAddress: *mut ::std::os::raw::c_char) {
-        unsafe { Rust_CThostFtdcTraderApi_RegisterFront(self, pszFrontAddress) }
+    pub unsafe fn Join(&mut self) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcMdApi_Join(self) }
     }
     #[inline]
-    pub fn RegisterNameServer(&mut self, pszNsAddress: *mut ::std::os::raw::c_char) {
-        unsafe { Rust_CThostFtdcTraderApi_RegisterNameServer(self, pszNsAddress) }
+    pub unsafe fn GetTradingDay(&mut self) -> *const ::std::os::raw::c_char {
+        unsafe { Rust_CThostFtdcMdApi_GetTradingDay(self) }
     }
     #[inline]
-    pub fn RegisterFensUserInfo(&mut self, pFensUserInfo: *mut CThostFtdcFensUserInfoField) {
-        unsafe { Rust_CThostFtdcTraderApi_RegisterFensUserInfo(self, pFensUserInfo) }
+    pub unsafe fn RegisterFront(&mut self, pszFrontAddress: *mut ::std::os::raw::c_char) {
+        unsafe { Rust_CThostFtdcMdApi_RegisterFront(self, pszFrontAddress) }
     }
     #[inline]
-    pub fn RegisterSpi(&mut self, pSpi: *mut CThostFtdcTraderSpi) {
-        unsafe { Rust_CThostFtdcTraderApi_RegisterSpi(self, pSpi) }
+    pub unsafe fn RegisterNameServer(&mut self, pszNsAddress: *mut ::std::os::raw::c_char) {
+        unsafe { Rust_CThostFtdcMdApi_RegisterNameServer(self, pszNsAddress) }
     }
     #[inline]
-    pub fn SubscribePrivateTopic(&mut self, nResumeType: THOST_TE_RESUME_TYPE) {
-        unsafe { Rust_CThostFtdcTraderApi_SubscribePrivateTopic(self, nResumeType) }
+    pub unsafe fn RegisterFensUserInfo(&mut self, pFensUserInfo: *mut CThostFtdcFensUserInfoField) {
+        unsafe { Rust_CThostFtdcMdApi_RegisterFensUserInfo(self, pFensUserInfo) }
     }
     #[inline]
-    pub fn SubscribePublicTopic(&mut self, nResumeType: THOST_TE_RESUME_TYPE) {
-        unsafe { Rust_CThostFtdcTraderApi_SubscribePublicTopic(self, nResumeType) }
+    pub unsafe fn RegisterSpi(&mut self, pSpi: *mut CThostFtdcMdSpi) {
+        unsafe { Rust_CThostFtdcMdApi_RegisterSpi(self, pSpi) }
     }
     #[inline]
-    pub fn ReqAuthenticate(
+    pub unsafe fn SubscribeMarketData(
         &mut self,
-        pReqAuthenticateField: *mut CThostFtdcReqAuthenticateField,
-        nRequestID: ::std::os::raw::c_int,
+        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
+        nCount: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqAuthenticate(self, pReqAuthenticateField, nRequestID) }
+        unsafe { Rust_CThostFtdcMdApi_SubscribeMarketData(self, ppInstrumentID, nCount) }
     }
     #[inline]
-    pub fn RegisterUserSystemInfo(
+    pub unsafe fn UnSubscribeMarketData(
         &mut self,
-        pUserSystemInfo: *mut CThostFtdcUserSystemInfoField,
+        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
+        nCount: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_RegisterUserSystemInfo(self, pUserSystemInfo) }
+        unsafe { Rust_CThostFtdcMdApi_UnSubscribeMarketData(self, ppInstrumentID, nCount) }
     }
     #[inline]
-    pub fn SubmitUserSystemInfo(
+    pub unsafe fn SubscribeForQuoteRsp(
         &mut self,
-        pUserSystemInfo: *mut CThostFtdcUserSystemInfoField,
+        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
+        nCount: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_SubmitUserSystemInfo(self, pUserSystemInfo) }
+        unsafe { Rust_CThostFtdcMdApi_SubscribeForQuoteRsp(self, ppInstrumentID, nCount) }
     }
     #[inline]
-    pub fn ReqUserLogin(
+    pub unsafe fn UnSubscribeForQuoteRsp(
+        &mut self,
+        ppInstrumentID: *mut *mut ::std::os::raw::c_char,
+        nCount: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcMdApi_UnSubscribeForQuoteRsp(self, ppInstrumentID, nCount) }
+    }
+    #[inline]
+    pub unsafe fn ReqUserLogin(
         &mut self,
         pReqUserLoginField: *mut CThostFtdcReqUserLoginField,
         nRequestID: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqUserLogin(self, pReqUserLoginField, nRequestID) }
+        unsafe { Rust_CThostFtdcMdApi_ReqUserLogin(self, pReqUserLoginField, nRequestID) }
     }
     #[inline]
-    pub fn ReqUserLogout(
+    pub unsafe fn ReqUserLogout(
         &mut self,
         pUserLogout: *mut CThostFtdcUserLogoutField,
         nRequestID: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqUserLogout(self, pUserLogout, nRequestID) }
+        unsafe { Rust_CThostFtdcMdApi_ReqUserLogout(self, pUserLogout, nRequestID) }
     }
     #[inline]
-    pub fn ReqUserPasswordUpdate(
+    pub unsafe fn ReqQryMulticastInstrument(
         &mut self,
-        pUserPasswordUpdate: *mut CThostFtdcUserPasswordUpdateField,
+        pQryMulticastInstrument: *mut CThostFtdcQryMulticastInstrumentField,
         nRequestID: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int {
         unsafe {
-            Rust_CThostFtdcTraderApi_ReqUserPasswordUpdate(self, pUserPasswordUpdate, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqTradingAccountPasswordUpdate(
-        &mut self,
-        pTradingAccountPasswordUpdate: *mut CThostFtdcTradingAccountPasswordUpdateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqTradingAccountPasswordUpdate(
+            Rust_CThostFtdcMdApi_ReqQryMulticastInstrument(
                 self,
-                pTradingAccountPasswordUpdate,
+                pQryMulticastInstrument,
                 nRequestID,
             )
         }
-    }
-    #[inline]
-    pub fn ReqUserAuthMethod(
-        &mut self,
-        pReqUserAuthMethod: *mut CThostFtdcReqUserAuthMethodField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqUserAuthMethod(self, pReqUserAuthMethod, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqGenUserCaptcha(
-        &mut self,
-        pReqGenUserCaptcha: *mut CThostFtdcReqGenUserCaptchaField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqGenUserCaptcha(self, pReqGenUserCaptcha, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqGenUserText(
-        &mut self,
-        pReqGenUserText: *mut CThostFtdcReqGenUserTextField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqGenUserText(self, pReqGenUserText, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqUserLoginWithCaptcha(
-        &mut self,
-        pReqUserLoginWithCaptcha: *mut CThostFtdcReqUserLoginWithCaptchaField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqUserLoginWithCaptcha(
-                self,
-                pReqUserLoginWithCaptcha,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqUserLoginWithText(
-        &mut self,
-        pReqUserLoginWithText: *mut CThostFtdcReqUserLoginWithTextField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqUserLoginWithText(self, pReqUserLoginWithText, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqUserLoginWithOTP(
-        &mut self,
-        pReqUserLoginWithOTP: *mut CThostFtdcReqUserLoginWithOTPField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqUserLoginWithOTP(self, pReqUserLoginWithOTP, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqOrderInsert(
-        &mut self,
-        pInputOrder: *mut CThostFtdcInputOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqOrderInsert(self, pInputOrder, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqParkedOrderInsert(
-        &mut self,
-        pParkedOrder: *mut CThostFtdcParkedOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqParkedOrderInsert(self, pParkedOrder, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqParkedOrderAction(
-        &mut self,
-        pParkedOrderAction: *mut CThostFtdcParkedOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqParkedOrderAction(self, pParkedOrderAction, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqOrderAction(
-        &mut self,
-        pInputOrderAction: *mut CThostFtdcInputOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqOrderAction(self, pInputOrderAction, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryMaxOrderVolume(
-        &mut self,
-        pQryMaxOrderVolume: *mut CThostFtdcQryMaxOrderVolumeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryMaxOrderVolume(self, pQryMaxOrderVolume, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqSettlementInfoConfirm(
-        &mut self,
-        pSettlementInfoConfirm: *mut CThostFtdcSettlementInfoConfirmField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqSettlementInfoConfirm(
-                self,
-                pSettlementInfoConfirm,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqRemoveParkedOrder(
-        &mut self,
-        pRemoveParkedOrder: *mut CThostFtdcRemoveParkedOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqRemoveParkedOrder(self, pRemoveParkedOrder, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqRemoveParkedOrderAction(
-        &mut self,
-        pRemoveParkedOrderAction: *mut CThostFtdcRemoveParkedOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqRemoveParkedOrderAction(
-                self,
-                pRemoveParkedOrderAction,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqExecOrderInsert(
-        &mut self,
-        pInputExecOrder: *mut CThostFtdcInputExecOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqExecOrderInsert(self, pInputExecOrder, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqExecOrderAction(
-        &mut self,
-        pInputExecOrderAction: *mut CThostFtdcInputExecOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqExecOrderAction(self, pInputExecOrderAction, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqForQuoteInsert(
-        &mut self,
-        pInputForQuote: *mut CThostFtdcInputForQuoteField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqForQuoteInsert(self, pInputForQuote, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQuoteInsert(
-        &mut self,
-        pInputQuote: *mut CThostFtdcInputQuoteField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQuoteInsert(self, pInputQuote, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQuoteAction(
-        &mut self,
-        pInputQuoteAction: *mut CThostFtdcInputQuoteActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQuoteAction(self, pInputQuoteAction, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqBatchOrderAction(
-        &mut self,
-        pInputBatchOrderAction: *mut CThostFtdcInputBatchOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqBatchOrderAction(self, pInputBatchOrderAction, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqOptionSelfCloseInsert(
-        &mut self,
-        pInputOptionSelfClose: *mut CThostFtdcInputOptionSelfCloseField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqOptionSelfCloseInsert(
-                self,
-                pInputOptionSelfClose,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqOptionSelfCloseAction(
-        &mut self,
-        pInputOptionSelfCloseAction: *mut CThostFtdcInputOptionSelfCloseActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqOptionSelfCloseAction(
-                self,
-                pInputOptionSelfCloseAction,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqCombActionInsert(
-        &mut self,
-        pInputCombAction: *mut CThostFtdcInputCombActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqCombActionInsert(self, pInputCombAction, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryOrder(
-        &mut self,
-        pQryOrder: *mut CThostFtdcQryOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryOrder(self, pQryOrder, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryTrade(
-        &mut self,
-        pQryTrade: *mut CThostFtdcQryTradeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryTrade(self, pQryTrade, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryInvestorPosition(
-        &mut self,
-        pQryInvestorPosition: *mut CThostFtdcQryInvestorPositionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryInvestorPosition(self, pQryInvestorPosition, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQryTradingAccount(
-        &mut self,
-        pQryTradingAccount: *mut CThostFtdcQryTradingAccountField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryTradingAccount(self, pQryTradingAccount, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQryInvestor(
-        &mut self,
-        pQryInvestor: *mut CThostFtdcQryInvestorField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryInvestor(self, pQryInvestor, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryTradingCode(
-        &mut self,
-        pQryTradingCode: *mut CThostFtdcQryTradingCodeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryTradingCode(self, pQryTradingCode, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryInstrumentMarginRate(
-        &mut self,
-        pQryInstrumentMarginRate: *mut CThostFtdcQryInstrumentMarginRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryInstrumentMarginRate(
-                self,
-                pQryInstrumentMarginRate,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryInstrumentCommissionRate(
-        &mut self,
-        pQryInstrumentCommissionRate: *mut CThostFtdcQryInstrumentCommissionRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryInstrumentCommissionRate(
-                self,
-                pQryInstrumentCommissionRate,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryExchange(
-        &mut self,
-        pQryExchange: *mut CThostFtdcQryExchangeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryExchange(self, pQryExchange, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryProduct(
-        &mut self,
-        pQryProduct: *mut CThostFtdcQryProductField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryProduct(self, pQryProduct, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryInstrument(
-        &mut self,
-        pQryInstrument: *mut CThostFtdcQryInstrumentField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryInstrument(self, pQryInstrument, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryDepthMarketData(
-        &mut self,
-        pQryDepthMarketData: *mut CThostFtdcQryDepthMarketDataField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryDepthMarketData(self, pQryDepthMarketData, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQryTraderOffer(
-        &mut self,
-        pQryTraderOffer: *mut CThostFtdcQryTraderOfferField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryTraderOffer(self, pQryTraderOffer, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQrySettlementInfo(
-        &mut self,
-        pQrySettlementInfo: *mut CThostFtdcQrySettlementInfoField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySettlementInfo(self, pQrySettlementInfo, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQryTransferBank(
-        &mut self,
-        pQryTransferBank: *mut CThostFtdcQryTransferBankField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryTransferBank(self, pQryTransferBank, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryInvestorPositionDetail(
-        &mut self,
-        pQryInvestorPositionDetail: *mut CThostFtdcQryInvestorPositionDetailField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryInvestorPositionDetail(
-                self,
-                pQryInvestorPositionDetail,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryNotice(
-        &mut self,
-        pQryNotice: *mut CThostFtdcQryNoticeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryNotice(self, pQryNotice, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQrySettlementInfoConfirm(
-        &mut self,
-        pQrySettlementInfoConfirm: *mut CThostFtdcQrySettlementInfoConfirmField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySettlementInfoConfirm(
-                self,
-                pQrySettlementInfoConfirm,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryInvestorPositionCombineDetail(
-        &mut self,
-        pQryInvestorPositionCombineDetail: *mut CThostFtdcQryInvestorPositionCombineDetailField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryInvestorPositionCombineDetail(
-                self,
-                pQryInvestorPositionCombineDetail,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryCFMMCTradingAccountKey(
-        &mut self,
-        pQryCFMMCTradingAccountKey: *mut CThostFtdcQryCFMMCTradingAccountKeyField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryCFMMCTradingAccountKey(
-                self,
-                pQryCFMMCTradingAccountKey,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryEWarrantOffset(
-        &mut self,
-        pQryEWarrantOffset: *mut CThostFtdcQryEWarrantOffsetField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryEWarrantOffset(self, pQryEWarrantOffset, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQryInvestorProductGroupMargin(
-        &mut self,
-        pQryInvestorProductGroupMargin: *mut CThostFtdcQryInvestorProductGroupMarginField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryInvestorProductGroupMargin(
-                self,
-                pQryInvestorProductGroupMargin,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryExchangeMarginRate(
-        &mut self,
-        pQryExchangeMarginRate: *mut CThostFtdcQryExchangeMarginRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryExchangeMarginRate(
-                self,
-                pQryExchangeMarginRate,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryExchangeMarginRateAdjust(
-        &mut self,
-        pQryExchangeMarginRateAdjust: *mut CThostFtdcQryExchangeMarginRateAdjustField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryExchangeMarginRateAdjust(
-                self,
-                pQryExchangeMarginRateAdjust,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryExchangeRate(
-        &mut self,
-        pQryExchangeRate: *mut CThostFtdcQryExchangeRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryExchangeRate(self, pQryExchangeRate, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQrySecAgentACIDMap(
-        &mut self,
-        pQrySecAgentACIDMap: *mut CThostFtdcQrySecAgentACIDMapField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySecAgentACIDMap(self, pQrySecAgentACIDMap, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQryProductExchRate(
-        &mut self,
-        pQryProductExchRate: *mut CThostFtdcQryProductExchRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryProductExchRate(self, pQryProductExchRate, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQryProductGroup(
-        &mut self,
-        pQryProductGroup: *mut CThostFtdcQryProductGroupField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryProductGroup(self, pQryProductGroup, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryMMInstrumentCommissionRate(
-        &mut self,
-        pQryMMInstrumentCommissionRate: *mut CThostFtdcQryMMInstrumentCommissionRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryMMInstrumentCommissionRate(
-                self,
-                pQryMMInstrumentCommissionRate,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryMMOptionInstrCommRate(
-        &mut self,
-        pQryMMOptionInstrCommRate: *mut CThostFtdcQryMMOptionInstrCommRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryMMOptionInstrCommRate(
-                self,
-                pQryMMOptionInstrCommRate,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryInstrumentOrderCommRate(
-        &mut self,
-        pQryInstrumentOrderCommRate: *mut CThostFtdcQryInstrumentOrderCommRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryInstrumentOrderCommRate(
-                self,
-                pQryInstrumentOrderCommRate,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQrySecAgentTradingAccount(
-        &mut self,
-        pQryTradingAccount: *mut CThostFtdcQryTradingAccountField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySecAgentTradingAccount(
-                self,
-                pQryTradingAccount,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQrySecAgentCheckMode(
-        &mut self,
-        pQrySecAgentCheckMode: *mut CThostFtdcQrySecAgentCheckModeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySecAgentCheckMode(
-                self,
-                pQrySecAgentCheckMode,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQrySecAgentTradeInfo(
-        &mut self,
-        pQrySecAgentTradeInfo: *mut CThostFtdcQrySecAgentTradeInfoField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySecAgentTradeInfo(
-                self,
-                pQrySecAgentTradeInfo,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryOptionInstrTradeCost(
-        &mut self,
-        pQryOptionInstrTradeCost: *mut CThostFtdcQryOptionInstrTradeCostField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryOptionInstrTradeCost(
-                self,
-                pQryOptionInstrTradeCost,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryOptionInstrCommRate(
-        &mut self,
-        pQryOptionInstrCommRate: *mut CThostFtdcQryOptionInstrCommRateField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryOptionInstrCommRate(
-                self,
-                pQryOptionInstrCommRate,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryExecOrder(
-        &mut self,
-        pQryExecOrder: *mut CThostFtdcQryExecOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryExecOrder(self, pQryExecOrder, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryForQuote(
-        &mut self,
-        pQryForQuote: *mut CThostFtdcQryForQuoteField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryForQuote(self, pQryForQuote, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryQuote(
-        &mut self,
-        pQryQuote: *mut CThostFtdcQryQuoteField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryQuote(self, pQryQuote, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryOptionSelfClose(
-        &mut self,
-        pQryOptionSelfClose: *mut CThostFtdcQryOptionSelfCloseField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryOptionSelfClose(self, pQryOptionSelfClose, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQryInvestUnit(
-        &mut self,
-        pQryInvestUnit: *mut CThostFtdcQryInvestUnitField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryInvestUnit(self, pQryInvestUnit, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryCombInstrumentGuard(
-        &mut self,
-        pQryCombInstrumentGuard: *mut CThostFtdcQryCombInstrumentGuardField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryCombInstrumentGuard(
-                self,
-                pQryCombInstrumentGuard,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryCombAction(
-        &mut self,
-        pQryCombAction: *mut CThostFtdcQryCombActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryCombAction(self, pQryCombAction, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryTransferSerial(
-        &mut self,
-        pQryTransferSerial: *mut CThostFtdcQryTransferSerialField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryTransferSerial(self, pQryTransferSerial, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQryAccountregister(
-        &mut self,
-        pQryAccountregister: *mut CThostFtdcQryAccountregisterField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryAccountregister(self, pQryAccountregister, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQryContractBank(
-        &mut self,
-        pQryContractBank: *mut CThostFtdcQryContractBankField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryContractBank(self, pQryContractBank, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryParkedOrder(
-        &mut self,
-        pQryParkedOrder: *mut CThostFtdcQryParkedOrderField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryParkedOrder(self, pQryParkedOrder, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryParkedOrderAction(
-        &mut self,
-        pQryParkedOrderAction: *mut CThostFtdcQryParkedOrderActionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryParkedOrderAction(
-                self,
-                pQryParkedOrderAction,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryTradingNotice(
-        &mut self,
-        pQryTradingNotice: *mut CThostFtdcQryTradingNoticeField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe { Rust_CThostFtdcTraderApi_ReqQryTradingNotice(self, pQryTradingNotice, nRequestID) }
-    }
-    #[inline]
-    pub fn ReqQryBrokerTradingParams(
-        &mut self,
-        pQryBrokerTradingParams: *mut CThostFtdcQryBrokerTradingParamsField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryBrokerTradingParams(
-                self,
-                pQryBrokerTradingParams,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryBrokerTradingAlgos(
-        &mut self,
-        pQryBrokerTradingAlgos: *mut CThostFtdcQryBrokerTradingAlgosField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryBrokerTradingAlgos(
-                self,
-                pQryBrokerTradingAlgos,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQueryCFMMCTradingAccountToken(
-        &mut self,
-        pQueryCFMMCTradingAccountToken: *mut CThostFtdcQueryCFMMCTradingAccountTokenField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQueryCFMMCTradingAccountToken(
-                self,
-                pQueryCFMMCTradingAccountToken,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqFromBankToFutureByFuture(
-        &mut self,
-        pReqTransfer: *mut CThostFtdcReqTransferField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqFromBankToFutureByFuture(self, pReqTransfer, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqFromFutureToBankByFuture(
-        &mut self,
-        pReqTransfer: *mut CThostFtdcReqTransferField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqFromFutureToBankByFuture(self, pReqTransfer, nRequestID)
-        }
-    }
-    #[inline]
-    pub fn ReqQueryBankAccountMoneyByFuture(
-        &mut self,
-        pReqQueryAccount: *mut CThostFtdcReqQueryAccountField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQueryBankAccountMoneyByFuture(
-                self,
-                pReqQueryAccount,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryClassifiedInstrument(
-        &mut self,
-        pQryClassifiedInstrument: *mut CThostFtdcQryClassifiedInstrumentField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryClassifiedInstrument(
-                self,
-                pQryClassifiedInstrument,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryCombPromotionParam(
-        &mut self,
-        pQryCombPromotionParam: *mut CThostFtdcQryCombPromotionParamField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryCombPromotionParam(
-                self,
-                pQryCombPromotionParam,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryRiskSettleInvstPosition(
-        &mut self,
-        pQryRiskSettleInvstPosition: *mut CThostFtdcQryRiskSettleInvstPositionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryRiskSettleInvstPosition(
-                self,
-                pQryRiskSettleInvstPosition,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryRiskSettleProductStatus(
-        &mut self,
-        pQryRiskSettleProductStatus: *mut CThostFtdcQryRiskSettleProductStatusField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryRiskSettleProductStatus(
-                self,
-                pQryRiskSettleProductStatus,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQrySPBMFutureParameter(
-        &mut self,
-        pQrySPBMFutureParameter: *mut CThostFtdcQrySPBMFutureParameterField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySPBMFutureParameter(
-                self,
-                pQrySPBMFutureParameter,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQrySPBMOptionParameter(
-        &mut self,
-        pQrySPBMOptionParameter: *mut CThostFtdcQrySPBMOptionParameterField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySPBMOptionParameter(
-                self,
-                pQrySPBMOptionParameter,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQrySPBMIntraParameter(
-        &mut self,
-        pQrySPBMIntraParameter: *mut CThostFtdcQrySPBMIntraParameterField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySPBMIntraParameter(
-                self,
-                pQrySPBMIntraParameter,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQrySPBMInterParameter(
-        &mut self,
-        pQrySPBMInterParameter: *mut CThostFtdcQrySPBMInterParameterField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySPBMInterParameter(
-                self,
-                pQrySPBMInterParameter,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQrySPBMPortfDefinition(
-        &mut self,
-        pQrySPBMPortfDefinition: *mut CThostFtdcQrySPBMPortfDefinitionField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySPBMPortfDefinition(
-                self,
-                pQrySPBMPortfDefinition,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQrySPBMInvestorPortfDef(
-        &mut self,
-        pQrySPBMInvestorPortfDef: *mut CThostFtdcQrySPBMInvestorPortfDefField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQrySPBMInvestorPortfDef(
-                self,
-                pQrySPBMInvestorPortfDef,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryInvestorPortfMarginRatio(
-        &mut self,
-        pQryInvestorPortfMarginRatio: *mut CThostFtdcQryInvestorPortfMarginRatioField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryInvestorPortfMarginRatio(
-                self,
-                pQryInvestorPortfMarginRatio,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn ReqQryInvestorProdSPBMDetail(
-        &mut self,
-        pQryInvestorProdSPBMDetail: *mut CThostFtdcQryInvestorProdSPBMDetailField,
-        nRequestID: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int {
-        unsafe {
-            Rust_CThostFtdcTraderApi_ReqQryInvestorProdSPBMDetail(
-                self,
-                pQryInvestorProdSPBMDetail,
-                nRequestID,
-            )
-        }
-    }
-    #[inline]
-    pub fn new(member: *mut CThostFtdcTraderApi) -> Self {
-        unsafe {
-            let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-            Rust_CThostFtdcTraderApi_Rust_CThostFtdcTraderApi(__bindgen_tmp.as_mut_ptr(), member);
-            __bindgen_tmp.assume_init()
-        }
-    }
-    #[inline]
-    pub fn destruct(&mut self) {
-        unsafe { Rust_CThostFtdcTraderApi_Rust_CThostFtdcTraderApi_destructor(self) }
     }
 }
 #[repr(C)]
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub struct Rust_CThostFtdcTraderSpi {
     pub _base: CThostFtdcTraderSpi,
-    pub m_rust: *mut ::std::os::raw::c_void,
+    pub rust: *mut ::std::os::raw::c_void,
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderSpiC1EPv"]
-    pub fn Rust_CThostFtdcTraderSpi_Rust_CThostFtdcTraderSpi(
-        this: *mut Rust_CThostFtdcTraderSpi,
-        rust: *mut ::std::os::raw::c_void,
-    );
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderSpi6CreateEPv"]
+    pub fn Rust_CThostFtdcTraderSpi_Create(
+        trait_: *mut ::std::os::raw::c_void,
+    ) -> *mut CThostFtdcTraderSpi;
 }
 extern "C" {
-    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderSpiD1Ev"]
-    pub fn Rust_CThostFtdcTraderSpi_Rust_CThostFtdcTraderSpi_destructor(
-        this: *mut Rust_CThostFtdcTraderSpi,
-    );
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderSpi7DestroyEP19CThostFtdcTraderSpi"]
+    pub fn Rust_CThostFtdcTraderSpi_Destroy(ptr: *mut CThostFtdcTraderSpi);
 }
 impl Rust_CThostFtdcTraderSpi {
     #[inline]
-    pub fn new(rust: *mut ::std::os::raw::c_void) -> Self {
-        unsafe {
-            let mut __bindgen_tmp = ::std::mem::MaybeUninit::uninit();
-            Rust_CThostFtdcTraderSpi_Rust_CThostFtdcTraderSpi(__bindgen_tmp.as_mut_ptr(), rust);
-            __bindgen_tmp.assume_init()
-        }
+    pub unsafe fn Create(trait_: *mut ::std::os::raw::c_void) -> *mut CThostFtdcTraderSpi {
+        unsafe { Rust_CThostFtdcTraderSpi_Create(trait_) }
     }
     #[inline]
-    pub fn destruct(&mut self) {
-        unsafe { Rust_CThostFtdcTraderSpi_Rust_CThostFtdcTraderSpi_destructor(self) }
+    pub unsafe fn Destroy(ptr: *mut CThostFtdcTraderSpi) {
+        unsafe { Rust_CThostFtdcTraderSpi_Destroy(ptr) }
     }
 }
 extern "C" {
@@ -11985,6 +10005,1970 @@ extern "C" {
         bIsLast: bool,
     );
 }
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct Rust_CThostFtdcTraderApi {
+    pub inner: *mut CThostFtdcTraderApi,
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi19CreateFtdcTraderApiEPKc"]
+    pub fn Rust_CThostFtdcTraderApi_CreateFtdcTraderApi(
+        pszFlowPath: *const ::std::os::raw::c_char,
+    ) -> *mut Rust_CThostFtdcTraderApi;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi13GetApiVersionEv"]
+    pub fn Rust_CThostFtdcTraderApi_GetApiVersion() -> *const ::std::os::raw::c_char;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi7ReleaseEv"]
+    pub fn Rust_CThostFtdcTraderApi_Release(this: *mut Rust_CThostFtdcTraderApi);
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi4InitEv"]
+    pub fn Rust_CThostFtdcTraderApi_Init(this: *mut Rust_CThostFtdcTraderApi);
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi4JoinEv"]
+    pub fn Rust_CThostFtdcTraderApi_Join(
+        this: *mut Rust_CThostFtdcTraderApi,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi13GetTradingDayEv"]
+    pub fn Rust_CThostFtdcTraderApi_GetTradingDay(
+        this: *mut Rust_CThostFtdcTraderApi,
+    ) -> *const ::std::os::raw::c_char;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi13RegisterFrontEPc"]
+    pub fn Rust_CThostFtdcTraderApi_RegisterFront(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pszFrontAddress: *mut ::std::os::raw::c_char,
+    );
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18RegisterNameServerEPc"]
+    pub fn Rust_CThostFtdcTraderApi_RegisterNameServer(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pszNsAddress: *mut ::std::os::raw::c_char,
+    );
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20RegisterFensUserInfoEP27CThostFtdcFensUserInfoField"]
+    pub fn Rust_CThostFtdcTraderApi_RegisterFensUserInfo(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pFensUserInfo: *mut CThostFtdcFensUserInfoField,
+    );
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi11RegisterSpiEP19CThostFtdcTraderSpi"]
+    pub fn Rust_CThostFtdcTraderApi_RegisterSpi(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pSpi: *mut CThostFtdcTraderSpi,
+    );
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21SubscribePrivateTopicE20THOST_TE_RESUME_TYPE"]
+    pub fn Rust_CThostFtdcTraderApi_SubscribePrivateTopic(
+        this: *mut Rust_CThostFtdcTraderApi,
+        nResumeType: THOST_TE_RESUME_TYPE,
+    );
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20SubscribePublicTopicE20THOST_TE_RESUME_TYPE"]
+    pub fn Rust_CThostFtdcTraderApi_SubscribePublicTopic(
+        this: *mut Rust_CThostFtdcTraderApi,
+        nResumeType: THOST_TE_RESUME_TYPE,
+    );
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi15ReqAuthenticateEP30CThostFtdcReqAuthenticateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqAuthenticate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqAuthenticateField: *mut CThostFtdcReqAuthenticateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi22RegisterUserSystemInfoEP29CThostFtdcUserSystemInfoField"]
+    pub fn Rust_CThostFtdcTraderApi_RegisterUserSystemInfo(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pUserSystemInfo: *mut CThostFtdcUserSystemInfoField,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20SubmitUserSystemInfoEP29CThostFtdcUserSystemInfoField"]
+    pub fn Rust_CThostFtdcTraderApi_SubmitUserSystemInfo(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pUserSystemInfo: *mut CThostFtdcUserSystemInfoField,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi12ReqUserLoginEP27CThostFtdcReqUserLoginFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqUserLogin(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqUserLoginField: *mut CThostFtdcReqUserLoginField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi13ReqUserLogoutEP25CThostFtdcUserLogoutFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqUserLogout(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pUserLogout: *mut CThostFtdcUserLogoutField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqUserPasswordUpdateEP33CThostFtdcUserPasswordUpdateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqUserPasswordUpdate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pUserPasswordUpdate: *mut CThostFtdcUserPasswordUpdateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi31ReqTradingAccountPasswordUpdateEP43CThostFtdcTradingAccountPasswordUpdateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqTradingAccountPasswordUpdate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pTradingAccountPasswordUpdate: *mut CThostFtdcTradingAccountPasswordUpdateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqUserAuthMethodEP32CThostFtdcReqUserAuthMethodFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqUserAuthMethod(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqUserAuthMethod: *mut CThostFtdcReqUserAuthMethodField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqGenUserCaptchaEP32CThostFtdcReqGenUserCaptchaFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqGenUserCaptcha(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqGenUserCaptcha: *mut CThostFtdcReqGenUserCaptchaField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqGenUserTextEP29CThostFtdcReqGenUserTextFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqGenUserText(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqGenUserText: *mut CThostFtdcReqGenUserTextField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi23ReqUserLoginWithCaptchaEP38CThostFtdcReqUserLoginWithCaptchaFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqUserLoginWithCaptcha(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqUserLoginWithCaptcha: *mut CThostFtdcReqUserLoginWithCaptchaField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqUserLoginWithTextEP35CThostFtdcReqUserLoginWithTextFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqUserLoginWithText(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqUserLoginWithText: *mut CThostFtdcReqUserLoginWithTextField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi19ReqUserLoginWithOTPEP34CThostFtdcReqUserLoginWithOTPFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqUserLoginWithOTP(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqUserLoginWithOTP: *mut CThostFtdcReqUserLoginWithOTPField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqOrderInsertEP25CThostFtdcInputOrderFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqOrderInsert(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputOrder: *mut CThostFtdcInputOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqParkedOrderInsertEP26CThostFtdcParkedOrderFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqParkedOrderInsert(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pParkedOrder: *mut CThostFtdcParkedOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqParkedOrderActionEP32CThostFtdcParkedOrderActionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqParkedOrderAction(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pParkedOrderAction: *mut CThostFtdcParkedOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqOrderActionEP31CThostFtdcInputOrderActionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqOrderAction(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputOrderAction: *mut CThostFtdcInputOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqQryMaxOrderVolumeEP32CThostFtdcQryMaxOrderVolumeFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryMaxOrderVolume(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryMaxOrderVolume: *mut CThostFtdcQryMaxOrderVolumeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqSettlementInfoConfirmEP36CThostFtdcSettlementInfoConfirmFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqSettlementInfoConfirm(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pSettlementInfoConfirm: *mut CThostFtdcSettlementInfoConfirmField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqRemoveParkedOrderEP32CThostFtdcRemoveParkedOrderFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqRemoveParkedOrder(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pRemoveParkedOrder: *mut CThostFtdcRemoveParkedOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi26ReqRemoveParkedOrderActionEP38CThostFtdcRemoveParkedOrderActionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqRemoveParkedOrderAction(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pRemoveParkedOrderAction: *mut CThostFtdcRemoveParkedOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqExecOrderInsertEP29CThostFtdcInputExecOrderFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqExecOrderInsert(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputExecOrder: *mut CThostFtdcInputExecOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqExecOrderActionEP35CThostFtdcInputExecOrderActionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqExecOrderAction(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputExecOrderAction: *mut CThostFtdcInputExecOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqForQuoteInsertEP28CThostFtdcInputForQuoteFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqForQuoteInsert(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputForQuote: *mut CThostFtdcInputForQuoteField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqQuoteInsertEP25CThostFtdcInputQuoteFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQuoteInsert(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputQuote: *mut CThostFtdcInputQuoteField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqQuoteActionEP31CThostFtdcInputQuoteActionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQuoteAction(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputQuoteAction: *mut CThostFtdcInputQuoteActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi19ReqBatchOrderActionEP36CThostFtdcInputBatchOrderActionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqBatchOrderAction(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputBatchOrderAction: *mut CThostFtdcInputBatchOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqOptionSelfCloseInsertEP35CThostFtdcInputOptionSelfCloseFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqOptionSelfCloseInsert(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputOptionSelfClose: *mut CThostFtdcInputOptionSelfCloseField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqOptionSelfCloseActionEP41CThostFtdcInputOptionSelfCloseActionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqOptionSelfCloseAction(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputOptionSelfCloseAction: *mut CThostFtdcInputOptionSelfCloseActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi19ReqCombActionInsertEP30CThostFtdcInputCombActionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqCombActionInsert(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pInputCombAction: *mut CThostFtdcInputCombActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi11ReqQryOrderEP23CThostFtdcQryOrderFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryOrder(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryOrder: *mut CThostFtdcQryOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi11ReqQryTradeEP23CThostFtdcQryTradeFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryTrade(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryTrade: *mut CThostFtdcQryTradeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi22ReqQryInvestorPositionEP34CThostFtdcQryInvestorPositionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorPosition(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInvestorPosition: *mut CThostFtdcQryInvestorPositionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqQryTradingAccountEP32CThostFtdcQryTradingAccountFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryTradingAccount(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryTradingAccount: *mut CThostFtdcQryTradingAccountField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqQryInvestorEP26CThostFtdcQryInvestorFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestor(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInvestor: *mut CThostFtdcQryInvestorField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqQryTradingCodeEP29CThostFtdcQryTradingCodeFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryTradingCode(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryTradingCode: *mut CThostFtdcQryTradingCodeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi26ReqQryInstrumentMarginRateEP38CThostFtdcQryInstrumentMarginRateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInstrumentMarginRate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInstrumentMarginRate: *mut CThostFtdcQryInstrumentMarginRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi30ReqQryInstrumentCommissionRateEP42CThostFtdcQryInstrumentCommissionRateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInstrumentCommissionRate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInstrumentCommissionRate: *mut CThostFtdcQryInstrumentCommissionRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqQryExchangeEP26CThostFtdcQryExchangeFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryExchange(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryExchange: *mut CThostFtdcQryExchangeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi13ReqQryProductEP25CThostFtdcQryProductFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryProduct(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryProduct: *mut CThostFtdcQryProductField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi16ReqQryInstrumentEP28CThostFtdcQryInstrumentFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInstrument(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInstrument: *mut CThostFtdcQryInstrumentField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqQryDepthMarketDataEP33CThostFtdcQryDepthMarketDataFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryDepthMarketData(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryDepthMarketData: *mut CThostFtdcQryDepthMarketDataField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqQryTraderOfferEP29CThostFtdcQryTraderOfferFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryTraderOffer(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryTraderOffer: *mut CThostFtdcQryTraderOfferField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqQrySettlementInfoEP32CThostFtdcQrySettlementInfoFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySettlementInfo(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySettlementInfo: *mut CThostFtdcQrySettlementInfoField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqQryTransferBankEP30CThostFtdcQryTransferBankFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryTransferBank(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryTransferBank: *mut CThostFtdcQryTransferBankField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi28ReqQryInvestorPositionDetailEP40CThostFtdcQryInvestorPositionDetailFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorPositionDetail(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInvestorPositionDetail: *mut CThostFtdcQryInvestorPositionDetailField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi12ReqQryNoticeEP24CThostFtdcQryNoticeFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryNotice(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryNotice: *mut CThostFtdcQryNoticeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi27ReqQrySettlementInfoConfirmEP39CThostFtdcQrySettlementInfoConfirmFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySettlementInfoConfirm(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySettlementInfoConfirm: *mut CThostFtdcQrySettlementInfoConfirmField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi35ReqQryInvestorPositionCombineDetailEP47CThostFtdcQryInvestorPositionCombineDetailFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorPositionCombineDetail(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInvestorPositionCombineDetail: *mut CThostFtdcQryInvestorPositionCombineDetailField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi28ReqQryCFMMCTradingAccountKeyEP40CThostFtdcQryCFMMCTradingAccountKeyFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryCFMMCTradingAccountKey(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryCFMMCTradingAccountKey: *mut CThostFtdcQryCFMMCTradingAccountKeyField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqQryEWarrantOffsetEP32CThostFtdcQryEWarrantOffsetFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryEWarrantOffset(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryEWarrantOffset: *mut CThostFtdcQryEWarrantOffsetField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi32ReqQryInvestorProductGroupMarginEP44CThostFtdcQryInvestorProductGroupMarginFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorProductGroupMargin(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInvestorProductGroupMargin: *mut CThostFtdcQryInvestorProductGroupMarginField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqQryExchangeMarginRateEP36CThostFtdcQryExchangeMarginRateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryExchangeMarginRate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryExchangeMarginRate: *mut CThostFtdcQryExchangeMarginRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi30ReqQryExchangeMarginRateAdjustEP42CThostFtdcQryExchangeMarginRateAdjustFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryExchangeMarginRateAdjust(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryExchangeMarginRateAdjust: *mut CThostFtdcQryExchangeMarginRateAdjustField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqQryExchangeRateEP30CThostFtdcQryExchangeRateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryExchangeRate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryExchangeRate: *mut CThostFtdcQryExchangeRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqQrySecAgentACIDMapEP33CThostFtdcQrySecAgentACIDMapFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySecAgentACIDMap(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySecAgentACIDMap: *mut CThostFtdcQrySecAgentACIDMapField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqQryProductExchRateEP33CThostFtdcQryProductExchRateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryProductExchRate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryProductExchRate: *mut CThostFtdcQryProductExchRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqQryProductGroupEP30CThostFtdcQryProductGroupFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryProductGroup(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryProductGroup: *mut CThostFtdcQryProductGroupField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi32ReqQryMMInstrumentCommissionRateEP44CThostFtdcQryMMInstrumentCommissionRateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryMMInstrumentCommissionRate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryMMInstrumentCommissionRate: *mut CThostFtdcQryMMInstrumentCommissionRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi27ReqQryMMOptionInstrCommRateEP39CThostFtdcQryMMOptionInstrCommRateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryMMOptionInstrCommRate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryMMOptionInstrCommRate: *mut CThostFtdcQryMMOptionInstrCommRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi29ReqQryInstrumentOrderCommRateEP41CThostFtdcQryInstrumentOrderCommRateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInstrumentOrderCommRate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInstrumentOrderCommRate: *mut CThostFtdcQryInstrumentOrderCommRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi28ReqQrySecAgentTradingAccountEP32CThostFtdcQryTradingAccountFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySecAgentTradingAccount(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryTradingAccount: *mut CThostFtdcQryTradingAccountField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi23ReqQrySecAgentCheckModeEP35CThostFtdcQrySecAgentCheckModeFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySecAgentCheckMode(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySecAgentCheckMode: *mut CThostFtdcQrySecAgentCheckModeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi23ReqQrySecAgentTradeInfoEP35CThostFtdcQrySecAgentTradeInfoFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySecAgentTradeInfo(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySecAgentTradeInfo: *mut CThostFtdcQrySecAgentTradeInfoField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi26ReqQryOptionInstrTradeCostEP38CThostFtdcQryOptionInstrTradeCostFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryOptionInstrTradeCost(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryOptionInstrTradeCost: *mut CThostFtdcQryOptionInstrTradeCostField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQryOptionInstrCommRateEP37CThostFtdcQryOptionInstrCommRateFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryOptionInstrCommRate(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryOptionInstrCommRate: *mut CThostFtdcQryOptionInstrCommRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi15ReqQryExecOrderEP27CThostFtdcQryExecOrderFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryExecOrder(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryExecOrder: *mut CThostFtdcQryExecOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi14ReqQryForQuoteEP26CThostFtdcQryForQuoteFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryForQuote(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryForQuote: *mut CThostFtdcQryForQuoteField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi11ReqQryQuoteEP23CThostFtdcQryQuoteFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryQuote(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryQuote: *mut CThostFtdcQryQuoteField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqQryOptionSelfCloseEP33CThostFtdcQryOptionSelfCloseFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryOptionSelfClose(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryOptionSelfClose: *mut CThostFtdcQryOptionSelfCloseField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi16ReqQryInvestUnitEP28CThostFtdcQryInvestUnitFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestUnit(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInvestUnit: *mut CThostFtdcQryInvestUnitField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQryCombInstrumentGuardEP37CThostFtdcQryCombInstrumentGuardFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryCombInstrumentGuard(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryCombInstrumentGuard: *mut CThostFtdcQryCombInstrumentGuardField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi16ReqQryCombActionEP28CThostFtdcQryCombActionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryCombAction(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryCombAction: *mut CThostFtdcQryCombActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi20ReqQryTransferSerialEP32CThostFtdcQryTransferSerialFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryTransferSerial(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryTransferSerial: *mut CThostFtdcQryTransferSerialField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi21ReqQryAccountregisterEP33CThostFtdcQryAccountregisterFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryAccountregister(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryAccountregister: *mut CThostFtdcQryAccountregisterField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi18ReqQryContractBankEP30CThostFtdcQryContractBankFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryContractBank(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryContractBank: *mut CThostFtdcQryContractBankField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi17ReqQryParkedOrderEP29CThostFtdcQryParkedOrderFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryParkedOrder(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryParkedOrder: *mut CThostFtdcQryParkedOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi23ReqQryParkedOrderActionEP35CThostFtdcQryParkedOrderActionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryParkedOrderAction(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryParkedOrderAction: *mut CThostFtdcQryParkedOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi19ReqQryTradingNoticeEP31CThostFtdcQryTradingNoticeFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryTradingNotice(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryTradingNotice: *mut CThostFtdcQryTradingNoticeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQryBrokerTradingParamsEP37CThostFtdcQryBrokerTradingParamsFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryBrokerTradingParams(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryBrokerTradingParams: *mut CThostFtdcQryBrokerTradingParamsField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqQryBrokerTradingAlgosEP36CThostFtdcQryBrokerTradingAlgosFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryBrokerTradingAlgos(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryBrokerTradingAlgos: *mut CThostFtdcQryBrokerTradingAlgosField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi32ReqQueryCFMMCTradingAccountTokenEP44CThostFtdcQueryCFMMCTradingAccountTokenFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQueryCFMMCTradingAccountToken(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQueryCFMMCTradingAccountToken: *mut CThostFtdcQueryCFMMCTradingAccountTokenField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi27ReqFromBankToFutureByFutureEP26CThostFtdcReqTransferFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqFromBankToFutureByFuture(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqTransfer: *mut CThostFtdcReqTransferField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi27ReqFromFutureToBankByFutureEP26CThostFtdcReqTransferFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqFromFutureToBankByFuture(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqTransfer: *mut CThostFtdcReqTransferField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi32ReqQueryBankAccountMoneyByFutureEP30CThostFtdcReqQueryAccountFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQueryBankAccountMoneyByFuture(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pReqQueryAccount: *mut CThostFtdcReqQueryAccountField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi26ReqQryClassifiedInstrumentEP38CThostFtdcQryClassifiedInstrumentFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryClassifiedInstrument(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryClassifiedInstrument: *mut CThostFtdcQryClassifiedInstrumentField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqQryCombPromotionParamEP36CThostFtdcQryCombPromotionParamFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryCombPromotionParam(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryCombPromotionParam: *mut CThostFtdcQryCombPromotionParamField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi29ReqQryRiskSettleInvstPositionEP41CThostFtdcQryRiskSettleInvstPositionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryRiskSettleInvstPosition(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryRiskSettleInvstPosition: *mut CThostFtdcQryRiskSettleInvstPositionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi29ReqQryRiskSettleProductStatusEP41CThostFtdcQryRiskSettleProductStatusFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryRiskSettleProductStatus(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryRiskSettleProductStatus: *mut CThostFtdcQryRiskSettleProductStatusField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQrySPBMFutureParameterEP37CThostFtdcQrySPBMFutureParameterFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMFutureParameter(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySPBMFutureParameter: *mut CThostFtdcQrySPBMFutureParameterField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQrySPBMOptionParameterEP37CThostFtdcQrySPBMOptionParameterFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMOptionParameter(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySPBMOptionParameter: *mut CThostFtdcQrySPBMOptionParameterField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqQrySPBMIntraParameterEP36CThostFtdcQrySPBMIntraParameterFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMIntraParameter(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySPBMIntraParameter: *mut CThostFtdcQrySPBMIntraParameterField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi24ReqQrySPBMInterParameterEP36CThostFtdcQrySPBMInterParameterFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMInterParameter(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySPBMInterParameter: *mut CThostFtdcQrySPBMInterParameterField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi25ReqQrySPBMPortfDefinitionEP37CThostFtdcQrySPBMPortfDefinitionFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMPortfDefinition(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySPBMPortfDefinition: *mut CThostFtdcQrySPBMPortfDefinitionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi26ReqQrySPBMInvestorPortfDefEP38CThostFtdcQrySPBMInvestorPortfDefFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQrySPBMInvestorPortfDef(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQrySPBMInvestorPortfDef: *mut CThostFtdcQrySPBMInvestorPortfDefField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi30ReqQryInvestorPortfMarginRatioEP42CThostFtdcQryInvestorPortfMarginRatioFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorPortfMarginRatio(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInvestorPortfMarginRatio: *mut CThostFtdcQryInvestorPortfMarginRatioField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+extern "C" {
+    #[link_name = "\u{1}_ZN24Rust_CThostFtdcTraderApi28ReqQryInvestorProdSPBMDetailEP40CThostFtdcQryInvestorProdSPBMDetailFieldi"]
+    pub fn Rust_CThostFtdcTraderApi_ReqQryInvestorProdSPBMDetail(
+        this: *mut Rust_CThostFtdcTraderApi,
+        pQryInvestorProdSPBMDetail: *mut CThostFtdcQryInvestorProdSPBMDetailField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int;
+}
+impl Rust_CThostFtdcTraderApi {
+    #[inline]
+    pub unsafe fn CreateFtdcTraderApi(
+        pszFlowPath: *const ::std::os::raw::c_char,
+    ) -> *mut Rust_CThostFtdcTraderApi {
+        unsafe { Rust_CThostFtdcTraderApi_CreateFtdcTraderApi(pszFlowPath) }
+    }
+    #[inline]
+    pub unsafe fn GetApiVersion() -> *const ::std::os::raw::c_char {
+        unsafe { Rust_CThostFtdcTraderApi_GetApiVersion() }
+    }
+    #[inline]
+    pub unsafe fn Release(&mut self) {
+        unsafe { Rust_CThostFtdcTraderApi_Release(self) }
+    }
+    #[inline]
+    pub unsafe fn Init(&mut self) {
+        unsafe { Rust_CThostFtdcTraderApi_Init(self) }
+    }
+    #[inline]
+    pub unsafe fn Join(&mut self) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_Join(self) }
+    }
+    #[inline]
+    pub unsafe fn GetTradingDay(&mut self) -> *const ::std::os::raw::c_char {
+        unsafe { Rust_CThostFtdcTraderApi_GetTradingDay(self) }
+    }
+    #[inline]
+    pub unsafe fn RegisterFront(&mut self, pszFrontAddress: *mut ::std::os::raw::c_char) {
+        unsafe { Rust_CThostFtdcTraderApi_RegisterFront(self, pszFrontAddress) }
+    }
+    #[inline]
+    pub unsafe fn RegisterNameServer(&mut self, pszNsAddress: *mut ::std::os::raw::c_char) {
+        unsafe { Rust_CThostFtdcTraderApi_RegisterNameServer(self, pszNsAddress) }
+    }
+    #[inline]
+    pub unsafe fn RegisterFensUserInfo(&mut self, pFensUserInfo: *mut CThostFtdcFensUserInfoField) {
+        unsafe { Rust_CThostFtdcTraderApi_RegisterFensUserInfo(self, pFensUserInfo) }
+    }
+    #[inline]
+    pub unsafe fn RegisterSpi(&mut self, pSpi: *mut CThostFtdcTraderSpi) {
+        unsafe { Rust_CThostFtdcTraderApi_RegisterSpi(self, pSpi) }
+    }
+    #[inline]
+    pub unsafe fn SubscribePrivateTopic(&mut self, nResumeType: THOST_TE_RESUME_TYPE) {
+        unsafe { Rust_CThostFtdcTraderApi_SubscribePrivateTopic(self, nResumeType) }
+    }
+    #[inline]
+    pub unsafe fn SubscribePublicTopic(&mut self, nResumeType: THOST_TE_RESUME_TYPE) {
+        unsafe { Rust_CThostFtdcTraderApi_SubscribePublicTopic(self, nResumeType) }
+    }
+    #[inline]
+    pub unsafe fn ReqAuthenticate(
+        &mut self,
+        pReqAuthenticateField: *mut CThostFtdcReqAuthenticateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqAuthenticate(self, pReqAuthenticateField, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn RegisterUserSystemInfo(
+        &mut self,
+        pUserSystemInfo: *mut CThostFtdcUserSystemInfoField,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_RegisterUserSystemInfo(self, pUserSystemInfo) }
+    }
+    #[inline]
+    pub unsafe fn SubmitUserSystemInfo(
+        &mut self,
+        pUserSystemInfo: *mut CThostFtdcUserSystemInfoField,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_SubmitUserSystemInfo(self, pUserSystemInfo) }
+    }
+    #[inline]
+    pub unsafe fn ReqUserLogin(
+        &mut self,
+        pReqUserLoginField: *mut CThostFtdcReqUserLoginField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqUserLogin(self, pReqUserLoginField, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqUserLogout(
+        &mut self,
+        pUserLogout: *mut CThostFtdcUserLogoutField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqUserLogout(self, pUserLogout, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqUserPasswordUpdate(
+        &mut self,
+        pUserPasswordUpdate: *mut CThostFtdcUserPasswordUpdateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqUserPasswordUpdate(self, pUserPasswordUpdate, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqTradingAccountPasswordUpdate(
+        &mut self,
+        pTradingAccountPasswordUpdate: *mut CThostFtdcTradingAccountPasswordUpdateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqTradingAccountPasswordUpdate(
+                self,
+                pTradingAccountPasswordUpdate,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqUserAuthMethod(
+        &mut self,
+        pReqUserAuthMethod: *mut CThostFtdcReqUserAuthMethodField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqUserAuthMethod(self, pReqUserAuthMethod, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqGenUserCaptcha(
+        &mut self,
+        pReqGenUserCaptcha: *mut CThostFtdcReqGenUserCaptchaField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqGenUserCaptcha(self, pReqGenUserCaptcha, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqGenUserText(
+        &mut self,
+        pReqGenUserText: *mut CThostFtdcReqGenUserTextField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqGenUserText(self, pReqGenUserText, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqUserLoginWithCaptcha(
+        &mut self,
+        pReqUserLoginWithCaptcha: *mut CThostFtdcReqUserLoginWithCaptchaField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqUserLoginWithCaptcha(
+                self,
+                pReqUserLoginWithCaptcha,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqUserLoginWithText(
+        &mut self,
+        pReqUserLoginWithText: *mut CThostFtdcReqUserLoginWithTextField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqUserLoginWithText(self, pReqUserLoginWithText, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqUserLoginWithOTP(
+        &mut self,
+        pReqUserLoginWithOTP: *mut CThostFtdcReqUserLoginWithOTPField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqUserLoginWithOTP(self, pReqUserLoginWithOTP, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqOrderInsert(
+        &mut self,
+        pInputOrder: *mut CThostFtdcInputOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqOrderInsert(self, pInputOrder, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqParkedOrderInsert(
+        &mut self,
+        pParkedOrder: *mut CThostFtdcParkedOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqParkedOrderInsert(self, pParkedOrder, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqParkedOrderAction(
+        &mut self,
+        pParkedOrderAction: *mut CThostFtdcParkedOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqParkedOrderAction(self, pParkedOrderAction, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqOrderAction(
+        &mut self,
+        pInputOrderAction: *mut CThostFtdcInputOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqOrderAction(self, pInputOrderAction, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryMaxOrderVolume(
+        &mut self,
+        pQryMaxOrderVolume: *mut CThostFtdcQryMaxOrderVolumeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryMaxOrderVolume(self, pQryMaxOrderVolume, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqSettlementInfoConfirm(
+        &mut self,
+        pSettlementInfoConfirm: *mut CThostFtdcSettlementInfoConfirmField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqSettlementInfoConfirm(
+                self,
+                pSettlementInfoConfirm,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqRemoveParkedOrder(
+        &mut self,
+        pRemoveParkedOrder: *mut CThostFtdcRemoveParkedOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqRemoveParkedOrder(self, pRemoveParkedOrder, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqRemoveParkedOrderAction(
+        &mut self,
+        pRemoveParkedOrderAction: *mut CThostFtdcRemoveParkedOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqRemoveParkedOrderAction(
+                self,
+                pRemoveParkedOrderAction,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqExecOrderInsert(
+        &mut self,
+        pInputExecOrder: *mut CThostFtdcInputExecOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqExecOrderInsert(self, pInputExecOrder, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqExecOrderAction(
+        &mut self,
+        pInputExecOrderAction: *mut CThostFtdcInputExecOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqExecOrderAction(self, pInputExecOrderAction, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqForQuoteInsert(
+        &mut self,
+        pInputForQuote: *mut CThostFtdcInputForQuoteField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqForQuoteInsert(self, pInputForQuote, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQuoteInsert(
+        &mut self,
+        pInputQuote: *mut CThostFtdcInputQuoteField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQuoteInsert(self, pInputQuote, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQuoteAction(
+        &mut self,
+        pInputQuoteAction: *mut CThostFtdcInputQuoteActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQuoteAction(self, pInputQuoteAction, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqBatchOrderAction(
+        &mut self,
+        pInputBatchOrderAction: *mut CThostFtdcInputBatchOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqBatchOrderAction(self, pInputBatchOrderAction, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqOptionSelfCloseInsert(
+        &mut self,
+        pInputOptionSelfClose: *mut CThostFtdcInputOptionSelfCloseField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqOptionSelfCloseInsert(
+                self,
+                pInputOptionSelfClose,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqOptionSelfCloseAction(
+        &mut self,
+        pInputOptionSelfCloseAction: *mut CThostFtdcInputOptionSelfCloseActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqOptionSelfCloseAction(
+                self,
+                pInputOptionSelfCloseAction,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqCombActionInsert(
+        &mut self,
+        pInputCombAction: *mut CThostFtdcInputCombActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqCombActionInsert(self, pInputCombAction, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryOrder(
+        &mut self,
+        pQryOrder: *mut CThostFtdcQryOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryOrder(self, pQryOrder, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryTrade(
+        &mut self,
+        pQryTrade: *mut CThostFtdcQryTradeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryTrade(self, pQryTrade, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInvestorPosition(
+        &mut self,
+        pQryInvestorPosition: *mut CThostFtdcQryInvestorPositionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryInvestorPosition(self, pQryInvestorPosition, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryTradingAccount(
+        &mut self,
+        pQryTradingAccount: *mut CThostFtdcQryTradingAccountField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryTradingAccount(self, pQryTradingAccount, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInvestor(
+        &mut self,
+        pQryInvestor: *mut CThostFtdcQryInvestorField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryInvestor(self, pQryInvestor, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryTradingCode(
+        &mut self,
+        pQryTradingCode: *mut CThostFtdcQryTradingCodeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryTradingCode(self, pQryTradingCode, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInstrumentMarginRate(
+        &mut self,
+        pQryInstrumentMarginRate: *mut CThostFtdcQryInstrumentMarginRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryInstrumentMarginRate(
+                self,
+                pQryInstrumentMarginRate,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInstrumentCommissionRate(
+        &mut self,
+        pQryInstrumentCommissionRate: *mut CThostFtdcQryInstrumentCommissionRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryInstrumentCommissionRate(
+                self,
+                pQryInstrumentCommissionRate,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryExchange(
+        &mut self,
+        pQryExchange: *mut CThostFtdcQryExchangeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryExchange(self, pQryExchange, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryProduct(
+        &mut self,
+        pQryProduct: *mut CThostFtdcQryProductField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryProduct(self, pQryProduct, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInstrument(
+        &mut self,
+        pQryInstrument: *mut CThostFtdcQryInstrumentField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryInstrument(self, pQryInstrument, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryDepthMarketData(
+        &mut self,
+        pQryDepthMarketData: *mut CThostFtdcQryDepthMarketDataField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryDepthMarketData(self, pQryDepthMarketData, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryTraderOffer(
+        &mut self,
+        pQryTraderOffer: *mut CThostFtdcQryTraderOfferField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryTraderOffer(self, pQryTraderOffer, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySettlementInfo(
+        &mut self,
+        pQrySettlementInfo: *mut CThostFtdcQrySettlementInfoField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySettlementInfo(self, pQrySettlementInfo, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryTransferBank(
+        &mut self,
+        pQryTransferBank: *mut CThostFtdcQryTransferBankField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryTransferBank(self, pQryTransferBank, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInvestorPositionDetail(
+        &mut self,
+        pQryInvestorPositionDetail: *mut CThostFtdcQryInvestorPositionDetailField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryInvestorPositionDetail(
+                self,
+                pQryInvestorPositionDetail,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryNotice(
+        &mut self,
+        pQryNotice: *mut CThostFtdcQryNoticeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryNotice(self, pQryNotice, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySettlementInfoConfirm(
+        &mut self,
+        pQrySettlementInfoConfirm: *mut CThostFtdcQrySettlementInfoConfirmField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySettlementInfoConfirm(
+                self,
+                pQrySettlementInfoConfirm,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInvestorPositionCombineDetail(
+        &mut self,
+        pQryInvestorPositionCombineDetail: *mut CThostFtdcQryInvestorPositionCombineDetailField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryInvestorPositionCombineDetail(
+                self,
+                pQryInvestorPositionCombineDetail,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryCFMMCTradingAccountKey(
+        &mut self,
+        pQryCFMMCTradingAccountKey: *mut CThostFtdcQryCFMMCTradingAccountKeyField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryCFMMCTradingAccountKey(
+                self,
+                pQryCFMMCTradingAccountKey,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryEWarrantOffset(
+        &mut self,
+        pQryEWarrantOffset: *mut CThostFtdcQryEWarrantOffsetField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryEWarrantOffset(self, pQryEWarrantOffset, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInvestorProductGroupMargin(
+        &mut self,
+        pQryInvestorProductGroupMargin: *mut CThostFtdcQryInvestorProductGroupMarginField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryInvestorProductGroupMargin(
+                self,
+                pQryInvestorProductGroupMargin,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryExchangeMarginRate(
+        &mut self,
+        pQryExchangeMarginRate: *mut CThostFtdcQryExchangeMarginRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryExchangeMarginRate(
+                self,
+                pQryExchangeMarginRate,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryExchangeMarginRateAdjust(
+        &mut self,
+        pQryExchangeMarginRateAdjust: *mut CThostFtdcQryExchangeMarginRateAdjustField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryExchangeMarginRateAdjust(
+                self,
+                pQryExchangeMarginRateAdjust,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryExchangeRate(
+        &mut self,
+        pQryExchangeRate: *mut CThostFtdcQryExchangeRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryExchangeRate(self, pQryExchangeRate, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySecAgentACIDMap(
+        &mut self,
+        pQrySecAgentACIDMap: *mut CThostFtdcQrySecAgentACIDMapField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySecAgentACIDMap(self, pQrySecAgentACIDMap, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryProductExchRate(
+        &mut self,
+        pQryProductExchRate: *mut CThostFtdcQryProductExchRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryProductExchRate(self, pQryProductExchRate, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryProductGroup(
+        &mut self,
+        pQryProductGroup: *mut CThostFtdcQryProductGroupField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryProductGroup(self, pQryProductGroup, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryMMInstrumentCommissionRate(
+        &mut self,
+        pQryMMInstrumentCommissionRate: *mut CThostFtdcQryMMInstrumentCommissionRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryMMInstrumentCommissionRate(
+                self,
+                pQryMMInstrumentCommissionRate,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryMMOptionInstrCommRate(
+        &mut self,
+        pQryMMOptionInstrCommRate: *mut CThostFtdcQryMMOptionInstrCommRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryMMOptionInstrCommRate(
+                self,
+                pQryMMOptionInstrCommRate,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInstrumentOrderCommRate(
+        &mut self,
+        pQryInstrumentOrderCommRate: *mut CThostFtdcQryInstrumentOrderCommRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryInstrumentOrderCommRate(
+                self,
+                pQryInstrumentOrderCommRate,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySecAgentTradingAccount(
+        &mut self,
+        pQryTradingAccount: *mut CThostFtdcQryTradingAccountField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySecAgentTradingAccount(
+                self,
+                pQryTradingAccount,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySecAgentCheckMode(
+        &mut self,
+        pQrySecAgentCheckMode: *mut CThostFtdcQrySecAgentCheckModeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySecAgentCheckMode(
+                self,
+                pQrySecAgentCheckMode,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySecAgentTradeInfo(
+        &mut self,
+        pQrySecAgentTradeInfo: *mut CThostFtdcQrySecAgentTradeInfoField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySecAgentTradeInfo(
+                self,
+                pQrySecAgentTradeInfo,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryOptionInstrTradeCost(
+        &mut self,
+        pQryOptionInstrTradeCost: *mut CThostFtdcQryOptionInstrTradeCostField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryOptionInstrTradeCost(
+                self,
+                pQryOptionInstrTradeCost,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryOptionInstrCommRate(
+        &mut self,
+        pQryOptionInstrCommRate: *mut CThostFtdcQryOptionInstrCommRateField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryOptionInstrCommRate(
+                self,
+                pQryOptionInstrCommRate,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryExecOrder(
+        &mut self,
+        pQryExecOrder: *mut CThostFtdcQryExecOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryExecOrder(self, pQryExecOrder, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryForQuote(
+        &mut self,
+        pQryForQuote: *mut CThostFtdcQryForQuoteField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryForQuote(self, pQryForQuote, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryQuote(
+        &mut self,
+        pQryQuote: *mut CThostFtdcQryQuoteField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryQuote(self, pQryQuote, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryOptionSelfClose(
+        &mut self,
+        pQryOptionSelfClose: *mut CThostFtdcQryOptionSelfCloseField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryOptionSelfClose(self, pQryOptionSelfClose, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInvestUnit(
+        &mut self,
+        pQryInvestUnit: *mut CThostFtdcQryInvestUnitField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryInvestUnit(self, pQryInvestUnit, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryCombInstrumentGuard(
+        &mut self,
+        pQryCombInstrumentGuard: *mut CThostFtdcQryCombInstrumentGuardField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryCombInstrumentGuard(
+                self,
+                pQryCombInstrumentGuard,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryCombAction(
+        &mut self,
+        pQryCombAction: *mut CThostFtdcQryCombActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryCombAction(self, pQryCombAction, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryTransferSerial(
+        &mut self,
+        pQryTransferSerial: *mut CThostFtdcQryTransferSerialField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryTransferSerial(self, pQryTransferSerial, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryAccountregister(
+        &mut self,
+        pQryAccountregister: *mut CThostFtdcQryAccountregisterField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryAccountregister(self, pQryAccountregister, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryContractBank(
+        &mut self,
+        pQryContractBank: *mut CThostFtdcQryContractBankField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryContractBank(self, pQryContractBank, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryParkedOrder(
+        &mut self,
+        pQryParkedOrder: *mut CThostFtdcQryParkedOrderField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryParkedOrder(self, pQryParkedOrder, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryParkedOrderAction(
+        &mut self,
+        pQryParkedOrderAction: *mut CThostFtdcQryParkedOrderActionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryParkedOrderAction(
+                self,
+                pQryParkedOrderAction,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryTradingNotice(
+        &mut self,
+        pQryTradingNotice: *mut CThostFtdcQryTradingNoticeField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe { Rust_CThostFtdcTraderApi_ReqQryTradingNotice(self, pQryTradingNotice, nRequestID) }
+    }
+    #[inline]
+    pub unsafe fn ReqQryBrokerTradingParams(
+        &mut self,
+        pQryBrokerTradingParams: *mut CThostFtdcQryBrokerTradingParamsField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryBrokerTradingParams(
+                self,
+                pQryBrokerTradingParams,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryBrokerTradingAlgos(
+        &mut self,
+        pQryBrokerTradingAlgos: *mut CThostFtdcQryBrokerTradingAlgosField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryBrokerTradingAlgos(
+                self,
+                pQryBrokerTradingAlgos,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQueryCFMMCTradingAccountToken(
+        &mut self,
+        pQueryCFMMCTradingAccountToken: *mut CThostFtdcQueryCFMMCTradingAccountTokenField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQueryCFMMCTradingAccountToken(
+                self,
+                pQueryCFMMCTradingAccountToken,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqFromBankToFutureByFuture(
+        &mut self,
+        pReqTransfer: *mut CThostFtdcReqTransferField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqFromBankToFutureByFuture(self, pReqTransfer, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqFromFutureToBankByFuture(
+        &mut self,
+        pReqTransfer: *mut CThostFtdcReqTransferField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqFromFutureToBankByFuture(self, pReqTransfer, nRequestID)
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQueryBankAccountMoneyByFuture(
+        &mut self,
+        pReqQueryAccount: *mut CThostFtdcReqQueryAccountField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQueryBankAccountMoneyByFuture(
+                self,
+                pReqQueryAccount,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryClassifiedInstrument(
+        &mut self,
+        pQryClassifiedInstrument: *mut CThostFtdcQryClassifiedInstrumentField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryClassifiedInstrument(
+                self,
+                pQryClassifiedInstrument,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryCombPromotionParam(
+        &mut self,
+        pQryCombPromotionParam: *mut CThostFtdcQryCombPromotionParamField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryCombPromotionParam(
+                self,
+                pQryCombPromotionParam,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryRiskSettleInvstPosition(
+        &mut self,
+        pQryRiskSettleInvstPosition: *mut CThostFtdcQryRiskSettleInvstPositionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryRiskSettleInvstPosition(
+                self,
+                pQryRiskSettleInvstPosition,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryRiskSettleProductStatus(
+        &mut self,
+        pQryRiskSettleProductStatus: *mut CThostFtdcQryRiskSettleProductStatusField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryRiskSettleProductStatus(
+                self,
+                pQryRiskSettleProductStatus,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySPBMFutureParameter(
+        &mut self,
+        pQrySPBMFutureParameter: *mut CThostFtdcQrySPBMFutureParameterField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySPBMFutureParameter(
+                self,
+                pQrySPBMFutureParameter,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySPBMOptionParameter(
+        &mut self,
+        pQrySPBMOptionParameter: *mut CThostFtdcQrySPBMOptionParameterField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySPBMOptionParameter(
+                self,
+                pQrySPBMOptionParameter,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySPBMIntraParameter(
+        &mut self,
+        pQrySPBMIntraParameter: *mut CThostFtdcQrySPBMIntraParameterField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySPBMIntraParameter(
+                self,
+                pQrySPBMIntraParameter,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySPBMInterParameter(
+        &mut self,
+        pQrySPBMInterParameter: *mut CThostFtdcQrySPBMInterParameterField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySPBMInterParameter(
+                self,
+                pQrySPBMInterParameter,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySPBMPortfDefinition(
+        &mut self,
+        pQrySPBMPortfDefinition: *mut CThostFtdcQrySPBMPortfDefinitionField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySPBMPortfDefinition(
+                self,
+                pQrySPBMPortfDefinition,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQrySPBMInvestorPortfDef(
+        &mut self,
+        pQrySPBMInvestorPortfDef: *mut CThostFtdcQrySPBMInvestorPortfDefField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQrySPBMInvestorPortfDef(
+                self,
+                pQrySPBMInvestorPortfDef,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInvestorPortfMarginRatio(
+        &mut self,
+        pQryInvestorPortfMarginRatio: *mut CThostFtdcQryInvestorPortfMarginRatioField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryInvestorPortfMarginRatio(
+                self,
+                pQryInvestorPortfMarginRatio,
+                nRequestID,
+            )
+        }
+    }
+    #[inline]
+    pub unsafe fn ReqQryInvestorProdSPBMDetail(
+        &mut self,
+        pQryInvestorProdSPBMDetail: *mut CThostFtdcQryInvestorProdSPBMDetailField,
+        nRequestID: ::std::os::raw::c_int,
+    ) -> ::std::os::raw::c_int {
+        unsafe {
+            Rust_CThostFtdcTraderApi_ReqQryInvestorProdSPBMDetail(
+                self,
+                pQryInvestorProdSPBMDetail,
+                nRequestID,
+            )
+        }
+    }
+}
+
 #[allow(unused)]
 pub trait Rust_CThostFtdcMdSpi_Trait {
     fn on_front_connected(&mut self) {  }
@@ -12003,93 +11987,93 @@ pub trait Rust_CThostFtdcMdSpi_Trait {
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnFrontConnected(trait_obj: *mut ::std::os::raw::c_void) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnFrontConnected(trait_ptr: *mut ::std::os::raw::c_void) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_front_connected()
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnFrontDisconnected(trait_obj: *mut ::std::os::raw::c_void, nReason: ::std::os::raw::c_int) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnFrontDisconnected(trait_ptr: *mut ::std::os::raw::c_void, nReason: ::std::os::raw::c_int) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_front_disconnected(nReason)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnHeartBeatWarning(trait_obj: *mut ::std::os::raw::c_void, nTimeLapse: ::std::os::raw::c_int) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnHeartBeatWarning(trait_ptr: *mut ::std::os::raw::c_void, nTimeLapse: ::std::os::raw::c_int) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_heart_beat_warning(nTimeLapse)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspUserLogin(trait_obj: *mut ::std::os::raw::c_void, pRspUserLogin: *mut CThostFtdcRspUserLoginField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspUserLogin(trait_ptr: *mut ::std::os::raw::c_void, pRspUserLogin: *mut CThostFtdcRspUserLoginField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_user_login(pRspUserLogin, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspUserLogout(trait_obj: *mut ::std::os::raw::c_void, pUserLogout: *mut CThostFtdcUserLogoutField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspUserLogout(trait_ptr: *mut ::std::os::raw::c_void, pUserLogout: *mut CThostFtdcUserLogoutField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_user_logout(pUserLogout, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspQryMulticastInstrument(trait_obj: *mut ::std::os::raw::c_void, pMulticastInstrument: *mut CThostFtdcMulticastInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspQryMulticastInstrument(trait_ptr: *mut ::std::os::raw::c_void, pMulticastInstrument: *mut CThostFtdcMulticastInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_multicast_instrument(pMulticastInstrument, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspError(trait_obj: *mut ::std::os::raw::c_void, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspError(trait_ptr: *mut ::std::os::raw::c_void, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_error(pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspSubMarketData(trait_obj: *mut ::std::os::raw::c_void, pSpecificInstrument: *mut CThostFtdcSpecificInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspSubMarketData(trait_ptr: *mut ::std::os::raw::c_void, pSpecificInstrument: *mut CThostFtdcSpecificInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_sub_market_data(pSpecificInstrument, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspUnSubMarketData(trait_obj: *mut ::std::os::raw::c_void, pSpecificInstrument: *mut CThostFtdcSpecificInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspUnSubMarketData(trait_ptr: *mut ::std::os::raw::c_void, pSpecificInstrument: *mut CThostFtdcSpecificInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_un_sub_market_data(pSpecificInstrument, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspSubForQuoteRsp(trait_obj: *mut ::std::os::raw::c_void, pSpecificInstrument: *mut CThostFtdcSpecificInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspSubForQuoteRsp(trait_ptr: *mut ::std::os::raw::c_void, pSpecificInstrument: *mut CThostFtdcSpecificInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_sub_for_quote_rsp(pSpecificInstrument, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspUnSubForQuoteRsp(trait_obj: *mut ::std::os::raw::c_void, pSpecificInstrument: *mut CThostFtdcSpecificInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRspUnSubForQuoteRsp(trait_ptr: *mut ::std::os::raw::c_void, pSpecificInstrument: *mut CThostFtdcSpecificInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_un_sub_for_quote_rsp(pSpecificInstrument, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRtnDepthMarketData(trait_obj: *mut ::std::os::raw::c_void, pDepthMarketData: *mut CThostFtdcDepthMarketDataField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRtnDepthMarketData(trait_ptr: *mut ::std::os::raw::c_void, pDepthMarketData: *mut CThostFtdcDepthMarketDataField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_depth_market_data(pDepthMarketData)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRtnForQuoteRsp(trait_obj: *mut ::std::os::raw::c_void, pForQuoteRsp: *mut CThostFtdcForQuoteRspField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcMdSpi_Trait_OnRtnForQuoteRsp(trait_ptr: *mut ::std::os::raw::c_void, pForQuoteRsp: *mut CThostFtdcForQuoteRspField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcMdSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcMdSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_for_quote_rsp(pForQuoteRsp)
 }
 
@@ -12242,968 +12226,968 @@ pub trait Rust_CThostFtdcTraderSpi_Trait {
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnFrontConnected(trait_obj: *mut ::std::os::raw::c_void) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnFrontConnected(trait_ptr: *mut ::std::os::raw::c_void) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_front_connected()
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnFrontDisconnected(trait_obj: *mut ::std::os::raw::c_void, nReason: ::std::os::raw::c_int) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnFrontDisconnected(trait_ptr: *mut ::std::os::raw::c_void, nReason: ::std::os::raw::c_int) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_front_disconnected(nReason)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnHeartBeatWarning(trait_obj: *mut ::std::os::raw::c_void, nTimeLapse: ::std::os::raw::c_int) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnHeartBeatWarning(trait_ptr: *mut ::std::os::raw::c_void, nTimeLapse: ::std::os::raw::c_int) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_heart_beat_warning(nTimeLapse)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspAuthenticate(trait_obj: *mut ::std::os::raw::c_void, pRspAuthenticateField: *mut CThostFtdcRspAuthenticateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspAuthenticate(trait_ptr: *mut ::std::os::raw::c_void, pRspAuthenticateField: *mut CThostFtdcRspAuthenticateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_authenticate(pRspAuthenticateField, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspUserLogin(trait_obj: *mut ::std::os::raw::c_void, pRspUserLogin: *mut CThostFtdcRspUserLoginField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspUserLogin(trait_ptr: *mut ::std::os::raw::c_void, pRspUserLogin: *mut CThostFtdcRspUserLoginField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_user_login(pRspUserLogin, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspUserLogout(trait_obj: *mut ::std::os::raw::c_void, pUserLogout: *mut CThostFtdcUserLogoutField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspUserLogout(trait_ptr: *mut ::std::os::raw::c_void, pUserLogout: *mut CThostFtdcUserLogoutField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_user_logout(pUserLogout, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspUserPasswordUpdate(trait_obj: *mut ::std::os::raw::c_void, pUserPasswordUpdate: *mut CThostFtdcUserPasswordUpdateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspUserPasswordUpdate(trait_ptr: *mut ::std::os::raw::c_void, pUserPasswordUpdate: *mut CThostFtdcUserPasswordUpdateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_user_password_update(pUserPasswordUpdate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspTradingAccountPasswordUpdate(trait_obj: *mut ::std::os::raw::c_void, pTradingAccountPasswordUpdate: *mut CThostFtdcTradingAccountPasswordUpdateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspTradingAccountPasswordUpdate(trait_ptr: *mut ::std::os::raw::c_void, pTradingAccountPasswordUpdate: *mut CThostFtdcTradingAccountPasswordUpdateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_trading_account_password_update(pTradingAccountPasswordUpdate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspUserAuthMethod(trait_obj: *mut ::std::os::raw::c_void, pRspUserAuthMethod: *mut CThostFtdcRspUserAuthMethodField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspUserAuthMethod(trait_ptr: *mut ::std::os::raw::c_void, pRspUserAuthMethod: *mut CThostFtdcRspUserAuthMethodField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_user_auth_method(pRspUserAuthMethod, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspGenUserCaptcha(trait_obj: *mut ::std::os::raw::c_void, pRspGenUserCaptcha: *mut CThostFtdcRspGenUserCaptchaField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspGenUserCaptcha(trait_ptr: *mut ::std::os::raw::c_void, pRspGenUserCaptcha: *mut CThostFtdcRspGenUserCaptchaField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_gen_user_captcha(pRspGenUserCaptcha, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspGenUserText(trait_obj: *mut ::std::os::raw::c_void, pRspGenUserText: *mut CThostFtdcRspGenUserTextField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspGenUserText(trait_ptr: *mut ::std::os::raw::c_void, pRspGenUserText: *mut CThostFtdcRspGenUserTextField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_gen_user_text(pRspGenUserText, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspOrderInsert(trait_obj: *mut ::std::os::raw::c_void, pInputOrder: *mut CThostFtdcInputOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspOrderInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputOrder: *mut CThostFtdcInputOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_order_insert(pInputOrder, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspParkedOrderInsert(trait_obj: *mut ::std::os::raw::c_void, pParkedOrder: *mut CThostFtdcParkedOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspParkedOrderInsert(trait_ptr: *mut ::std::os::raw::c_void, pParkedOrder: *mut CThostFtdcParkedOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_parked_order_insert(pParkedOrder, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspParkedOrderAction(trait_obj: *mut ::std::os::raw::c_void, pParkedOrderAction: *mut CThostFtdcParkedOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspParkedOrderAction(trait_ptr: *mut ::std::os::raw::c_void, pParkedOrderAction: *mut CThostFtdcParkedOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_parked_order_action(pParkedOrderAction, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspOrderAction(trait_obj: *mut ::std::os::raw::c_void, pInputOrderAction: *mut CThostFtdcInputOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspOrderAction(trait_ptr: *mut ::std::os::raw::c_void, pInputOrderAction: *mut CThostFtdcInputOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_order_action(pInputOrderAction, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryMaxOrderVolume(trait_obj: *mut ::std::os::raw::c_void, pQryMaxOrderVolume: *mut CThostFtdcQryMaxOrderVolumeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryMaxOrderVolume(trait_ptr: *mut ::std::os::raw::c_void, pQryMaxOrderVolume: *mut CThostFtdcQryMaxOrderVolumeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_max_order_volume(pQryMaxOrderVolume, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspSettlementInfoConfirm(trait_obj: *mut ::std::os::raw::c_void, pSettlementInfoConfirm: *mut CThostFtdcSettlementInfoConfirmField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspSettlementInfoConfirm(trait_ptr: *mut ::std::os::raw::c_void, pSettlementInfoConfirm: *mut CThostFtdcSettlementInfoConfirmField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_settlement_info_confirm(pSettlementInfoConfirm, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspRemoveParkedOrder(trait_obj: *mut ::std::os::raw::c_void, pRemoveParkedOrder: *mut CThostFtdcRemoveParkedOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspRemoveParkedOrder(trait_ptr: *mut ::std::os::raw::c_void, pRemoveParkedOrder: *mut CThostFtdcRemoveParkedOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_remove_parked_order(pRemoveParkedOrder, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspRemoveParkedOrderAction(trait_obj: *mut ::std::os::raw::c_void, pRemoveParkedOrderAction: *mut CThostFtdcRemoveParkedOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspRemoveParkedOrderAction(trait_ptr: *mut ::std::os::raw::c_void, pRemoveParkedOrderAction: *mut CThostFtdcRemoveParkedOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_remove_parked_order_action(pRemoveParkedOrderAction, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspExecOrderInsert(trait_obj: *mut ::std::os::raw::c_void, pInputExecOrder: *mut CThostFtdcInputExecOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspExecOrderInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputExecOrder: *mut CThostFtdcInputExecOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_exec_order_insert(pInputExecOrder, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspExecOrderAction(trait_obj: *mut ::std::os::raw::c_void, pInputExecOrderAction: *mut CThostFtdcInputExecOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspExecOrderAction(trait_ptr: *mut ::std::os::raw::c_void, pInputExecOrderAction: *mut CThostFtdcInputExecOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_exec_order_action(pInputExecOrderAction, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspForQuoteInsert(trait_obj: *mut ::std::os::raw::c_void, pInputForQuote: *mut CThostFtdcInputForQuoteField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspForQuoteInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputForQuote: *mut CThostFtdcInputForQuoteField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_for_quote_insert(pInputForQuote, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQuoteInsert(trait_obj: *mut ::std::os::raw::c_void, pInputQuote: *mut CThostFtdcInputQuoteField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQuoteInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputQuote: *mut CThostFtdcInputQuoteField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_quote_insert(pInputQuote, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQuoteAction(trait_obj: *mut ::std::os::raw::c_void, pInputQuoteAction: *mut CThostFtdcInputQuoteActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQuoteAction(trait_ptr: *mut ::std::os::raw::c_void, pInputQuoteAction: *mut CThostFtdcInputQuoteActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_quote_action(pInputQuoteAction, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspBatchOrderAction(trait_obj: *mut ::std::os::raw::c_void, pInputBatchOrderAction: *mut CThostFtdcInputBatchOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspBatchOrderAction(trait_ptr: *mut ::std::os::raw::c_void, pInputBatchOrderAction: *mut CThostFtdcInputBatchOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_batch_order_action(pInputBatchOrderAction, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspOptionSelfCloseInsert(trait_obj: *mut ::std::os::raw::c_void, pInputOptionSelfClose: *mut CThostFtdcInputOptionSelfCloseField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspOptionSelfCloseInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputOptionSelfClose: *mut CThostFtdcInputOptionSelfCloseField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_option_self_close_insert(pInputOptionSelfClose, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspOptionSelfCloseAction(trait_obj: *mut ::std::os::raw::c_void, pInputOptionSelfCloseAction: *mut CThostFtdcInputOptionSelfCloseActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspOptionSelfCloseAction(trait_ptr: *mut ::std::os::raw::c_void, pInputOptionSelfCloseAction: *mut CThostFtdcInputOptionSelfCloseActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_option_self_close_action(pInputOptionSelfCloseAction, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspCombActionInsert(trait_obj: *mut ::std::os::raw::c_void, pInputCombAction: *mut CThostFtdcInputCombActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspCombActionInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputCombAction: *mut CThostFtdcInputCombActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_comb_action_insert(pInputCombAction, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryOrder(trait_obj: *mut ::std::os::raw::c_void, pOrder: *mut CThostFtdcOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryOrder(trait_ptr: *mut ::std::os::raw::c_void, pOrder: *mut CThostFtdcOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_order(pOrder, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTrade(trait_obj: *mut ::std::os::raw::c_void, pTrade: *mut CThostFtdcTradeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTrade(trait_ptr: *mut ::std::os::raw::c_void, pTrade: *mut CThostFtdcTradeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_trade(pTrade, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPosition(trait_obj: *mut ::std::os::raw::c_void, pInvestorPosition: *mut CThostFtdcInvestorPositionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPosition(trait_ptr: *mut ::std::os::raw::c_void, pInvestorPosition: *mut CThostFtdcInvestorPositionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_investor_position(pInvestorPosition, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTradingAccount(trait_obj: *mut ::std::os::raw::c_void, pTradingAccount: *mut CThostFtdcTradingAccountField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTradingAccount(trait_ptr: *mut ::std::os::raw::c_void, pTradingAccount: *mut CThostFtdcTradingAccountField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_trading_account(pTradingAccount, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestor(trait_obj: *mut ::std::os::raw::c_void, pInvestor: *mut CThostFtdcInvestorField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestor(trait_ptr: *mut ::std::os::raw::c_void, pInvestor: *mut CThostFtdcInvestorField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_investor(pInvestor, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTradingCode(trait_obj: *mut ::std::os::raw::c_void, pTradingCode: *mut CThostFtdcTradingCodeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTradingCode(trait_ptr: *mut ::std::os::raw::c_void, pTradingCode: *mut CThostFtdcTradingCodeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_trading_code(pTradingCode, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInstrumentMarginRate(trait_obj: *mut ::std::os::raw::c_void, pInstrumentMarginRate: *mut CThostFtdcInstrumentMarginRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInstrumentMarginRate(trait_ptr: *mut ::std::os::raw::c_void, pInstrumentMarginRate: *mut CThostFtdcInstrumentMarginRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_instrument_margin_rate(pInstrumentMarginRate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInstrumentCommissionRate(trait_obj: *mut ::std::os::raw::c_void, pInstrumentCommissionRate: *mut CThostFtdcInstrumentCommissionRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInstrumentCommissionRate(trait_ptr: *mut ::std::os::raw::c_void, pInstrumentCommissionRate: *mut CThostFtdcInstrumentCommissionRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_instrument_commission_rate(pInstrumentCommissionRate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryExchange(trait_obj: *mut ::std::os::raw::c_void, pExchange: *mut CThostFtdcExchangeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryExchange(trait_ptr: *mut ::std::os::raw::c_void, pExchange: *mut CThostFtdcExchangeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_exchange(pExchange, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryProduct(trait_obj: *mut ::std::os::raw::c_void, pProduct: *mut CThostFtdcProductField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryProduct(trait_ptr: *mut ::std::os::raw::c_void, pProduct: *mut CThostFtdcProductField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_product(pProduct, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInstrument(trait_obj: *mut ::std::os::raw::c_void, pInstrument: *mut CThostFtdcInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInstrument(trait_ptr: *mut ::std::os::raw::c_void, pInstrument: *mut CThostFtdcInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_instrument(pInstrument, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryDepthMarketData(trait_obj: *mut ::std::os::raw::c_void, pDepthMarketData: *mut CThostFtdcDepthMarketDataField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryDepthMarketData(trait_ptr: *mut ::std::os::raw::c_void, pDepthMarketData: *mut CThostFtdcDepthMarketDataField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_depth_market_data(pDepthMarketData, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTraderOffer(trait_obj: *mut ::std::os::raw::c_void, pTraderOffer: *mut CThostFtdcTraderOfferField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTraderOffer(trait_ptr: *mut ::std::os::raw::c_void, pTraderOffer: *mut CThostFtdcTraderOfferField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_trader_offer(pTraderOffer, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySettlementInfo(trait_obj: *mut ::std::os::raw::c_void, pSettlementInfo: *mut CThostFtdcSettlementInfoField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySettlementInfo(trait_ptr: *mut ::std::os::raw::c_void, pSettlementInfo: *mut CThostFtdcSettlementInfoField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_settlement_info(pSettlementInfo, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTransferBank(trait_obj: *mut ::std::os::raw::c_void, pTransferBank: *mut CThostFtdcTransferBankField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTransferBank(trait_ptr: *mut ::std::os::raw::c_void, pTransferBank: *mut CThostFtdcTransferBankField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_transfer_bank(pTransferBank, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPositionDetail(trait_obj: *mut ::std::os::raw::c_void, pInvestorPositionDetail: *mut CThostFtdcInvestorPositionDetailField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPositionDetail(trait_ptr: *mut ::std::os::raw::c_void, pInvestorPositionDetail: *mut CThostFtdcInvestorPositionDetailField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_investor_position_detail(pInvestorPositionDetail, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryNotice(trait_obj: *mut ::std::os::raw::c_void, pNotice: *mut CThostFtdcNoticeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryNotice(trait_ptr: *mut ::std::os::raw::c_void, pNotice: *mut CThostFtdcNoticeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_notice(pNotice, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySettlementInfoConfirm(trait_obj: *mut ::std::os::raw::c_void, pSettlementInfoConfirm: *mut CThostFtdcSettlementInfoConfirmField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySettlementInfoConfirm(trait_ptr: *mut ::std::os::raw::c_void, pSettlementInfoConfirm: *mut CThostFtdcSettlementInfoConfirmField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_settlement_info_confirm(pSettlementInfoConfirm, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPositionCombineDetail(trait_obj: *mut ::std::os::raw::c_void, pInvestorPositionCombineDetail: *mut CThostFtdcInvestorPositionCombineDetailField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPositionCombineDetail(trait_ptr: *mut ::std::os::raw::c_void, pInvestorPositionCombineDetail: *mut CThostFtdcInvestorPositionCombineDetailField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_investor_position_combine_detail(pInvestorPositionCombineDetail, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryCFMMCTradingAccountKey(trait_obj: *mut ::std::os::raw::c_void, pCFMMCTradingAccountKey: *mut CThostFtdcCFMMCTradingAccountKeyField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryCFMMCTradingAccountKey(trait_ptr: *mut ::std::os::raw::c_void, pCFMMCTradingAccountKey: *mut CThostFtdcCFMMCTradingAccountKeyField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_cfmmc_trading_account_key(pCFMMCTradingAccountKey, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryEWarrantOffset(trait_obj: *mut ::std::os::raw::c_void, pEWarrantOffset: *mut CThostFtdcEWarrantOffsetField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryEWarrantOffset(trait_ptr: *mut ::std::os::raw::c_void, pEWarrantOffset: *mut CThostFtdcEWarrantOffsetField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_e_warrant_offset(pEWarrantOffset, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorProductGroupMargin(trait_obj: *mut ::std::os::raw::c_void, pInvestorProductGroupMargin: *mut CThostFtdcInvestorProductGroupMarginField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorProductGroupMargin(trait_ptr: *mut ::std::os::raw::c_void, pInvestorProductGroupMargin: *mut CThostFtdcInvestorProductGroupMarginField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_investor_product_group_margin(pInvestorProductGroupMargin, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryExchangeMarginRate(trait_obj: *mut ::std::os::raw::c_void, pExchangeMarginRate: *mut CThostFtdcExchangeMarginRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryExchangeMarginRate(trait_ptr: *mut ::std::os::raw::c_void, pExchangeMarginRate: *mut CThostFtdcExchangeMarginRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_exchange_margin_rate(pExchangeMarginRate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryExchangeMarginRateAdjust(trait_obj: *mut ::std::os::raw::c_void, pExchangeMarginRateAdjust: *mut CThostFtdcExchangeMarginRateAdjustField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryExchangeMarginRateAdjust(trait_ptr: *mut ::std::os::raw::c_void, pExchangeMarginRateAdjust: *mut CThostFtdcExchangeMarginRateAdjustField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_exchange_margin_rate_adjust(pExchangeMarginRateAdjust, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryExchangeRate(trait_obj: *mut ::std::os::raw::c_void, pExchangeRate: *mut CThostFtdcExchangeRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryExchangeRate(trait_ptr: *mut ::std::os::raw::c_void, pExchangeRate: *mut CThostFtdcExchangeRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_exchange_rate(pExchangeRate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySecAgentACIDMap(trait_obj: *mut ::std::os::raw::c_void, pSecAgentACIDMap: *mut CThostFtdcSecAgentACIDMapField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySecAgentACIDMap(trait_ptr: *mut ::std::os::raw::c_void, pSecAgentACIDMap: *mut CThostFtdcSecAgentACIDMapField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_sec_agent_acid_map(pSecAgentACIDMap, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryProductExchRate(trait_obj: *mut ::std::os::raw::c_void, pProductExchRate: *mut CThostFtdcProductExchRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryProductExchRate(trait_ptr: *mut ::std::os::raw::c_void, pProductExchRate: *mut CThostFtdcProductExchRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_product_exch_rate(pProductExchRate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryProductGroup(trait_obj: *mut ::std::os::raw::c_void, pProductGroup: *mut CThostFtdcProductGroupField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryProductGroup(trait_ptr: *mut ::std::os::raw::c_void, pProductGroup: *mut CThostFtdcProductGroupField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_product_group(pProductGroup, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryMMInstrumentCommissionRate(trait_obj: *mut ::std::os::raw::c_void, pMMInstrumentCommissionRate: *mut CThostFtdcMMInstrumentCommissionRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryMMInstrumentCommissionRate(trait_ptr: *mut ::std::os::raw::c_void, pMMInstrumentCommissionRate: *mut CThostFtdcMMInstrumentCommissionRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_mm_instrument_commission_rate(pMMInstrumentCommissionRate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryMMOptionInstrCommRate(trait_obj: *mut ::std::os::raw::c_void, pMMOptionInstrCommRate: *mut CThostFtdcMMOptionInstrCommRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryMMOptionInstrCommRate(trait_ptr: *mut ::std::os::raw::c_void, pMMOptionInstrCommRate: *mut CThostFtdcMMOptionInstrCommRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_mm_option_instr_comm_rate(pMMOptionInstrCommRate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInstrumentOrderCommRate(trait_obj: *mut ::std::os::raw::c_void, pInstrumentOrderCommRate: *mut CThostFtdcInstrumentOrderCommRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInstrumentOrderCommRate(trait_ptr: *mut ::std::os::raw::c_void, pInstrumentOrderCommRate: *mut CThostFtdcInstrumentOrderCommRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_instrument_order_comm_rate(pInstrumentOrderCommRate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySecAgentTradingAccount(trait_obj: *mut ::std::os::raw::c_void, pTradingAccount: *mut CThostFtdcTradingAccountField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySecAgentTradingAccount(trait_ptr: *mut ::std::os::raw::c_void, pTradingAccount: *mut CThostFtdcTradingAccountField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_sec_agent_trading_account(pTradingAccount, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySecAgentCheckMode(trait_obj: *mut ::std::os::raw::c_void, pSecAgentCheckMode: *mut CThostFtdcSecAgentCheckModeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySecAgentCheckMode(trait_ptr: *mut ::std::os::raw::c_void, pSecAgentCheckMode: *mut CThostFtdcSecAgentCheckModeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_sec_agent_check_mode(pSecAgentCheckMode, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySecAgentTradeInfo(trait_obj: *mut ::std::os::raw::c_void, pSecAgentTradeInfo: *mut CThostFtdcSecAgentTradeInfoField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySecAgentTradeInfo(trait_ptr: *mut ::std::os::raw::c_void, pSecAgentTradeInfo: *mut CThostFtdcSecAgentTradeInfoField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_sec_agent_trade_info(pSecAgentTradeInfo, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryOptionInstrTradeCost(trait_obj: *mut ::std::os::raw::c_void, pOptionInstrTradeCost: *mut CThostFtdcOptionInstrTradeCostField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryOptionInstrTradeCost(trait_ptr: *mut ::std::os::raw::c_void, pOptionInstrTradeCost: *mut CThostFtdcOptionInstrTradeCostField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_option_instr_trade_cost(pOptionInstrTradeCost, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryOptionInstrCommRate(trait_obj: *mut ::std::os::raw::c_void, pOptionInstrCommRate: *mut CThostFtdcOptionInstrCommRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryOptionInstrCommRate(trait_ptr: *mut ::std::os::raw::c_void, pOptionInstrCommRate: *mut CThostFtdcOptionInstrCommRateField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_option_instr_comm_rate(pOptionInstrCommRate, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryExecOrder(trait_obj: *mut ::std::os::raw::c_void, pExecOrder: *mut CThostFtdcExecOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryExecOrder(trait_ptr: *mut ::std::os::raw::c_void, pExecOrder: *mut CThostFtdcExecOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_exec_order(pExecOrder, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryForQuote(trait_obj: *mut ::std::os::raw::c_void, pForQuote: *mut CThostFtdcForQuoteField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryForQuote(trait_ptr: *mut ::std::os::raw::c_void, pForQuote: *mut CThostFtdcForQuoteField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_for_quote(pForQuote, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryQuote(trait_obj: *mut ::std::os::raw::c_void, pQuote: *mut CThostFtdcQuoteField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryQuote(trait_ptr: *mut ::std::os::raw::c_void, pQuote: *mut CThostFtdcQuoteField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_quote(pQuote, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryOptionSelfClose(trait_obj: *mut ::std::os::raw::c_void, pOptionSelfClose: *mut CThostFtdcOptionSelfCloseField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryOptionSelfClose(trait_ptr: *mut ::std::os::raw::c_void, pOptionSelfClose: *mut CThostFtdcOptionSelfCloseField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_option_self_close(pOptionSelfClose, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestUnit(trait_obj: *mut ::std::os::raw::c_void, pInvestUnit: *mut CThostFtdcInvestUnitField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestUnit(trait_ptr: *mut ::std::os::raw::c_void, pInvestUnit: *mut CThostFtdcInvestUnitField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_invest_unit(pInvestUnit, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryCombInstrumentGuard(trait_obj: *mut ::std::os::raw::c_void, pCombInstrumentGuard: *mut CThostFtdcCombInstrumentGuardField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryCombInstrumentGuard(trait_ptr: *mut ::std::os::raw::c_void, pCombInstrumentGuard: *mut CThostFtdcCombInstrumentGuardField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_comb_instrument_guard(pCombInstrumentGuard, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryCombAction(trait_obj: *mut ::std::os::raw::c_void, pCombAction: *mut CThostFtdcCombActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryCombAction(trait_ptr: *mut ::std::os::raw::c_void, pCombAction: *mut CThostFtdcCombActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_comb_action(pCombAction, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTransferSerial(trait_obj: *mut ::std::os::raw::c_void, pTransferSerial: *mut CThostFtdcTransferSerialField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTransferSerial(trait_ptr: *mut ::std::os::raw::c_void, pTransferSerial: *mut CThostFtdcTransferSerialField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_transfer_serial(pTransferSerial, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryAccountregister(trait_obj: *mut ::std::os::raw::c_void, pAccountregister: *mut CThostFtdcAccountregisterField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryAccountregister(trait_ptr: *mut ::std::os::raw::c_void, pAccountregister: *mut CThostFtdcAccountregisterField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_accountregister(pAccountregister, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspError(trait_obj: *mut ::std::os::raw::c_void, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspError(trait_ptr: *mut ::std::os::raw::c_void, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_error(pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnOrder(trait_obj: *mut ::std::os::raw::c_void, pOrder: *mut CThostFtdcOrderField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnOrder(trait_ptr: *mut ::std::os::raw::c_void, pOrder: *mut CThostFtdcOrderField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_order(pOrder)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnTrade(trait_obj: *mut ::std::os::raw::c_void, pTrade: *mut CThostFtdcTradeField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnTrade(trait_ptr: *mut ::std::os::raw::c_void, pTrade: *mut CThostFtdcTradeField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_trade(pTrade)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnOrderInsert(trait_obj: *mut ::std::os::raw::c_void, pInputOrder: *mut CThostFtdcInputOrderField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnOrderInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputOrder: *mut CThostFtdcInputOrderField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_order_insert(pInputOrder, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnOrderAction(trait_obj: *mut ::std::os::raw::c_void, pOrderAction: *mut CThostFtdcOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnOrderAction(trait_ptr: *mut ::std::os::raw::c_void, pOrderAction: *mut CThostFtdcOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_order_action(pOrderAction, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnInstrumentStatus(trait_obj: *mut ::std::os::raw::c_void, pInstrumentStatus: *mut CThostFtdcInstrumentStatusField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnInstrumentStatus(trait_ptr: *mut ::std::os::raw::c_void, pInstrumentStatus: *mut CThostFtdcInstrumentStatusField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_instrument_status(pInstrumentStatus)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnBulletin(trait_obj: *mut ::std::os::raw::c_void, pBulletin: *mut CThostFtdcBulletinField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnBulletin(trait_ptr: *mut ::std::os::raw::c_void, pBulletin: *mut CThostFtdcBulletinField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_bulletin(pBulletin)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnTradingNotice(trait_obj: *mut ::std::os::raw::c_void, pTradingNoticeInfo: *mut CThostFtdcTradingNoticeInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnTradingNotice(trait_ptr: *mut ::std::os::raw::c_void, pTradingNoticeInfo: *mut CThostFtdcTradingNoticeInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_trading_notice(pTradingNoticeInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnErrorConditionalOrder(trait_obj: *mut ::std::os::raw::c_void, pErrorConditionalOrder: *mut CThostFtdcErrorConditionalOrderField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnErrorConditionalOrder(trait_ptr: *mut ::std::os::raw::c_void, pErrorConditionalOrder: *mut CThostFtdcErrorConditionalOrderField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_error_conditional_order(pErrorConditionalOrder)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnExecOrder(trait_obj: *mut ::std::os::raw::c_void, pExecOrder: *mut CThostFtdcExecOrderField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnExecOrder(trait_ptr: *mut ::std::os::raw::c_void, pExecOrder: *mut CThostFtdcExecOrderField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_exec_order(pExecOrder)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnExecOrderInsert(trait_obj: *mut ::std::os::raw::c_void, pInputExecOrder: *mut CThostFtdcInputExecOrderField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnExecOrderInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputExecOrder: *mut CThostFtdcInputExecOrderField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_exec_order_insert(pInputExecOrder, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnExecOrderAction(trait_obj: *mut ::std::os::raw::c_void, pExecOrderAction: *mut CThostFtdcExecOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnExecOrderAction(trait_ptr: *mut ::std::os::raw::c_void, pExecOrderAction: *mut CThostFtdcExecOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_exec_order_action(pExecOrderAction, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnForQuoteInsert(trait_obj: *mut ::std::os::raw::c_void, pInputForQuote: *mut CThostFtdcInputForQuoteField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnForQuoteInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputForQuote: *mut CThostFtdcInputForQuoteField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_for_quote_insert(pInputForQuote, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnQuote(trait_obj: *mut ::std::os::raw::c_void, pQuote: *mut CThostFtdcQuoteField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnQuote(trait_ptr: *mut ::std::os::raw::c_void, pQuote: *mut CThostFtdcQuoteField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_quote(pQuote)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnQuoteInsert(trait_obj: *mut ::std::os::raw::c_void, pInputQuote: *mut CThostFtdcInputQuoteField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnQuoteInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputQuote: *mut CThostFtdcInputQuoteField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_quote_insert(pInputQuote, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnQuoteAction(trait_obj: *mut ::std::os::raw::c_void, pQuoteAction: *mut CThostFtdcQuoteActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnQuoteAction(trait_ptr: *mut ::std::os::raw::c_void, pQuoteAction: *mut CThostFtdcQuoteActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_quote_action(pQuoteAction, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnForQuoteRsp(trait_obj: *mut ::std::os::raw::c_void, pForQuoteRsp: *mut CThostFtdcForQuoteRspField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnForQuoteRsp(trait_ptr: *mut ::std::os::raw::c_void, pForQuoteRsp: *mut CThostFtdcForQuoteRspField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_for_quote_rsp(pForQuoteRsp)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnCFMMCTradingAccountToken(trait_obj: *mut ::std::os::raw::c_void, pCFMMCTradingAccountToken: *mut CThostFtdcCFMMCTradingAccountTokenField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnCFMMCTradingAccountToken(trait_ptr: *mut ::std::os::raw::c_void, pCFMMCTradingAccountToken: *mut CThostFtdcCFMMCTradingAccountTokenField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_cfmmc_trading_account_token(pCFMMCTradingAccountToken)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnBatchOrderAction(trait_obj: *mut ::std::os::raw::c_void, pBatchOrderAction: *mut CThostFtdcBatchOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnBatchOrderAction(trait_ptr: *mut ::std::os::raw::c_void, pBatchOrderAction: *mut CThostFtdcBatchOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_batch_order_action(pBatchOrderAction, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnOptionSelfClose(trait_obj: *mut ::std::os::raw::c_void, pOptionSelfClose: *mut CThostFtdcOptionSelfCloseField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnOptionSelfClose(trait_ptr: *mut ::std::os::raw::c_void, pOptionSelfClose: *mut CThostFtdcOptionSelfCloseField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_option_self_close(pOptionSelfClose)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnOptionSelfCloseInsert(trait_obj: *mut ::std::os::raw::c_void, pInputOptionSelfClose: *mut CThostFtdcInputOptionSelfCloseField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnOptionSelfCloseInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputOptionSelfClose: *mut CThostFtdcInputOptionSelfCloseField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_option_self_close_insert(pInputOptionSelfClose, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnOptionSelfCloseAction(trait_obj: *mut ::std::os::raw::c_void, pOptionSelfCloseAction: *mut CThostFtdcOptionSelfCloseActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnOptionSelfCloseAction(trait_ptr: *mut ::std::os::raw::c_void, pOptionSelfCloseAction: *mut CThostFtdcOptionSelfCloseActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_option_self_close_action(pOptionSelfCloseAction, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnCombAction(trait_obj: *mut ::std::os::raw::c_void, pCombAction: *mut CThostFtdcCombActionField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnCombAction(trait_ptr: *mut ::std::os::raw::c_void, pCombAction: *mut CThostFtdcCombActionField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_comb_action(pCombAction)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnCombActionInsert(trait_obj: *mut ::std::os::raw::c_void, pInputCombAction: *mut CThostFtdcInputCombActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnCombActionInsert(trait_ptr: *mut ::std::os::raw::c_void, pInputCombAction: *mut CThostFtdcInputCombActionField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_comb_action_insert(pInputCombAction, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryContractBank(trait_obj: *mut ::std::os::raw::c_void, pContractBank: *mut CThostFtdcContractBankField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryContractBank(trait_ptr: *mut ::std::os::raw::c_void, pContractBank: *mut CThostFtdcContractBankField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_contract_bank(pContractBank, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryParkedOrder(trait_obj: *mut ::std::os::raw::c_void, pParkedOrder: *mut CThostFtdcParkedOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryParkedOrder(trait_ptr: *mut ::std::os::raw::c_void, pParkedOrder: *mut CThostFtdcParkedOrderField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_parked_order(pParkedOrder, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryParkedOrderAction(trait_obj: *mut ::std::os::raw::c_void, pParkedOrderAction: *mut CThostFtdcParkedOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryParkedOrderAction(trait_ptr: *mut ::std::os::raw::c_void, pParkedOrderAction: *mut CThostFtdcParkedOrderActionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_parked_order_action(pParkedOrderAction, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTradingNotice(trait_obj: *mut ::std::os::raw::c_void, pTradingNotice: *mut CThostFtdcTradingNoticeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryTradingNotice(trait_ptr: *mut ::std::os::raw::c_void, pTradingNotice: *mut CThostFtdcTradingNoticeField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_trading_notice(pTradingNotice, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryBrokerTradingParams(trait_obj: *mut ::std::os::raw::c_void, pBrokerTradingParams: *mut CThostFtdcBrokerTradingParamsField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryBrokerTradingParams(trait_ptr: *mut ::std::os::raw::c_void, pBrokerTradingParams: *mut CThostFtdcBrokerTradingParamsField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_broker_trading_params(pBrokerTradingParams, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryBrokerTradingAlgos(trait_obj: *mut ::std::os::raw::c_void, pBrokerTradingAlgos: *mut CThostFtdcBrokerTradingAlgosField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryBrokerTradingAlgos(trait_ptr: *mut ::std::os::raw::c_void, pBrokerTradingAlgos: *mut CThostFtdcBrokerTradingAlgosField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_broker_trading_algos(pBrokerTradingAlgos, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQueryCFMMCTradingAccountToken(trait_obj: *mut ::std::os::raw::c_void, pQueryCFMMCTradingAccountToken: *mut CThostFtdcQueryCFMMCTradingAccountTokenField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQueryCFMMCTradingAccountToken(trait_ptr: *mut ::std::os::raw::c_void, pQueryCFMMCTradingAccountToken: *mut CThostFtdcQueryCFMMCTradingAccountTokenField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_query_cfmmc_trading_account_token(pQueryCFMMCTradingAccountToken, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnFromBankToFutureByBank(trait_obj: *mut ::std::os::raw::c_void, pRspTransfer: *mut CThostFtdcRspTransferField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnFromBankToFutureByBank(trait_ptr: *mut ::std::os::raw::c_void, pRspTransfer: *mut CThostFtdcRspTransferField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_from_bank_to_future_by_bank(pRspTransfer)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnFromFutureToBankByBank(trait_obj: *mut ::std::os::raw::c_void, pRspTransfer: *mut CThostFtdcRspTransferField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnFromFutureToBankByBank(trait_ptr: *mut ::std::os::raw::c_void, pRspTransfer: *mut CThostFtdcRspTransferField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_from_future_to_bank_by_bank(pRspTransfer)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromBankToFutureByBank(trait_obj: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromBankToFutureByBank(trait_ptr: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_repeal_from_bank_to_future_by_bank(pRspRepeal)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromFutureToBankByBank(trait_obj: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromFutureToBankByBank(trait_ptr: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_repeal_from_future_to_bank_by_bank(pRspRepeal)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnFromBankToFutureByFuture(trait_obj: *mut ::std::os::raw::c_void, pRspTransfer: *mut CThostFtdcRspTransferField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnFromBankToFutureByFuture(trait_ptr: *mut ::std::os::raw::c_void, pRspTransfer: *mut CThostFtdcRspTransferField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_from_bank_to_future_by_future(pRspTransfer)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnFromFutureToBankByFuture(trait_obj: *mut ::std::os::raw::c_void, pRspTransfer: *mut CThostFtdcRspTransferField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnFromFutureToBankByFuture(trait_ptr: *mut ::std::os::raw::c_void, pRspTransfer: *mut CThostFtdcRspTransferField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_from_future_to_bank_by_future(pRspTransfer)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromBankToFutureByFutureManual(trait_obj: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromBankToFutureByFutureManual(trait_ptr: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_repeal_from_bank_to_future_by_future_manual(pRspRepeal)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromFutureToBankByFutureManual(trait_obj: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromFutureToBankByFutureManual(trait_ptr: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_repeal_from_future_to_bank_by_future_manual(pRspRepeal)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnQueryBankBalanceByFuture(trait_obj: *mut ::std::os::raw::c_void, pNotifyQueryAccount: *mut CThostFtdcNotifyQueryAccountField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnQueryBankBalanceByFuture(trait_ptr: *mut ::std::os::raw::c_void, pNotifyQueryAccount: *mut CThostFtdcNotifyQueryAccountField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_query_bank_balance_by_future(pNotifyQueryAccount)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnBankToFutureByFuture(trait_obj: *mut ::std::os::raw::c_void, pReqTransfer: *mut CThostFtdcReqTransferField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnBankToFutureByFuture(trait_ptr: *mut ::std::os::raw::c_void, pReqTransfer: *mut CThostFtdcReqTransferField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_bank_to_future_by_future(pReqTransfer, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnFutureToBankByFuture(trait_obj: *mut ::std::os::raw::c_void, pReqTransfer: *mut CThostFtdcReqTransferField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnFutureToBankByFuture(trait_ptr: *mut ::std::os::raw::c_void, pReqTransfer: *mut CThostFtdcReqTransferField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_future_to_bank_by_future(pReqTransfer, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnRepealBankToFutureByFutureManual(trait_obj: *mut ::std::os::raw::c_void, pReqRepeal: *mut CThostFtdcReqRepealField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnRepealBankToFutureByFutureManual(trait_ptr: *mut ::std::os::raw::c_void, pReqRepeal: *mut CThostFtdcReqRepealField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_repeal_bank_to_future_by_future_manual(pReqRepeal, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnRepealFutureToBankByFutureManual(trait_obj: *mut ::std::os::raw::c_void, pReqRepeal: *mut CThostFtdcReqRepealField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnRepealFutureToBankByFutureManual(trait_ptr: *mut ::std::os::raw::c_void, pReqRepeal: *mut CThostFtdcReqRepealField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_repeal_future_to_bank_by_future_manual(pReqRepeal, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnQueryBankBalanceByFuture(trait_obj: *mut ::std::os::raw::c_void, pReqQueryAccount: *mut CThostFtdcReqQueryAccountField, pRspInfo: *mut CThostFtdcRspInfoField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnErrRtnQueryBankBalanceByFuture(trait_ptr: *mut ::std::os::raw::c_void, pReqQueryAccount: *mut CThostFtdcReqQueryAccountField, pRspInfo: *mut CThostFtdcRspInfoField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_err_rtn_query_bank_balance_by_future(pReqQueryAccount, pRspInfo)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromBankToFutureByFuture(trait_obj: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromBankToFutureByFuture(trait_ptr: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_repeal_from_bank_to_future_by_future(pRspRepeal)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromFutureToBankByFuture(trait_obj: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnRepealFromFutureToBankByFuture(trait_ptr: *mut ::std::os::raw::c_void, pRspRepeal: *mut CThostFtdcRspRepealField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_repeal_from_future_to_bank_by_future(pRspRepeal)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspFromBankToFutureByFuture(trait_obj: *mut ::std::os::raw::c_void, pReqTransfer: *mut CThostFtdcReqTransferField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspFromBankToFutureByFuture(trait_ptr: *mut ::std::os::raw::c_void, pReqTransfer: *mut CThostFtdcReqTransferField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_from_bank_to_future_by_future(pReqTransfer, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspFromFutureToBankByFuture(trait_obj: *mut ::std::os::raw::c_void, pReqTransfer: *mut CThostFtdcReqTransferField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspFromFutureToBankByFuture(trait_ptr: *mut ::std::os::raw::c_void, pReqTransfer: *mut CThostFtdcReqTransferField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_from_future_to_bank_by_future(pReqTransfer, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQueryBankAccountMoneyByFuture(trait_obj: *mut ::std::os::raw::c_void, pReqQueryAccount: *mut CThostFtdcReqQueryAccountField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQueryBankAccountMoneyByFuture(trait_ptr: *mut ::std::os::raw::c_void, pReqQueryAccount: *mut CThostFtdcReqQueryAccountField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_query_bank_account_money_by_future(pReqQueryAccount, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnOpenAccountByBank(trait_obj: *mut ::std::os::raw::c_void, pOpenAccount: *mut CThostFtdcOpenAccountField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnOpenAccountByBank(trait_ptr: *mut ::std::os::raw::c_void, pOpenAccount: *mut CThostFtdcOpenAccountField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_open_account_by_bank(pOpenAccount)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnCancelAccountByBank(trait_obj: *mut ::std::os::raw::c_void, pCancelAccount: *mut CThostFtdcCancelAccountField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnCancelAccountByBank(trait_ptr: *mut ::std::os::raw::c_void, pCancelAccount: *mut CThostFtdcCancelAccountField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_cancel_account_by_bank(pCancelAccount)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnChangeAccountByBank(trait_obj: *mut ::std::os::raw::c_void, pChangeAccount: *mut CThostFtdcChangeAccountField) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRtnChangeAccountByBank(trait_ptr: *mut ::std::os::raw::c_void, pChangeAccount: *mut CThostFtdcChangeAccountField) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rtn_change_account_by_bank(pChangeAccount)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryClassifiedInstrument(trait_obj: *mut ::std::os::raw::c_void, pInstrument: *mut CThostFtdcInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryClassifiedInstrument(trait_ptr: *mut ::std::os::raw::c_void, pInstrument: *mut CThostFtdcInstrumentField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_classified_instrument(pInstrument, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryCombPromotionParam(trait_obj: *mut ::std::os::raw::c_void, pCombPromotionParam: *mut CThostFtdcCombPromotionParamField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryCombPromotionParam(trait_ptr: *mut ::std::os::raw::c_void, pCombPromotionParam: *mut CThostFtdcCombPromotionParamField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_comb_promotion_param(pCombPromotionParam, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryRiskSettleInvstPosition(trait_obj: *mut ::std::os::raw::c_void, pRiskSettleInvstPosition: *mut CThostFtdcRiskSettleInvstPositionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryRiskSettleInvstPosition(trait_ptr: *mut ::std::os::raw::c_void, pRiskSettleInvstPosition: *mut CThostFtdcRiskSettleInvstPositionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_risk_settle_invst_position(pRiskSettleInvstPosition, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryRiskSettleProductStatus(trait_obj: *mut ::std::os::raw::c_void, pRiskSettleProductStatus: *mut CThostFtdcRiskSettleProductStatusField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryRiskSettleProductStatus(trait_ptr: *mut ::std::os::raw::c_void, pRiskSettleProductStatus: *mut CThostFtdcRiskSettleProductStatusField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_risk_settle_product_status(pRiskSettleProductStatus, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMFutureParameter(trait_obj: *mut ::std::os::raw::c_void, pSPBMFutureParameter: *mut CThostFtdcSPBMFutureParameterField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMFutureParameter(trait_ptr: *mut ::std::os::raw::c_void, pSPBMFutureParameter: *mut CThostFtdcSPBMFutureParameterField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_spbm_future_parameter(pSPBMFutureParameter, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMOptionParameter(trait_obj: *mut ::std::os::raw::c_void, pSPBMOptionParameter: *mut CThostFtdcSPBMOptionParameterField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMOptionParameter(trait_ptr: *mut ::std::os::raw::c_void, pSPBMOptionParameter: *mut CThostFtdcSPBMOptionParameterField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_spbm_option_parameter(pSPBMOptionParameter, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMIntraParameter(trait_obj: *mut ::std::os::raw::c_void, pSPBMIntraParameter: *mut CThostFtdcSPBMIntraParameterField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMIntraParameter(trait_ptr: *mut ::std::os::raw::c_void, pSPBMIntraParameter: *mut CThostFtdcSPBMIntraParameterField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_spbm_intra_parameter(pSPBMIntraParameter, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMInterParameter(trait_obj: *mut ::std::os::raw::c_void, pSPBMInterParameter: *mut CThostFtdcSPBMInterParameterField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMInterParameter(trait_ptr: *mut ::std::os::raw::c_void, pSPBMInterParameter: *mut CThostFtdcSPBMInterParameterField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_spbm_inter_parameter(pSPBMInterParameter, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMPortfDefinition(trait_obj: *mut ::std::os::raw::c_void, pSPBMPortfDefinition: *mut CThostFtdcSPBMPortfDefinitionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMPortfDefinition(trait_ptr: *mut ::std::os::raw::c_void, pSPBMPortfDefinition: *mut CThostFtdcSPBMPortfDefinitionField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_spbm_portf_definition(pSPBMPortfDefinition, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMInvestorPortfDef(trait_obj: *mut ::std::os::raw::c_void, pSPBMInvestorPortfDef: *mut CThostFtdcSPBMInvestorPortfDefField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMInvestorPortfDef(trait_ptr: *mut ::std::os::raw::c_void, pSPBMInvestorPortfDef: *mut CThostFtdcSPBMInvestorPortfDefField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_spbm_investor_portf_def(pSPBMInvestorPortfDef, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPortfMarginRatio(trait_obj: *mut ::std::os::raw::c_void, pInvestorPortfMarginRatio: *mut CThostFtdcInvestorPortfMarginRatioField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPortfMarginRatio(trait_ptr: *mut ::std::os::raw::c_void, pInvestorPortfMarginRatio: *mut CThostFtdcInvestorPortfMarginRatioField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_investor_portf_margin_ratio(pInvestorPortfMarginRatio, pRspInfo, nRequestID, bIsLast)
 }
 
 #[no_mangle]
-pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorProdSPBMDetail(trait_obj: *mut ::std::os::raw::c_void, pInvestorProdSPBMDetail: *mut CThostFtdcInvestorProdSPBMDetailField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
-    let trait_obj = trait_obj as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
-    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **trait_obj };
+pub extern "C" fn Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorProdSPBMDetail(trait_ptr: *mut ::std::os::raw::c_void, pInvestorProdSPBMDetail: *mut CThostFtdcInvestorProdSPBMDetailField, pRspInfo: *mut CThostFtdcRspInfoField, nRequestID: ::std::os::raw::c_int, bIsLast: bool) {
+    let ptr = trait_ptr as *mut Box<dyn Rust_CThostFtdcTraderSpi_Trait>;
+    let trait_obj: &mut dyn Rust_CThostFtdcTraderSpi_Trait = unsafe { &mut **ptr };
     trait_obj.on_rsp_qry_investor_prod_spbm_detail(pInvestorProdSPBMDetail, pRspInfo, nRequestID, bIsLast)
 }
 

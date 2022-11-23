@@ -27,7 +27,7 @@ pub struct Config {
 
 pub struct MDApi {
     api: Rust_CThostFtdcMdApi,
-    spi: Option<*mut Rust_CThostFtdcMdSpi>,
+    spi: Option<*mut CThostFtdcMdSpi>,
     rx:  Option<Receiver<Event>>,
 
     pub(crate) config: Config,
@@ -88,9 +88,14 @@ impl MDApi {
 
     pub fn new(config: &Config) -> Self {
         let cs = std::ffi::CString::new(config.flowpath.as_bytes()).unwrap();
+        /*
         let api = 
             Rust_CThostFtdcMdApi::new(CThostFtdcMdApi::CreateFtdcMdApi(cs.as_ptr(), config.is_udp, config.is_multicast))
         ;
+        */
+
+        let api = unsafe { *Rust_CThostFtdcMdApi::CreateFtdcMdApi(cs.as_ptr(), config.is_udp, config.is_multicast) };
+
         Self { api, spi: None, config: config.clone(), rx: None }
     }
 
@@ -103,16 +108,16 @@ impl MDApi {
         if self.config.front_addr.len() > 0 {
             debug!("front_addr is: {}", self.config.front_addr);
             let cs = CString::new(self.config.front_addr.as_bytes()).unwrap();
-             self.api.RegisterFront(cs.as_ptr() as *mut _); 
+            unsafe {self.api.RegisterFront(cs.as_ptr() as *mut _); }
         }
 
         if self.config.nm_addr.len() > 0 {
             debug!("nm_addr is: {}", self.config.front_addr);
             let cs = CString::new(self.config.nm_addr.as_bytes()).unwrap();
-             self.api.RegisterNameServer(cs.as_ptr() as *mut _);
+             unsafe {self.api.RegisterNameServer(cs.as_ptr() as *mut _);}
         }
 
-         self.api.Init(); 
+        unsafe {self.api.Init(); }
 
         Ok(())
     }
@@ -135,7 +140,7 @@ impl MDApi {
             reserve1:             [0i8; 16]
         };
 
-        self.api.ReqUserLogin(&mut loginfield, 1); 
+        unsafe { self.api.ReqUserLogin(&mut loginfield, 1); }
         Ok(())
     }
 
@@ -193,9 +198,9 @@ impl MDApi {
         let arr_cstr: Vec<*mut c_char> = arr_cstring.iter().map(|s| s.as_ptr() as *mut c_char).collect();
         let ptr = arr_cstr.as_ptr() as *mut *mut c_char;
         let rtn = if is_unsub {
-             self.api.UnSubscribeMarketData(ptr, len) 
+             unsafe {self.api.UnSubscribeMarketData(ptr, len) }
         } else {
-             self.api.SubscribeMarketData(ptr, len) 
+             unsafe { self.api.SubscribeMarketData(ptr, len) }
         };
         if rtn != 0 {
             return Err(format!("Fail to req `md_api_subscribe_market_data`: {}", rtn))
@@ -213,23 +218,31 @@ impl MDApi {
         let spi: Box<Box<dyn Rust_CThostFtdcMdSpi_Trait>> = Box::new(Box::new(spi));
         let ptr = Box::into_raw(spi) as *mut _ as *mut c_void;
 
+        /*
         let spi_stub =  Rust_CThostFtdcMdSpi::new(ptr)  ;
         let spi: *mut Rust_CThostFtdcMdSpi = Box::into_raw(Box::new(spi_stub));
-         self.api.RegisterSpi(spi as _); 
+        self.api.RegisterSpi(spi as _); 
+        */
+
+        let spi = unsafe { Rust_CThostFtdcMdSpi::Create(ptr) };
+        //let spi: *mut Rust_CThostFtdcMdSpi = Box::into_raw(Box::new(stub));
+        unsafe {self.api.RegisterSpi(spi) };
 
         self.spi = Some(spi);
     }
 
-    fn drop_spi(spi: *mut Rust_CThostFtdcMdSpi) {
-        let mut spi = unsafe { Box::from_raw(spi) };
-         spi.destruct(); 
+    fn drop_spi(spi: *mut CThostFtdcMdSpi) {
+        //let mut spi = unsafe { Box::from_raw(spi) };
+        //spi.destruct();    
+        unsafe { Rust_CThostFtdcMdSpi::Destroy(spi); }
     }
 }
 
 impl Drop for MDApi {
     fn drop(&mut self) {
         debug!("drop api");
-         self.api.destruct(); 
+        //self.api.destruct(); 
+        unsafe {self.api.Release();}
         if let Some(spi) = self.spi {
             debug!("drop spi");
             Self::drop_spi(spi);
