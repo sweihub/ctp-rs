@@ -6,9 +6,7 @@ CThostFtdcMdSpi* Rust_CThostFtdcMdSpi::Create(void * trait) {
                 p->rust = trait;
                 return p;
             }
-void Rust_CThostFtdcMdSpi::Destroy(CThostFtdcMdSpi* ptr) {
-                delete ptr;
-            }
+void Rust_CThostFtdcMdSpi::Destroy(CThostFtdcMdSpi* ptr) { delete ptr; }
 void Rust_CThostFtdcMdSpi::OnFrontConnected() { return Rust_CThostFtdcMdSpi_Trait_OnFrontConnected(rust); }
 void Rust_CThostFtdcMdSpi::OnFrontDisconnected(int nReason) { return Rust_CThostFtdcMdSpi_Trait_OnFrontDisconnected(rust, nReason); }
 void Rust_CThostFtdcMdSpi::OnHeartBeatWarning(int nTimeLapse) { return Rust_CThostFtdcMdSpi_Trait_OnHeartBeatWarning(rust, nTimeLapse); }
@@ -48,9 +46,7 @@ CThostFtdcTraderSpi* Rust_CThostFtdcTraderSpi::Create(void * trait) {
                 p->rust = trait;
                 return p;
             }
-void Rust_CThostFtdcTraderSpi::Destroy(CThostFtdcTraderSpi* ptr) {
-                delete ptr;
-            }
+void Rust_CThostFtdcTraderSpi::Destroy(CThostFtdcTraderSpi* ptr) { delete ptr; }
 void Rust_CThostFtdcTraderSpi::OnFrontConnected() { return Rust_CThostFtdcTraderSpi_Trait_OnFrontConnected(rust); }
 void Rust_CThostFtdcTraderSpi::OnFrontDisconnected(int nReason) { return Rust_CThostFtdcTraderSpi_Trait_OnFrontDisconnected(rust, nReason); }
 void Rust_CThostFtdcTraderSpi::OnHeartBeatWarning(int nTimeLapse) { return Rust_CThostFtdcTraderSpi_Trait_OnHeartBeatWarning(rust, nTimeLapse); }

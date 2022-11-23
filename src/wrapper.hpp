@@ -5,11 +5,10 @@
 #include "../shared/include/ThostFtdcUserApiStruct.h"
 #include "../shared/include/ThostFtdcTraderApi.h"
 #include "../shared/include/ThostFtdcMdApi.h"
-
 class Rust_CThostFtdcMdSpi : CThostFtdcMdSpi {
 public:
 	static CThostFtdcMdSpi* Create(void * trait);
-static void Destroy(CThostFtdcMdSpi* ptr);
+	static void Destroy(CThostFtdcMdSpi* ptr);
 	void OnFrontConnected();
 	void OnFrontDisconnected(int nReason);
 	void OnHeartBeatWarning(int nTimeLapse);
@@ -40,6 +39,7 @@ extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspSubForQuoteRsp(void * rust, CTho
 extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRspUnSubForQuoteRsp(void * rust, CThostFtdcSpecificInstrumentField * pSpecificInstrument, CThostFtdcRspInfoField * pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRtnDepthMarketData(void * rust, CThostFtdcDepthMarketDataField * pDepthMarketData);
 extern "C" void Rust_CThostFtdcMdSpi_Trait_OnRtnForQuoteRsp(void * rust, CThostFtdcForQuoteRspField * pForQuoteRsp);
+
 class Rust_CThostFtdcMdApi {
 public:
 	static Rust_CThostFtdcMdApi* CreateFtdcMdApi(const char * pszFlowPath, const bool bIsUsingUdp, const bool bIsMulticast);
@@ -63,10 +63,11 @@ private:
 	CThostFtdcMdApi * inner = nullptr;
 };
 
+
 class Rust_CThostFtdcTraderSpi : CThostFtdcTraderSpi {
 public:
 	static CThostFtdcTraderSpi* Create(void * trait);
-static void Destroy(CThostFtdcTraderSpi* ptr);
+	static void Destroy(CThostFtdcTraderSpi* ptr);
 	void OnFrontConnected();
 	void OnFrontDisconnected(int nReason);
 	void OnHeartBeatWarning(int nTimeLapse);
@@ -347,6 +348,7 @@ extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMPortfDefinition(void 
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQrySPBMInvestorPortfDef(void * rust, CThostFtdcSPBMInvestorPortfDefField * pSPBMInvestorPortfDef, CThostFtdcRspInfoField * pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorPortfMarginRatio(void * rust, CThostFtdcInvestorPortfMarginRatioField * pInvestorPortfMarginRatio, CThostFtdcRspInfoField * pRspInfo, int nRequestID, bool bIsLast);
 extern "C" void Rust_CThostFtdcTraderSpi_Trait_OnRspQryInvestorProdSPBMDetail(void * rust, CThostFtdcInvestorProdSPBMDetailField * pInvestorProdSPBMDetail, CThostFtdcRspInfoField * pRspInfo, int nRequestID, bool bIsLast);
+
 class Rust_CThostFtdcTraderApi {
 public:
 	static Rust_CThostFtdcTraderApi* CreateFtdcTraderApi(const char * pszFlowPath);

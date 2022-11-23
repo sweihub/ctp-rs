@@ -190,7 +190,6 @@ fn autogen() -> Result<i32, Box<dyn std::error::Error>> {
         "#include \"../shared/include/ThostFtdcUserApiStruct.h\"",
         "#include \"../shared/include/ThostFtdcTraderApi.h\"",
         "#include \"../shared/include/ThostFtdcMdApi.h\"",
-        "\n",
     ]
     .join("\n");
     let mut body = "#include <iostream>\n#include \"wrapper.hpp\"\n\n".to_owned();
@@ -201,7 +200,7 @@ fn autogen() -> Result<i32, Box<dyn std::error::Error>> {
 
         // implementation
         if c.name == "CThostFtdcMdApi" || c.name == "CThostFtdcTraderApi" {
-            header += &format!("class {} {{\npublic:\n", rust_class);
+            header += &format!("\nclass {} {{\npublic:\n", rust_class);
 
             // C++ side
             for method in &c.methods {
@@ -253,7 +252,7 @@ fn autogen() -> Result<i32, Box<dyn std::error::Error>> {
             header += &format!("private:\n\t{} * inner = nullptr;\n", c.name);
             header += "};\n\n";
         } else if c.name == "CThostFtdcMdSpi" || c.name == "CThostFtdcTraderSpi" {
-            header += &format!("class {} : {} {{\npublic:\n", rust_class, c.name);
+            header += &format!("\nclass {} : {} {{\npublic:\n", rust_class, c.name);
             // C++ upcall to Rust
             // Create
             let consructor = format!("\tstatic {}* Create(void * trait);\n", c.name);
@@ -268,10 +267,8 @@ fn autogen() -> Result<i32, Box<dyn std::error::Error>> {
             );
 
             // Destroy
-            header += &format!("static void Destroy({}* ptr);\n", c.name);
-            body += &format!("void {}::Destroy({}* ptr) {{
-                delete ptr;
-            }}\n", rust_class, c.name);
+            header += &format!("\tstatic void Destroy({}* ptr);\n", c.name);
+            body += &format!("void {}::Destroy({}* ptr) {{ delete ptr; }}\n", rust_class, c.name);
 
             let mut upcall = "".to_owned();
             for method in &c.methods {

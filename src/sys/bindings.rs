@@ -8311,13 +8311,13 @@ extern "C" {
 }
 impl CThostFtdcTraderApi {
     #[inline]
-    pub unsafe fn CreateFtdcTraderApi(
+    pub fn CreateFtdcTraderApi(
         pszFlowPath: *const ::std::os::raw::c_char,
     ) -> *mut CThostFtdcTraderApi {
         unsafe { CThostFtdcTraderApi_CreateFtdcTraderApi(pszFlowPath) }
     }
     #[inline]
-    pub unsafe fn GetApiVersion() -> *const ::std::os::raw::c_char {
+    pub fn GetApiVersion() -> *const ::std::os::raw::c_char {
         unsafe { CThostFtdcTraderApi_GetApiVersion() }
     }
 }
@@ -8347,7 +8347,7 @@ extern "C" {
 }
 impl CThostFtdcMdApi {
     #[inline]
-    pub unsafe fn CreateFtdcMdApi(
+    pub fn CreateFtdcMdApi(
         pszFlowPath: *const ::std::os::raw::c_char,
         bIsUsingUdp: bool,
         bIsMulticast: bool,
@@ -8355,7 +8355,7 @@ impl CThostFtdcMdApi {
         unsafe { CThostFtdcMdApi_CreateFtdcMdApi(pszFlowPath, bIsUsingUdp, bIsMulticast) }
     }
     #[inline]
-    pub unsafe fn GetApiVersion() -> *const ::std::os::raw::c_char {
+    pub fn GetApiVersion() -> *const ::std::os::raw::c_char {
         unsafe { CThostFtdcMdApi_GetApiVersion() }
     }
 }
@@ -8376,11 +8376,11 @@ extern "C" {
 }
 impl Rust_CThostFtdcMdSpi {
     #[inline]
-    pub unsafe fn Create(trait_: *mut ::std::os::raw::c_void) -> *mut CThostFtdcMdSpi {
+    pub fn Create(trait_: *mut ::std::os::raw::c_void) -> *mut CThostFtdcMdSpi {
         unsafe { Rust_CThostFtdcMdSpi_Create(trait_) }
     }
     #[inline]
-    pub unsafe fn Destroy(ptr: *mut CThostFtdcMdSpi) {
+    pub fn Destroy(ptr: *mut CThostFtdcMdSpi) {
         unsafe { Rust_CThostFtdcMdSpi_Destroy(ptr) }
     }
 }
@@ -8616,7 +8616,7 @@ extern "C" {
 }
 impl Rust_CThostFtdcMdApi {
     #[inline]
-    pub unsafe fn CreateFtdcMdApi(
+    pub fn CreateFtdcMdApi(
         pszFlowPath: *const ::std::os::raw::c_char,
         bIsUsingUdp: bool,
         bIsMulticast: bool,
@@ -8624,43 +8624,43 @@ impl Rust_CThostFtdcMdApi {
         unsafe { Rust_CThostFtdcMdApi_CreateFtdcMdApi(pszFlowPath, bIsUsingUdp, bIsMulticast) }
     }
     #[inline]
-    pub unsafe fn GetApiVersion() -> *const ::std::os::raw::c_char {
+    pub fn GetApiVersion() -> *const ::std::os::raw::c_char {
         unsafe { Rust_CThostFtdcMdApi_GetApiVersion() }
     }
     #[inline]
-    pub unsafe fn Release(&mut self) {
+    pub fn Release(&mut self) {
         unsafe { Rust_CThostFtdcMdApi_Release(self) }
     }
     #[inline]
-    pub unsafe fn Init(&mut self) {
+    pub fn Init(&mut self) {
         unsafe { Rust_CThostFtdcMdApi_Init(self) }
     }
     #[inline]
-    pub unsafe fn Join(&mut self) -> ::std::os::raw::c_int {
+    pub fn Join(&mut self) -> ::std::os::raw::c_int {
         unsafe { Rust_CThostFtdcMdApi_Join(self) }
     }
     #[inline]
-    pub unsafe fn GetTradingDay(&mut self) -> *const ::std::os::raw::c_char {
+    pub fn GetTradingDay(&mut self) -> *const ::std::os::raw::c_char {
         unsafe { Rust_CThostFtdcMdApi_GetTradingDay(self) }
     }
     #[inline]
-    pub unsafe fn RegisterFront(&mut self, pszFrontAddress: *mut ::std::os::raw::c_char) {
+    pub fn RegisterFront(&mut self, pszFrontAddress: *mut ::std::os::raw::c_char) {
         unsafe { Rust_CThostFtdcMdApi_RegisterFront(self, pszFrontAddress) }
     }
     #[inline]
-    pub unsafe fn RegisterNameServer(&mut self, pszNsAddress: *mut ::std::os::raw::c_char) {
+    pub fn RegisterNameServer(&mut self, pszNsAddress: *mut ::std::os::raw::c_char) {
         unsafe { Rust_CThostFtdcMdApi_RegisterNameServer(self, pszNsAddress) }
     }
     #[inline]
-    pub unsafe fn RegisterFensUserInfo(&mut self, pFensUserInfo: *mut CThostFtdcFensUserInfoField) {
+    pub fn RegisterFensUserInfo(&mut self, pFensUserInfo: *mut CThostFtdcFensUserInfoField) {
         unsafe { Rust_CThostFtdcMdApi_RegisterFensUserInfo(self, pFensUserInfo) }
     }
     #[inline]
-    pub unsafe fn RegisterSpi(&mut self, pSpi: *mut CThostFtdcMdSpi) {
+    pub fn RegisterSpi(&mut self, pSpi: *mut CThostFtdcMdSpi) {
         unsafe { Rust_CThostFtdcMdApi_RegisterSpi(self, pSpi) }
     }
     #[inline]
-    pub unsafe fn SubscribeMarketData(
+    pub fn SubscribeMarketData(
         &mut self,
         ppInstrumentID: *mut *mut ::std::os::raw::c_char,
         nCount: ::std::os::raw::c_int,
@@ -8668,7 +8668,7 @@ impl Rust_CThostFtdcMdApi {
         unsafe { Rust_CThostFtdcMdApi_SubscribeMarketData(self, ppInstrumentID, nCount) }
     }
     #[inline]
-    pub unsafe fn UnSubscribeMarketData(
+    pub fn UnSubscribeMarketData(
         &mut self,
         ppInstrumentID: *mut *mut ::std::os::raw::c_char,
         nCount: ::std::os::raw::c_int,
@@ -8676,7 +8676,7 @@ impl Rust_CThostFtdcMdApi {
         unsafe { Rust_CThostFtdcMdApi_UnSubscribeMarketData(self, ppInstrumentID, nCount) }
     }
     #[inline]
-    pub unsafe fn SubscribeForQuoteRsp(
+    pub fn SubscribeForQuoteRsp(
         &mut self,
         ppInstrumentID: *mut *mut ::std::os::raw::c_char,
         nCount: ::std::os::raw::c_int,
@@ -8684,7 +8684,7 @@ impl Rust_CThostFtdcMdApi {
         unsafe { Rust_CThostFtdcMdApi_SubscribeForQuoteRsp(self, ppInstrumentID, nCount) }
     }
     #[inline]
-    pub unsafe fn UnSubscribeForQuoteRsp(
+    pub fn UnSubscribeForQuoteRsp(
         &mut self,
         ppInstrumentID: *mut *mut ::std::os::raw::c_char,
         nCount: ::std::os::raw::c_int,
@@ -8692,7 +8692,7 @@ impl Rust_CThostFtdcMdApi {
         unsafe { Rust_CThostFtdcMdApi_UnSubscribeForQuoteRsp(self, ppInstrumentID, nCount) }
     }
     #[inline]
-    pub unsafe fn ReqUserLogin(
+    pub fn ReqUserLogin(
         &mut self,
         pReqUserLoginField: *mut CThostFtdcReqUserLoginField,
         nRequestID: ::std::os::raw::c_int,
@@ -8700,7 +8700,7 @@ impl Rust_CThostFtdcMdApi {
         unsafe { Rust_CThostFtdcMdApi_ReqUserLogin(self, pReqUserLoginField, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqUserLogout(
+    pub fn ReqUserLogout(
         &mut self,
         pUserLogout: *mut CThostFtdcUserLogoutField,
         nRequestID: ::std::os::raw::c_int,
@@ -8708,7 +8708,7 @@ impl Rust_CThostFtdcMdApi {
         unsafe { Rust_CThostFtdcMdApi_ReqUserLogout(self, pUserLogout, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryMulticastInstrument(
+    pub fn ReqQryMulticastInstrument(
         &mut self,
         pQryMulticastInstrument: *mut CThostFtdcQryMulticastInstrumentField,
         nRequestID: ::std::os::raw::c_int,
@@ -8740,11 +8740,11 @@ extern "C" {
 }
 impl Rust_CThostFtdcTraderSpi {
     #[inline]
-    pub unsafe fn Create(trait_: *mut ::std::os::raw::c_void) -> *mut CThostFtdcTraderSpi {
+    pub fn Create(trait_: *mut ::std::os::raw::c_void) -> *mut CThostFtdcTraderSpi {
         unsafe { Rust_CThostFtdcTraderSpi_Create(trait_) }
     }
     #[inline]
-    pub unsafe fn Destroy(ptr: *mut CThostFtdcTraderSpi) {
+    pub fn Destroy(ptr: *mut CThostFtdcTraderSpi) {
         unsafe { Rust_CThostFtdcTraderSpi_Destroy(ptr) }
     }
 }
@@ -10858,57 +10858,57 @@ extern "C" {
 }
 impl Rust_CThostFtdcTraderApi {
     #[inline]
-    pub unsafe fn CreateFtdcTraderApi(
+    pub fn CreateFtdcTraderApi(
         pszFlowPath: *const ::std::os::raw::c_char,
     ) -> *mut Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_CreateFtdcTraderApi(pszFlowPath) }
     }
     #[inline]
-    pub unsafe fn GetApiVersion() -> *const ::std::os::raw::c_char {
+    pub fn GetApiVersion() -> *const ::std::os::raw::c_char {
         unsafe { Rust_CThostFtdcTraderApi_GetApiVersion() }
     }
     #[inline]
-    pub unsafe fn Release(&mut self) {
+    pub fn Release(&mut self) {
         unsafe { Rust_CThostFtdcTraderApi_Release(self) }
     }
     #[inline]
-    pub unsafe fn Init(&mut self) {
+    pub fn Init(&mut self) {
         unsafe { Rust_CThostFtdcTraderApi_Init(self) }
     }
     #[inline]
-    pub unsafe fn Join(&mut self) -> ::std::os::raw::c_int {
+    pub fn Join(&mut self) -> ::std::os::raw::c_int {
         unsafe { Rust_CThostFtdcTraderApi_Join(self) }
     }
     #[inline]
-    pub unsafe fn GetTradingDay(&mut self) -> *const ::std::os::raw::c_char {
+    pub fn GetTradingDay(&mut self) -> *const ::std::os::raw::c_char {
         unsafe { Rust_CThostFtdcTraderApi_GetTradingDay(self) }
     }
     #[inline]
-    pub unsafe fn RegisterFront(&mut self, pszFrontAddress: *mut ::std::os::raw::c_char) {
+    pub fn RegisterFront(&mut self, pszFrontAddress: *mut ::std::os::raw::c_char) {
         unsafe { Rust_CThostFtdcTraderApi_RegisterFront(self, pszFrontAddress) }
     }
     #[inline]
-    pub unsafe fn RegisterNameServer(&mut self, pszNsAddress: *mut ::std::os::raw::c_char) {
+    pub fn RegisterNameServer(&mut self, pszNsAddress: *mut ::std::os::raw::c_char) {
         unsafe { Rust_CThostFtdcTraderApi_RegisterNameServer(self, pszNsAddress) }
     }
     #[inline]
-    pub unsafe fn RegisterFensUserInfo(&mut self, pFensUserInfo: *mut CThostFtdcFensUserInfoField) {
+    pub fn RegisterFensUserInfo(&mut self, pFensUserInfo: *mut CThostFtdcFensUserInfoField) {
         unsafe { Rust_CThostFtdcTraderApi_RegisterFensUserInfo(self, pFensUserInfo) }
     }
     #[inline]
-    pub unsafe fn RegisterSpi(&mut self, pSpi: *mut CThostFtdcTraderSpi) {
+    pub fn RegisterSpi(&mut self, pSpi: *mut CThostFtdcTraderSpi) {
         unsafe { Rust_CThostFtdcTraderApi_RegisterSpi(self, pSpi) }
     }
     #[inline]
-    pub unsafe fn SubscribePrivateTopic(&mut self, nResumeType: THOST_TE_RESUME_TYPE) {
+    pub fn SubscribePrivateTopic(&mut self, nResumeType: THOST_TE_RESUME_TYPE) {
         unsafe { Rust_CThostFtdcTraderApi_SubscribePrivateTopic(self, nResumeType) }
     }
     #[inline]
-    pub unsafe fn SubscribePublicTopic(&mut self, nResumeType: THOST_TE_RESUME_TYPE) {
+    pub fn SubscribePublicTopic(&mut self, nResumeType: THOST_TE_RESUME_TYPE) {
         unsafe { Rust_CThostFtdcTraderApi_SubscribePublicTopic(self, nResumeType) }
     }
     #[inline]
-    pub unsafe fn ReqAuthenticate(
+    pub fn ReqAuthenticate(
         &mut self,
         pReqAuthenticateField: *mut CThostFtdcReqAuthenticateField,
         nRequestID: ::std::os::raw::c_int,
@@ -10916,21 +10916,21 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqAuthenticate(self, pReqAuthenticateField, nRequestID) }
     }
     #[inline]
-    pub unsafe fn RegisterUserSystemInfo(
+    pub fn RegisterUserSystemInfo(
         &mut self,
         pUserSystemInfo: *mut CThostFtdcUserSystemInfoField,
     ) -> ::std::os::raw::c_int {
         unsafe { Rust_CThostFtdcTraderApi_RegisterUserSystemInfo(self, pUserSystemInfo) }
     }
     #[inline]
-    pub unsafe fn SubmitUserSystemInfo(
+    pub fn SubmitUserSystemInfo(
         &mut self,
         pUserSystemInfo: *mut CThostFtdcUserSystemInfoField,
     ) -> ::std::os::raw::c_int {
         unsafe { Rust_CThostFtdcTraderApi_SubmitUserSystemInfo(self, pUserSystemInfo) }
     }
     #[inline]
-    pub unsafe fn ReqUserLogin(
+    pub fn ReqUserLogin(
         &mut self,
         pReqUserLoginField: *mut CThostFtdcReqUserLoginField,
         nRequestID: ::std::os::raw::c_int,
@@ -10938,7 +10938,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqUserLogin(self, pReqUserLoginField, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqUserLogout(
+    pub fn ReqUserLogout(
         &mut self,
         pUserLogout: *mut CThostFtdcUserLogoutField,
         nRequestID: ::std::os::raw::c_int,
@@ -10946,7 +10946,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqUserLogout(self, pUserLogout, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqUserPasswordUpdate(
+    pub fn ReqUserPasswordUpdate(
         &mut self,
         pUserPasswordUpdate: *mut CThostFtdcUserPasswordUpdateField,
         nRequestID: ::std::os::raw::c_int,
@@ -10956,7 +10956,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqTradingAccountPasswordUpdate(
+    pub fn ReqTradingAccountPasswordUpdate(
         &mut self,
         pTradingAccountPasswordUpdate: *mut CThostFtdcTradingAccountPasswordUpdateField,
         nRequestID: ::std::os::raw::c_int,
@@ -10970,7 +10970,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqUserAuthMethod(
+    pub fn ReqUserAuthMethod(
         &mut self,
         pReqUserAuthMethod: *mut CThostFtdcReqUserAuthMethodField,
         nRequestID: ::std::os::raw::c_int,
@@ -10978,7 +10978,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqUserAuthMethod(self, pReqUserAuthMethod, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqGenUserCaptcha(
+    pub fn ReqGenUserCaptcha(
         &mut self,
         pReqGenUserCaptcha: *mut CThostFtdcReqGenUserCaptchaField,
         nRequestID: ::std::os::raw::c_int,
@@ -10986,7 +10986,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqGenUserCaptcha(self, pReqGenUserCaptcha, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqGenUserText(
+    pub fn ReqGenUserText(
         &mut self,
         pReqGenUserText: *mut CThostFtdcReqGenUserTextField,
         nRequestID: ::std::os::raw::c_int,
@@ -10994,7 +10994,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqGenUserText(self, pReqGenUserText, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqUserLoginWithCaptcha(
+    pub fn ReqUserLoginWithCaptcha(
         &mut self,
         pReqUserLoginWithCaptcha: *mut CThostFtdcReqUserLoginWithCaptchaField,
         nRequestID: ::std::os::raw::c_int,
@@ -11008,7 +11008,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqUserLoginWithText(
+    pub fn ReqUserLoginWithText(
         &mut self,
         pReqUserLoginWithText: *mut CThostFtdcReqUserLoginWithTextField,
         nRequestID: ::std::os::raw::c_int,
@@ -11018,7 +11018,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqUserLoginWithOTP(
+    pub fn ReqUserLoginWithOTP(
         &mut self,
         pReqUserLoginWithOTP: *mut CThostFtdcReqUserLoginWithOTPField,
         nRequestID: ::std::os::raw::c_int,
@@ -11028,7 +11028,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqOrderInsert(
+    pub fn ReqOrderInsert(
         &mut self,
         pInputOrder: *mut CThostFtdcInputOrderField,
         nRequestID: ::std::os::raw::c_int,
@@ -11036,7 +11036,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqOrderInsert(self, pInputOrder, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqParkedOrderInsert(
+    pub fn ReqParkedOrderInsert(
         &mut self,
         pParkedOrder: *mut CThostFtdcParkedOrderField,
         nRequestID: ::std::os::raw::c_int,
@@ -11044,7 +11044,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqParkedOrderInsert(self, pParkedOrder, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqParkedOrderAction(
+    pub fn ReqParkedOrderAction(
         &mut self,
         pParkedOrderAction: *mut CThostFtdcParkedOrderActionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11054,7 +11054,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqOrderAction(
+    pub fn ReqOrderAction(
         &mut self,
         pInputOrderAction: *mut CThostFtdcInputOrderActionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11062,7 +11062,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqOrderAction(self, pInputOrderAction, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryMaxOrderVolume(
+    pub fn ReqQryMaxOrderVolume(
         &mut self,
         pQryMaxOrderVolume: *mut CThostFtdcQryMaxOrderVolumeField,
         nRequestID: ::std::os::raw::c_int,
@@ -11072,7 +11072,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqSettlementInfoConfirm(
+    pub fn ReqSettlementInfoConfirm(
         &mut self,
         pSettlementInfoConfirm: *mut CThostFtdcSettlementInfoConfirmField,
         nRequestID: ::std::os::raw::c_int,
@@ -11086,7 +11086,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqRemoveParkedOrder(
+    pub fn ReqRemoveParkedOrder(
         &mut self,
         pRemoveParkedOrder: *mut CThostFtdcRemoveParkedOrderField,
         nRequestID: ::std::os::raw::c_int,
@@ -11096,7 +11096,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqRemoveParkedOrderAction(
+    pub fn ReqRemoveParkedOrderAction(
         &mut self,
         pRemoveParkedOrderAction: *mut CThostFtdcRemoveParkedOrderActionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11110,7 +11110,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqExecOrderInsert(
+    pub fn ReqExecOrderInsert(
         &mut self,
         pInputExecOrder: *mut CThostFtdcInputExecOrderField,
         nRequestID: ::std::os::raw::c_int,
@@ -11118,7 +11118,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqExecOrderInsert(self, pInputExecOrder, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqExecOrderAction(
+    pub fn ReqExecOrderAction(
         &mut self,
         pInputExecOrderAction: *mut CThostFtdcInputExecOrderActionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11128,7 +11128,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqForQuoteInsert(
+    pub fn ReqForQuoteInsert(
         &mut self,
         pInputForQuote: *mut CThostFtdcInputForQuoteField,
         nRequestID: ::std::os::raw::c_int,
@@ -11136,7 +11136,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqForQuoteInsert(self, pInputForQuote, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQuoteInsert(
+    pub fn ReqQuoteInsert(
         &mut self,
         pInputQuote: *mut CThostFtdcInputQuoteField,
         nRequestID: ::std::os::raw::c_int,
@@ -11144,7 +11144,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQuoteInsert(self, pInputQuote, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQuoteAction(
+    pub fn ReqQuoteAction(
         &mut self,
         pInputQuoteAction: *mut CThostFtdcInputQuoteActionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11152,7 +11152,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQuoteAction(self, pInputQuoteAction, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqBatchOrderAction(
+    pub fn ReqBatchOrderAction(
         &mut self,
         pInputBatchOrderAction: *mut CThostFtdcInputBatchOrderActionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11162,7 +11162,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqOptionSelfCloseInsert(
+    pub fn ReqOptionSelfCloseInsert(
         &mut self,
         pInputOptionSelfClose: *mut CThostFtdcInputOptionSelfCloseField,
         nRequestID: ::std::os::raw::c_int,
@@ -11176,7 +11176,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqOptionSelfCloseAction(
+    pub fn ReqOptionSelfCloseAction(
         &mut self,
         pInputOptionSelfCloseAction: *mut CThostFtdcInputOptionSelfCloseActionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11190,7 +11190,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqCombActionInsert(
+    pub fn ReqCombActionInsert(
         &mut self,
         pInputCombAction: *mut CThostFtdcInputCombActionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11198,7 +11198,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqCombActionInsert(self, pInputCombAction, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryOrder(
+    pub fn ReqQryOrder(
         &mut self,
         pQryOrder: *mut CThostFtdcQryOrderField,
         nRequestID: ::std::os::raw::c_int,
@@ -11206,7 +11206,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryOrder(self, pQryOrder, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryTrade(
+    pub fn ReqQryTrade(
         &mut self,
         pQryTrade: *mut CThostFtdcQryTradeField,
         nRequestID: ::std::os::raw::c_int,
@@ -11214,7 +11214,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryTrade(self, pQryTrade, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryInvestorPosition(
+    pub fn ReqQryInvestorPosition(
         &mut self,
         pQryInvestorPosition: *mut CThostFtdcQryInvestorPositionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11224,7 +11224,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryTradingAccount(
+    pub fn ReqQryTradingAccount(
         &mut self,
         pQryTradingAccount: *mut CThostFtdcQryTradingAccountField,
         nRequestID: ::std::os::raw::c_int,
@@ -11234,7 +11234,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryInvestor(
+    pub fn ReqQryInvestor(
         &mut self,
         pQryInvestor: *mut CThostFtdcQryInvestorField,
         nRequestID: ::std::os::raw::c_int,
@@ -11242,7 +11242,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryInvestor(self, pQryInvestor, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryTradingCode(
+    pub fn ReqQryTradingCode(
         &mut self,
         pQryTradingCode: *mut CThostFtdcQryTradingCodeField,
         nRequestID: ::std::os::raw::c_int,
@@ -11250,7 +11250,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryTradingCode(self, pQryTradingCode, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryInstrumentMarginRate(
+    pub fn ReqQryInstrumentMarginRate(
         &mut self,
         pQryInstrumentMarginRate: *mut CThostFtdcQryInstrumentMarginRateField,
         nRequestID: ::std::os::raw::c_int,
@@ -11264,7 +11264,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryInstrumentCommissionRate(
+    pub fn ReqQryInstrumentCommissionRate(
         &mut self,
         pQryInstrumentCommissionRate: *mut CThostFtdcQryInstrumentCommissionRateField,
         nRequestID: ::std::os::raw::c_int,
@@ -11278,7 +11278,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryExchange(
+    pub fn ReqQryExchange(
         &mut self,
         pQryExchange: *mut CThostFtdcQryExchangeField,
         nRequestID: ::std::os::raw::c_int,
@@ -11286,7 +11286,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryExchange(self, pQryExchange, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryProduct(
+    pub fn ReqQryProduct(
         &mut self,
         pQryProduct: *mut CThostFtdcQryProductField,
         nRequestID: ::std::os::raw::c_int,
@@ -11294,7 +11294,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryProduct(self, pQryProduct, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryInstrument(
+    pub fn ReqQryInstrument(
         &mut self,
         pQryInstrument: *mut CThostFtdcQryInstrumentField,
         nRequestID: ::std::os::raw::c_int,
@@ -11302,7 +11302,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryInstrument(self, pQryInstrument, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryDepthMarketData(
+    pub fn ReqQryDepthMarketData(
         &mut self,
         pQryDepthMarketData: *mut CThostFtdcQryDepthMarketDataField,
         nRequestID: ::std::os::raw::c_int,
@@ -11312,7 +11312,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryTraderOffer(
+    pub fn ReqQryTraderOffer(
         &mut self,
         pQryTraderOffer: *mut CThostFtdcQryTraderOfferField,
         nRequestID: ::std::os::raw::c_int,
@@ -11320,7 +11320,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryTraderOffer(self, pQryTraderOffer, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQrySettlementInfo(
+    pub fn ReqQrySettlementInfo(
         &mut self,
         pQrySettlementInfo: *mut CThostFtdcQrySettlementInfoField,
         nRequestID: ::std::os::raw::c_int,
@@ -11330,7 +11330,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryTransferBank(
+    pub fn ReqQryTransferBank(
         &mut self,
         pQryTransferBank: *mut CThostFtdcQryTransferBankField,
         nRequestID: ::std::os::raw::c_int,
@@ -11338,7 +11338,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryTransferBank(self, pQryTransferBank, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryInvestorPositionDetail(
+    pub fn ReqQryInvestorPositionDetail(
         &mut self,
         pQryInvestorPositionDetail: *mut CThostFtdcQryInvestorPositionDetailField,
         nRequestID: ::std::os::raw::c_int,
@@ -11352,7 +11352,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryNotice(
+    pub fn ReqQryNotice(
         &mut self,
         pQryNotice: *mut CThostFtdcQryNoticeField,
         nRequestID: ::std::os::raw::c_int,
@@ -11360,7 +11360,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryNotice(self, pQryNotice, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQrySettlementInfoConfirm(
+    pub fn ReqQrySettlementInfoConfirm(
         &mut self,
         pQrySettlementInfoConfirm: *mut CThostFtdcQrySettlementInfoConfirmField,
         nRequestID: ::std::os::raw::c_int,
@@ -11374,7 +11374,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryInvestorPositionCombineDetail(
+    pub fn ReqQryInvestorPositionCombineDetail(
         &mut self,
         pQryInvestorPositionCombineDetail: *mut CThostFtdcQryInvestorPositionCombineDetailField,
         nRequestID: ::std::os::raw::c_int,
@@ -11388,7 +11388,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryCFMMCTradingAccountKey(
+    pub fn ReqQryCFMMCTradingAccountKey(
         &mut self,
         pQryCFMMCTradingAccountKey: *mut CThostFtdcQryCFMMCTradingAccountKeyField,
         nRequestID: ::std::os::raw::c_int,
@@ -11402,7 +11402,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryEWarrantOffset(
+    pub fn ReqQryEWarrantOffset(
         &mut self,
         pQryEWarrantOffset: *mut CThostFtdcQryEWarrantOffsetField,
         nRequestID: ::std::os::raw::c_int,
@@ -11412,7 +11412,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryInvestorProductGroupMargin(
+    pub fn ReqQryInvestorProductGroupMargin(
         &mut self,
         pQryInvestorProductGroupMargin: *mut CThostFtdcQryInvestorProductGroupMarginField,
         nRequestID: ::std::os::raw::c_int,
@@ -11426,7 +11426,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryExchangeMarginRate(
+    pub fn ReqQryExchangeMarginRate(
         &mut self,
         pQryExchangeMarginRate: *mut CThostFtdcQryExchangeMarginRateField,
         nRequestID: ::std::os::raw::c_int,
@@ -11440,7 +11440,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryExchangeMarginRateAdjust(
+    pub fn ReqQryExchangeMarginRateAdjust(
         &mut self,
         pQryExchangeMarginRateAdjust: *mut CThostFtdcQryExchangeMarginRateAdjustField,
         nRequestID: ::std::os::raw::c_int,
@@ -11454,7 +11454,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryExchangeRate(
+    pub fn ReqQryExchangeRate(
         &mut self,
         pQryExchangeRate: *mut CThostFtdcQryExchangeRateField,
         nRequestID: ::std::os::raw::c_int,
@@ -11462,7 +11462,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryExchangeRate(self, pQryExchangeRate, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQrySecAgentACIDMap(
+    pub fn ReqQrySecAgentACIDMap(
         &mut self,
         pQrySecAgentACIDMap: *mut CThostFtdcQrySecAgentACIDMapField,
         nRequestID: ::std::os::raw::c_int,
@@ -11472,7 +11472,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryProductExchRate(
+    pub fn ReqQryProductExchRate(
         &mut self,
         pQryProductExchRate: *mut CThostFtdcQryProductExchRateField,
         nRequestID: ::std::os::raw::c_int,
@@ -11482,7 +11482,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryProductGroup(
+    pub fn ReqQryProductGroup(
         &mut self,
         pQryProductGroup: *mut CThostFtdcQryProductGroupField,
         nRequestID: ::std::os::raw::c_int,
@@ -11490,7 +11490,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryProductGroup(self, pQryProductGroup, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryMMInstrumentCommissionRate(
+    pub fn ReqQryMMInstrumentCommissionRate(
         &mut self,
         pQryMMInstrumentCommissionRate: *mut CThostFtdcQryMMInstrumentCommissionRateField,
         nRequestID: ::std::os::raw::c_int,
@@ -11504,7 +11504,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryMMOptionInstrCommRate(
+    pub fn ReqQryMMOptionInstrCommRate(
         &mut self,
         pQryMMOptionInstrCommRate: *mut CThostFtdcQryMMOptionInstrCommRateField,
         nRequestID: ::std::os::raw::c_int,
@@ -11518,7 +11518,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryInstrumentOrderCommRate(
+    pub fn ReqQryInstrumentOrderCommRate(
         &mut self,
         pQryInstrumentOrderCommRate: *mut CThostFtdcQryInstrumentOrderCommRateField,
         nRequestID: ::std::os::raw::c_int,
@@ -11532,7 +11532,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQrySecAgentTradingAccount(
+    pub fn ReqQrySecAgentTradingAccount(
         &mut self,
         pQryTradingAccount: *mut CThostFtdcQryTradingAccountField,
         nRequestID: ::std::os::raw::c_int,
@@ -11546,7 +11546,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQrySecAgentCheckMode(
+    pub fn ReqQrySecAgentCheckMode(
         &mut self,
         pQrySecAgentCheckMode: *mut CThostFtdcQrySecAgentCheckModeField,
         nRequestID: ::std::os::raw::c_int,
@@ -11560,7 +11560,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQrySecAgentTradeInfo(
+    pub fn ReqQrySecAgentTradeInfo(
         &mut self,
         pQrySecAgentTradeInfo: *mut CThostFtdcQrySecAgentTradeInfoField,
         nRequestID: ::std::os::raw::c_int,
@@ -11574,7 +11574,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryOptionInstrTradeCost(
+    pub fn ReqQryOptionInstrTradeCost(
         &mut self,
         pQryOptionInstrTradeCost: *mut CThostFtdcQryOptionInstrTradeCostField,
         nRequestID: ::std::os::raw::c_int,
@@ -11588,7 +11588,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryOptionInstrCommRate(
+    pub fn ReqQryOptionInstrCommRate(
         &mut self,
         pQryOptionInstrCommRate: *mut CThostFtdcQryOptionInstrCommRateField,
         nRequestID: ::std::os::raw::c_int,
@@ -11602,7 +11602,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryExecOrder(
+    pub fn ReqQryExecOrder(
         &mut self,
         pQryExecOrder: *mut CThostFtdcQryExecOrderField,
         nRequestID: ::std::os::raw::c_int,
@@ -11610,7 +11610,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryExecOrder(self, pQryExecOrder, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryForQuote(
+    pub fn ReqQryForQuote(
         &mut self,
         pQryForQuote: *mut CThostFtdcQryForQuoteField,
         nRequestID: ::std::os::raw::c_int,
@@ -11618,7 +11618,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryForQuote(self, pQryForQuote, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryQuote(
+    pub fn ReqQryQuote(
         &mut self,
         pQryQuote: *mut CThostFtdcQryQuoteField,
         nRequestID: ::std::os::raw::c_int,
@@ -11626,7 +11626,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryQuote(self, pQryQuote, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryOptionSelfClose(
+    pub fn ReqQryOptionSelfClose(
         &mut self,
         pQryOptionSelfClose: *mut CThostFtdcQryOptionSelfCloseField,
         nRequestID: ::std::os::raw::c_int,
@@ -11636,7 +11636,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryInvestUnit(
+    pub fn ReqQryInvestUnit(
         &mut self,
         pQryInvestUnit: *mut CThostFtdcQryInvestUnitField,
         nRequestID: ::std::os::raw::c_int,
@@ -11644,7 +11644,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryInvestUnit(self, pQryInvestUnit, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryCombInstrumentGuard(
+    pub fn ReqQryCombInstrumentGuard(
         &mut self,
         pQryCombInstrumentGuard: *mut CThostFtdcQryCombInstrumentGuardField,
         nRequestID: ::std::os::raw::c_int,
@@ -11658,7 +11658,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryCombAction(
+    pub fn ReqQryCombAction(
         &mut self,
         pQryCombAction: *mut CThostFtdcQryCombActionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11666,7 +11666,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryCombAction(self, pQryCombAction, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryTransferSerial(
+    pub fn ReqQryTransferSerial(
         &mut self,
         pQryTransferSerial: *mut CThostFtdcQryTransferSerialField,
         nRequestID: ::std::os::raw::c_int,
@@ -11676,7 +11676,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryAccountregister(
+    pub fn ReqQryAccountregister(
         &mut self,
         pQryAccountregister: *mut CThostFtdcQryAccountregisterField,
         nRequestID: ::std::os::raw::c_int,
@@ -11686,7 +11686,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryContractBank(
+    pub fn ReqQryContractBank(
         &mut self,
         pQryContractBank: *mut CThostFtdcQryContractBankField,
         nRequestID: ::std::os::raw::c_int,
@@ -11694,7 +11694,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryContractBank(self, pQryContractBank, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryParkedOrder(
+    pub fn ReqQryParkedOrder(
         &mut self,
         pQryParkedOrder: *mut CThostFtdcQryParkedOrderField,
         nRequestID: ::std::os::raw::c_int,
@@ -11702,7 +11702,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryParkedOrder(self, pQryParkedOrder, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryParkedOrderAction(
+    pub fn ReqQryParkedOrderAction(
         &mut self,
         pQryParkedOrderAction: *mut CThostFtdcQryParkedOrderActionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11716,7 +11716,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryTradingNotice(
+    pub fn ReqQryTradingNotice(
         &mut self,
         pQryTradingNotice: *mut CThostFtdcQryTradingNoticeField,
         nRequestID: ::std::os::raw::c_int,
@@ -11724,7 +11724,7 @@ impl Rust_CThostFtdcTraderApi {
         unsafe { Rust_CThostFtdcTraderApi_ReqQryTradingNotice(self, pQryTradingNotice, nRequestID) }
     }
     #[inline]
-    pub unsafe fn ReqQryBrokerTradingParams(
+    pub fn ReqQryBrokerTradingParams(
         &mut self,
         pQryBrokerTradingParams: *mut CThostFtdcQryBrokerTradingParamsField,
         nRequestID: ::std::os::raw::c_int,
@@ -11738,7 +11738,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryBrokerTradingAlgos(
+    pub fn ReqQryBrokerTradingAlgos(
         &mut self,
         pQryBrokerTradingAlgos: *mut CThostFtdcQryBrokerTradingAlgosField,
         nRequestID: ::std::os::raw::c_int,
@@ -11752,7 +11752,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQueryCFMMCTradingAccountToken(
+    pub fn ReqQueryCFMMCTradingAccountToken(
         &mut self,
         pQueryCFMMCTradingAccountToken: *mut CThostFtdcQueryCFMMCTradingAccountTokenField,
         nRequestID: ::std::os::raw::c_int,
@@ -11766,7 +11766,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqFromBankToFutureByFuture(
+    pub fn ReqFromBankToFutureByFuture(
         &mut self,
         pReqTransfer: *mut CThostFtdcReqTransferField,
         nRequestID: ::std::os::raw::c_int,
@@ -11776,7 +11776,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqFromFutureToBankByFuture(
+    pub fn ReqFromFutureToBankByFuture(
         &mut self,
         pReqTransfer: *mut CThostFtdcReqTransferField,
         nRequestID: ::std::os::raw::c_int,
@@ -11786,7 +11786,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQueryBankAccountMoneyByFuture(
+    pub fn ReqQueryBankAccountMoneyByFuture(
         &mut self,
         pReqQueryAccount: *mut CThostFtdcReqQueryAccountField,
         nRequestID: ::std::os::raw::c_int,
@@ -11800,7 +11800,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryClassifiedInstrument(
+    pub fn ReqQryClassifiedInstrument(
         &mut self,
         pQryClassifiedInstrument: *mut CThostFtdcQryClassifiedInstrumentField,
         nRequestID: ::std::os::raw::c_int,
@@ -11814,7 +11814,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryCombPromotionParam(
+    pub fn ReqQryCombPromotionParam(
         &mut self,
         pQryCombPromotionParam: *mut CThostFtdcQryCombPromotionParamField,
         nRequestID: ::std::os::raw::c_int,
@@ -11828,7 +11828,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryRiskSettleInvstPosition(
+    pub fn ReqQryRiskSettleInvstPosition(
         &mut self,
         pQryRiskSettleInvstPosition: *mut CThostFtdcQryRiskSettleInvstPositionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11842,7 +11842,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryRiskSettleProductStatus(
+    pub fn ReqQryRiskSettleProductStatus(
         &mut self,
         pQryRiskSettleProductStatus: *mut CThostFtdcQryRiskSettleProductStatusField,
         nRequestID: ::std::os::raw::c_int,
@@ -11856,7 +11856,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQrySPBMFutureParameter(
+    pub fn ReqQrySPBMFutureParameter(
         &mut self,
         pQrySPBMFutureParameter: *mut CThostFtdcQrySPBMFutureParameterField,
         nRequestID: ::std::os::raw::c_int,
@@ -11870,7 +11870,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQrySPBMOptionParameter(
+    pub fn ReqQrySPBMOptionParameter(
         &mut self,
         pQrySPBMOptionParameter: *mut CThostFtdcQrySPBMOptionParameterField,
         nRequestID: ::std::os::raw::c_int,
@@ -11884,7 +11884,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQrySPBMIntraParameter(
+    pub fn ReqQrySPBMIntraParameter(
         &mut self,
         pQrySPBMIntraParameter: *mut CThostFtdcQrySPBMIntraParameterField,
         nRequestID: ::std::os::raw::c_int,
@@ -11898,7 +11898,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQrySPBMInterParameter(
+    pub fn ReqQrySPBMInterParameter(
         &mut self,
         pQrySPBMInterParameter: *mut CThostFtdcQrySPBMInterParameterField,
         nRequestID: ::std::os::raw::c_int,
@@ -11912,7 +11912,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQrySPBMPortfDefinition(
+    pub fn ReqQrySPBMPortfDefinition(
         &mut self,
         pQrySPBMPortfDefinition: *mut CThostFtdcQrySPBMPortfDefinitionField,
         nRequestID: ::std::os::raw::c_int,
@@ -11926,7 +11926,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQrySPBMInvestorPortfDef(
+    pub fn ReqQrySPBMInvestorPortfDef(
         &mut self,
         pQrySPBMInvestorPortfDef: *mut CThostFtdcQrySPBMInvestorPortfDefField,
         nRequestID: ::std::os::raw::c_int,
@@ -11940,7 +11940,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryInvestorPortfMarginRatio(
+    pub fn ReqQryInvestorPortfMarginRatio(
         &mut self,
         pQryInvestorPortfMarginRatio: *mut CThostFtdcQryInvestorPortfMarginRatioField,
         nRequestID: ::std::os::raw::c_int,
@@ -11954,7 +11954,7 @@ impl Rust_CThostFtdcTraderApi {
         }
     }
     #[inline]
-    pub unsafe fn ReqQryInvestorProdSPBMDetail(
+    pub fn ReqQryInvestorProdSPBMDetail(
         &mut self,
         pQryInvestorProdSPBMDetail: *mut CThostFtdcQryInvestorProdSPBMDetailField,
         nRequestID: ::std::os::raw::c_int,
