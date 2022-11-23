@@ -265,7 +265,11 @@ pub fn main() {
         ..Default::default()
     });
 
-    mdapi.start().unwrap();
+   if mdapi.start().is_err() {
+       error!("failed to start mdapi!");
+       return;
+   }
+
     mdapi.subscribe_market_data(&["rb2305"], false).unwrap();
     let mut count = 0;
 
